@@ -1,17 +1,17 @@
 # Nome do projeto
 
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+O objetivo deste projeto é criar uma experiência simples e agradável para todos os tipos de jogadores. Iremos desenvolver uma plataforma que permita aos usuários encontrarem parceiros para jogar suas partidas de maneira fácil, rápida e eficiente. Acreditamos que, ao facilitar a conexão entre os jogadores, podemos melhorar a experiência de jogo para todos os envolvidos.
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Rian Eduardo Dias Lopes
+* João Lucas Paiva Lamounier
+* Luan de Amorim Dourado Fonseca
+* João Comini César de Andrade
 
 ## Professores responsáveis
 
-* Nome completo do professor 1
+* Rommel Vieira Carneiro
 * Nome completo do professor 2
 
 ## Instruções de utilização
