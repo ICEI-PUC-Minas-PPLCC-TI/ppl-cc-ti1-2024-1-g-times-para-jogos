@@ -1,4 +1,4 @@
-# Nome do projeto
+# Playershub
 
 O objetivo deste projeto é criar uma experiência simples e agradável para todos os tipos de jogadores. Iremos desenvolver uma plataforma que permita aos usuários encontrarem parceiros para jogar suas partidas de maneira fácil, rápida e eficiente. Acreditamos que, ao facilitar a conexão entre os jogadores, podemos melhorar a experiência de jogo para todos os envolvidos.
 
@@ -12,7 +12,7 @@ O objetivo deste projeto é criar uma experiência simples e agradável para tod
 ## Professores responsáveis
 
 * Rommel Vieira Carneiro
-* Nome completo do professor 2
+* Tamara Simões Silva
 
 ## Instruções de utilização
 
