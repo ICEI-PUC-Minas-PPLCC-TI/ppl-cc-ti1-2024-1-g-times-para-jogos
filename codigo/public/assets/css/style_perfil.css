@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: rgb(35, 36, 55);
+}
+
+/* Ajustando a barra de navegacao */
+
+.navbar {
+    color: #fff;
+    padding: 10px 0;
+    position: sticky;
+}
+
+.container-nav {
+    width: 95%;
+    height: 150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img.logo{
+    width: 300px;
+    height: 300px;
+}
+
+.logo {
+    margin: 0;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: xx-large;
+}
+
+.nav-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+/* Fim da barra de navegacao */
+
+/* Ajustando os campos de foto de perfil e dados do perfil */
+
+.fas.fa-camera {
+    color: white; 
+    font-size: 48px; 
+    z-index: 999;
+}
+
+.perfil-container {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.fotoperfil {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    flex-grow: 1;
+}
+
+.fotoperfil img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+div.editarperfil{
+    flex-grow: 1;
+    font-size: large;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label[for="profile_picture"] {
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    color: blue;
+}
+
+.salvar-conta,
+.salvar-pessoal {
+    background-color: #024fa1;
+    color: #fff;
+    border: none;
+    font-weight: bolder;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.connect {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 10px;
+}
+
+div.connect-item{
+    display: flex;
+    align-items: center;
+}
+
+div.connect-item span.connection-status{
+    margin-left: 10px;
+    color:white;
+    text-decoration-style: none ;
+}
+
+.connect i {
+    font-size: 52px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.connect img {
+    width: 60px;
+    height: 50px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* Fim dos campos de perfil */

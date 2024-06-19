@@ -1,0 +1,20 @@
+{
+  "usuarios": [
+    {
+      "id": "fa32c412-0699-497f-82c0-5943d57f5ba5",
+      "login": "admin",
+      "senha": "123",
+      "nome": "admin",
+      "email": "admin@abc.com",
+      "steamID": "",
+      "profilePhoto": "https://robohash.org/adcab8e8-e932-46bd-860b-81e37ba0ce30.png",
+      "nascimento": "",
+      "genero": "Masculino",
+      "estado": "",
+      "cidade": "",
+      "telefone": "",
+      "amigos": [],
+      "status": "online"
+    }
+  ]
+}
