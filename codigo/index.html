@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de amizades</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-GEFqjWfKoWfJ3Q3P4RS7dGO1e7sD1exXwCbA8JMHPOHHgzXF6tUUTA48yvfh3QBBgNUkJ9fMkdScxklKIZDn9w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- Cabeçalho -->
+      <!-- Meu perfil -->
+      <div class="profile-info">
+        <img src="imgs/perfil.png" id="profile-img" />
+        <div>
+          <div class="profile-name">José</div>
+          <span id="selected-status"></span>
+        </div>
+        <div class="status">
+          <select id="status-select">
+            <!-- Preciso alterar o selecionador para ficar so status -->
+            <option value="online" class="online">Online</option>
+            <option value="ausente" class="ausente">Ausente</option>
+            <option value="offline" class="offline">Offline</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <h1>Amigos</h1>
+      </div>
+      <!-- Barra de busca -->
+      <div class="search-friends">
+        <input
+          class="search-txt"
+          id="search-input"
+          type="text"
+          placeholder="Buscar amigos"
+        />
+        <a href="#" class="search-btn">
+          <img src="imgs/loupe.png" alt="Lupa" />
+        </a>
+      </div>
+      <!-- Botão de adicionar amigos -->
+      <div class="add-friends">
+        <button id="add-friends-btn">
+          <a href="pesquisa.html">
+            <i
+              class="fa-solid fa-user-plus fa-2xl"
+              style="color: rgb(3, 91, 255)"
+            ></i>
+          </a>
+        </button>
+      </div>
+      <!-- Botão de solicitações -->
+      <div class="solicitacoes">
+        <button id="solicitacoes-btn">
+          <a href="solicitacoes.html">
+            <i
+          class="fa-regular fa-folder fa-2xl"
+              style="color: rgb(3, 91, 255)"
+            ></i>
+          </a>
+        </button>
+      </div>
+    </header>
+
+    <!-- Lista de amigos -->
+    <div id="lista-amigos">
+      <section id="amigos-online" class="amigos-online">
+        <!-- Online -->
+        <h2>
+          Amigos Online <span id="contador-online" class="contador">(0)</span>
+        </h2>
+      </section>
+      <section id="amigos-offline" class="amigos-offline">
+        <!-- Offline -->
+        <h2>
+          Amigos Offline <span id="contador-offline" class="contador">(0)</span>
+        </h2>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/b8fea98a0b.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
