@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: rgb(35, 36, 55);
+    overflow-x: hidden;
+}
+
+/* Ajustando a barra de navegacao */
+
+.navbar {
+    width: 100%;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.container-nav {
+    width: 95%;
+    height: 150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.container-nav img{
+    position: relative;
+    display: inline-block;
+}
+
+img.logo{
+    width: 300px;
+    height: 300px;
+}
+
+.logo {
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    font-size: xx-large;
+}
+
+.nav-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+#foto_de_perfil{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+/* Section */
+
+#sala-detalhes{
+    display: flex;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+div.jogador img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}

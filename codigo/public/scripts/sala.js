@@ -47,8 +47,8 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
           const jogadorDiv = document.createElement('div');
           jogadorDiv.className = 'jogador';
           jogadorDiv.innerHTML = `
-            <img src="${jogador.foto}" alt="${jogador.nome}">
-            <p>${jogador.nome}</p>
+            <img src="${jogador.profilePhoto}" alt="${jogador.login}">
+            <span>${jogador.login}</span>
           `;
           jogadoresContainer.appendChild(jogadorDiv);
         }
