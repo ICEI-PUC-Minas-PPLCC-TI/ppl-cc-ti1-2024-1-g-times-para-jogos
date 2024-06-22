@@ -87,3 +87,7 @@ div.jogador img{
     height: 75px;
     border-radius: 50%;
 }
+
+li{
+    list-style: none;
+}
