@@ -46,7 +46,6 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
         container.innerHTML = `
           <h3>${sala.jogo} - ${sala.modo}</h3>
           <p>Dono: ${sala.dono}</p>
-          <p>Sala: ${sala.sala}</p>
           <h4>Jogadores:</h4>
           <ul id="jogadores-list"></ul>
         `;

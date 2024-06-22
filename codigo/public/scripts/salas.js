@@ -36,25 +36,41 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
           displaySalas(filteredSalas);
         });
       }
-  
-      function displaySalas(salas) {
+
+      async function fetchUser(userId) {
+        const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
+        if (!response.ok) {
+          console.error('Erro ao buscar usuário:', response.statusText);
+          return null;
+        }
+        return await response.json();
+      }
+
+      async function displaySalas(salas) {
         const container = document.getElementById('browser');
         container.innerHTML = '';
-  
-        salas.forEach(sala => {
+      
+        for (const sala of salas) {
           const salaDiv = document.createElement('div');
           salaDiv.className = 'sala';
+          
+          const jogadoresPromises = sala.jogadores.map(userId => fetchUser(userId));
+          const jogadores = await Promise.all(jogadoresPromises);
+      
+          const jogadoresNomes = jogadores.map(user => user ? user.login : 'Usuário desconhecido');
+      
           salaDiv.innerHTML = `
             <h3>${sala.jogo} - ${sala.modo}</h3>
             <p>Dono: ${sala.dono}</p>
-            <p>Jogadores: ${sala.jogadores.join(', ')}</p>
+            <p>Jogadores: ${jogadoresNomes.join(', ')}</p>
             <p>Sala: ${sala.sala}</p>
             <button onclick="enterSala('${sala.id}')">Entrar na Sala</button>
           `;
+          
           container.appendChild(salaDiv);
-        });
+        }
       }
-  
+      
       async function enterSala(salaId) {
         const currentUser = JSON.parse(localStorage.getItem('usuarioCorrente'));
         if (!currentUser || !currentUser.id) {
