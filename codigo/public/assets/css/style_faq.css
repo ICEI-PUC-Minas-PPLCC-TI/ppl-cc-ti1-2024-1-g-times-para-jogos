@@ -67,3 +67,11 @@ img.logo{
     height: 75px;
     border-radius: 50%;
 }
+
+/* Faq */
+
+div.faq {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
