@@ -19,6 +19,21 @@ window.onclick = function(event) {
   }
 }
 
+async function checkCapacidadeMaxima(salaId) {
+  try {
+    const response = await fetch(`http://localhost:3000/salas/${salaId}`);
+    if (!response.ok) {
+      throw new Error('Erro ao buscar detalhes da sala');
+    }
+    const sala = await response.json();
+    console.log(sala.jogadores.length >= sala.capacidade)
+    return sala.jogadores.length >= sala.capacidade;
+  } catch (error) {
+    console.error('Erro ao verificar capacidade máxima:', error);
+    return false; // Retornar falso em caso de erro
+  }
+}
+
 document.getElementById("visibilidade").addEventListener("change", function() {
   const senhaLabel = document.getElementById("senha-label");
   const senhaInput = document.getElementById("senha");
@@ -155,7 +170,9 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
           console.error('Usuário não está logado');
           return;
         }
-  
+        if (checkCapacidadeMaxima(salaId) === true) {
+          alert('A sala já está cheia. Não é possível entrar.');
+        } else {
         try {
           const response = await fetch(`http://localhost:3000/salas/${salaId}`);
           if (!response.ok) {
@@ -185,7 +202,7 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
         }
       } catch (error) {
         console.error('Erro ao entrar na sala:', error);
-      }
+      }}
     }
   
     document.addEventListener('DOMContentLoaded', () => {
