@@ -40,6 +40,34 @@
         </ul>
       </div>
     </nav>
+    <div class="salas">
+      <div class="filtros">
+        <label for="jogo">Jogo:</label>
+        <select id="jogo">
+          <option value="">Todos</option>
+          <option value="Jogo1">Jogo1</option>
+          <option value="Jogo2">Jogo2</option>
+        </select>
+    
+        <label for="modo">Modo:</label>
+        <select id="modo">
+          <option value="">Todos</option>
+          <option value="Modo1">Modo1</option>
+          <option value="Modo2">Modo2</option>
+        </select>
+    
+        <label for="sala">Sala:</label>
+        <select id="sala">
+          <option value="">Todas</option>
+          <option value="publica">Pública</option>
+          <option value="privada">Privada</option>
+        </select>
+        <button onclick="applyFilters()">Aplicar Filtros</button>
+      </div>
+      <div class="browser" id="browser">
+
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/imask"></script>
     <script src="scripts/salas.js"></script>
     <script

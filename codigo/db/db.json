@@ -19,12 +19,13 @@
   ],
   "salas": [
     {
-      "id": "",
-      "jogo": "",
-      "modo": "",
-      "dono": "",
-      "jogadores": [],
-      "sala": ""
+      "id": "1",
+      "jogo": "Jogo",
+      "modo": "Modo",
+      "dono": "user1",
+      "jogadores": ["user1", "user2"],
+      "sala": "publica",
+      "senha": ""
     }
   ]
 }

@@ -69,3 +69,24 @@ img.logo{
     height: 75px;
     border-radius: 50%;
 }
+
+/* Sections */
+
+div.salas{
+    display: flex;
+    padding: 20px;
+    gap: 2.5rem;
+}
+
+div.filtros{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.browser{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    padding: 10px;
+}
