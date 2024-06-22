@@ -44,7 +44,8 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
   
         const container = document.getElementById('sala-detalhes');
         container.innerHTML = `
-          <h3>${sala.jogo} - ${sala.modo}</h3>
+          <h1>${sala.nome}</h1>
+          <h5>${sala.jogo} - ${sala.modo}</h5>
           <p>Dono: ${sala.dono}</p>
           <h4>Jogadores:</h4>
           <ul id="jogadores-list"></ul>
@@ -55,7 +56,7 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
           const user = await fetchUser(userId);
           if (user) {
             const listItem = document.createElement('li');
-            listItem.innerHTML = `<img src="${user.profilePhoto}" alt="Foto de ${user.nome}" style="width: 30px; height: 30px;"> ${user.nome}
+            listItem.innerHTML = `<img src="${user.profilePhoto}" alt="Foto de ${user.nome}" style="width: 30px; height: 30px;"> ${user.login}
             ${(currentUserObj.login === sala.dono && user.login !== sala.dono) ? `<span class="kick-icon" onclick="kickPlayer('${salaId}', '${userId}')">✖</span>` : ''}`;
             jogadoresList.appendChild(listItem);
           }
