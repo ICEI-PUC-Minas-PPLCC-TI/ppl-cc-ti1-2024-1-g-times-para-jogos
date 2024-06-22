@@ -16,5 +16,14 @@
       "amigos": [],
       "status": "online"
     }
+  ],
+  "salas": [
+    {
+      "id": "",
+      "jogo": "",
+      "modo": "",
+      "dono": "",
+      "jogadores": []
+    }
   ]
 }
