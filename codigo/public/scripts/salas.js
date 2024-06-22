@@ -94,6 +94,16 @@ document.getElementById("create-room-form").addEventListener("submit", async fun
   }
 });
 
+function calcularCapacidadeMaxima(modo) {
+  switch (modo) {
+    case 'Competitivo':
+      return 5;
+    case 'Braço Direito':
+      return 2;
+    default:
+      return 0;
+  }
+}
 
 fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
     .then(response => {
@@ -158,18 +168,14 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
         for (const sala of salas) {
           const salaDiv = document.createElement('div');
           salaDiv.className = 'sala';
-          
-          const jogadoresPromises = sala.jogadores.map(userId => fetchUser(userId));
-          const jogadores = await Promise.all(jogadoresPromises);
-      
-          const jogadoresNomes = jogadores.map(user => user ? user.login : 'Usuário desconhecido');
-      
+          const jogadoresCount = sala.jogadores.length;
+          const visibilidade = sala.sala === 'publica' ? 'Pública' : 'Privada';
+          const capacidadeMaxima = calcularCapacidadeMaxima(sala.modo);
           salaDiv.innerHTML = `
-            <h3>${sala.nome}</h3>
-            <h5>${sala.jogo} - ${sala.modo}</h5>
-            <p>Dono: ${sala.dono}</p>
-            <p>Jogadores: ${jogadoresNomes.join(', ')}</p>
-            <p>Sala: ${sala.sala}</p>
+            <h1>${sala.nome}</h1>
+            <h4>${sala.jogo} - ${sala.modo}</h4>
+            <p>Jogadores: ${jogadoresCount}/${capacidadeMaxima}</p>
+            <p>Sala: ${visibilidade}</p>
             <button onclick="enterSala('${sala.id}')">Entrar na Sala</button>
           `;
           container.appendChild(salaDiv);

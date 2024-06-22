@@ -45,7 +45,7 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
         const container = document.getElementById('sala-detalhes');
         container.innerHTML = `
           <h1>${sala.nome}</h1>
-          <h5>${sala.jogo} - ${sala.modo}</h5>
+          <h4>${sala.jogo} - ${sala.modo}</h4>
           <p>Dono: ${sala.dono}</p>
           <h4>Jogadores:</h4>
           <ul id="jogadores-list"></ul>
