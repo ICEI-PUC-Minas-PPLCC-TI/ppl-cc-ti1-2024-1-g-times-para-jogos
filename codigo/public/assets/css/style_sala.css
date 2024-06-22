@@ -79,6 +79,7 @@ img.logo{
     width: 80%;
     margin: 0 auto;
     margin-top: 20px;
+    flex-direction: column;
 }
 
 div.jogador img{

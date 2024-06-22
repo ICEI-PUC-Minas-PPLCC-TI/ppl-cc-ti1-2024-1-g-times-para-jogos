@@ -17,42 +17,94 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
         console.error('Houve um problema com a operacao fetch:', error);
     });
 
-    async function fetchSalaDetails(id) {
-        const response = await fetch(`http://localhost:3000/salas/${id}`);
+    async function fetchSala(salaId) {
+        const response = await fetch(`http://localhost:3000/salas/${salaId}`);
+        if (!response.ok) {
+          console.error('Erro ao buscar sala:', response.statusText);
+          return null;
+        }
         return await response.json();
       }
   
-      async function fetchUsuario(id) {
-        const response = await fetch(`http://localhost:3000/usuarios/${id}`);
+      async function fetchUser(userId) {
+        const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
+        if (!response.ok) {
+          console.error('Erro ao buscar usuário:', response.statusText);
+          return null;
+        }
         return await response.json();
       }
   
       async function displaySalaDetails() {
         const urlParams = new URLSearchParams(window.location.search);
-        const salaId = urlParams.get('id');
+        const salaId = urlParams.get('salaId');
   
-        const sala = await fetchSalaDetails(salaId);
+        const sala = await fetchSala(salaId);
+        if (!sala) return;
+  
         const container = document.getElementById('sala-detalhes');
-  
         container.innerHTML = `
-          <h2>${sala.jogo} - ${sala.modo}</h2>
+          <h3>${sala.jogo} - ${sala.modo}</h3>
           <p>Dono: ${sala.dono}</p>
-          <h3>Jogadores:</h3>
-          <div id="jogadores-container"></div>
+          <p>Sala: ${sala.sala}</p>
+          <h4>Jogadores:</h4>
+          <ul id="jogadores-list"></ul>
         `;
   
-        const jogadoresContainer = document.getElementById('jogadores-container');
-        for (const jogadorId of sala.jogadores) {
-          const jogador = await fetchUsuario(jogadorId);
-          const jogadorDiv = document.createElement('div');
-          jogadorDiv.className = 'jogador';
-          jogadorDiv.innerHTML = `
-            <img src="${jogador.profilePhoto}" alt="${jogador.login}">
-            <span>${jogador.login}</span>
-          `;
-          jogadoresContainer.appendChild(jogadorDiv);
+        const jogadoresList = document.getElementById('jogadores-list');
+        for (const userId of sala.jogadores) {
+          const user = await fetchUser(userId);
+          if (user) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<img src="${user.profilePhoto}" alt="Foto de ${user.nome}" style="width: 30px; height: 30px;"> ${user.nome}`;
+            jogadoresList.appendChild(listItem);
+          }
+        }
+      }
+  
+      async function leaveSala() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const salaId = urlParams.get('salaId');
+        const currentUser = JSON.parse(localStorage.getItem('usuarioCorrente'));
+  
+        if (!currentUser || !currentUser.id) {
+          console.error('Usuário não está logado');
+          return;
+        }
+  
+        try {
+          const response = await fetch(`http://localhost:3000/salas/${salaId}`);
+          if (!response.ok) {
+            console.error('Erro ao buscar sala:', response.statusText);
+            return;
+          }
+  
+          const sala = await response.json();
+          if (sala.jogadores.includes(currentUser.id)) {
+            sala.jogadores = sala.jogadores.filter(jogador => jogador !== currentUser.id);
+            const updateResponse = await fetch(`http://localhost:3000/salas/${salaId}`, {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ jogadores: sala.jogadores })
+            });
+  
+            if (updateResponse.ok) {
+              console.log('Saiu da sala:', salaId);
+              window.location.href = 'salas.html';  // Redireciona de volta para a lista de salas
+            } else {
+              console.error('Erro ao atualizar a sala:', updateResponse.statusText);
+            }
+          } else {
+            console.log('Usuário não está na sala:', salaId);
+          }
+        } catch (error) {
+          console.error('Erro ao sair da sala:', error);
         }
       }
   
       // Initial load
-      displaySalaDetails();
+      document.addEventListener('DOMContentLoaded', () => {
+        displaySalaDetails();
+      });

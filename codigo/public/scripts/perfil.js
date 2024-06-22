@@ -128,6 +128,89 @@ updateLocalStorageFromServer(userId).then(() => {
             console.log("Senhas nao correspondem ou sao invalidas");
         }
     });
+
+    //Formatacao do campo de telefone do usuario
+
+document.addEventListener('DOMContentLoaded', function () {
+    var telefoneInput = document.getElementById('telefone');
+    var telefoneMask = IMask(telefoneInput, {
+        mask: '(00) 00000-0000'
+    });
+});
+
+//Funcao gatilho para alterar a foto do usuario
+
+document.getElementById('profile_picture').addEventListener('change', function(event) {
+    var file = event.target.files[0];
+    uploadImageToImgBB(file)
+    .then(imageLink => {
+        console.log('Imagem enviada com sucesso:', imageLink);
+        document.getElementById('foto_de_perfil').src = imageLink;
+        return saveImageLinkToUserServer(userId, imageLink);
+    })
+    .then(userData => {
+        console.log('Link da imagem salvo no JSON do usuário:', userData.profilePhoto);
+    })
+    .catch(error => {
+        console.error('Houve um problema:', error);
+    })
+});
+
+//Funcao gatilho para iniciar o vinculo das conta steam
+
+document.querySelectorAll('.connect-item').forEach(item => {
+    item.addEventListener('click', function(event) {
+        if(event.target.classList.contains('fa-steam')){
+            const userID = currentUserObj.id;
+            if (currentUserObj.steamID == "") {
+                console.log('Iniciar processo de vinculação da conta Steam...');
+                window.location.href = `http://localhost:3001/auth/steam?userID=${userID}`
+            }
+        }
+    });
+});
+
+// Evento para fazer as alteracoes do perfil
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.salvar-conta').addEventListener('click', () => {
+        const userId = currentUserObj.id;
+        const updatedAccountData = {
+            login: document.getElementById('username').value,
+            email: document.getElementById('email').value
+        };
+        updateUserData(userId, updatedAccountData);
+    });
+
+    document.querySelector('.salvar-pessoal').addEventListener('click', () => {
+        const userId = currentUserObj.id; 
+        var getGenero = document.getElementById("genero");
+        var generoUser = getGenero.options[getGenero.selectedIndex].text;
+        const updatedPersonalData = {
+            nome: document.getElementById('nome').value,
+            nascimento: document.getElementById('birthday').value,
+            genero: generoUser,
+            estado: document.getElementById('estado').value,
+            cidade: document.getElementById('cidade').value,
+            telefone: document.getElementById('telefone').value
+        };
+        updateUserData(userId, updatedPersonalData);
+    });
+    fillingForms(currentUserObj);
+});
+
+document.getElementById('logout').addEventListener('click', function(event) {
+    fetch(`http://localhost:3000/usuarios/${userId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ status: "offline" })
+    });
+    usuarioCorrente = {};
+    localStorage.setItem('usuarioCorrente', JSON.stringify (usuarioCorrente));
+    window.location = 'login.html';
+});
 });
 //Preenchendo os campos do usuario no meu perfil
 
@@ -189,7 +272,7 @@ document.getElementById('profile_picture').addEventListener('change', function(e
     .then(imageLink => {
         console.log('Imagem enviada com sucesso:', imageLink);
         document.getElementById('foto_de_perfil').src = imageLink;
-        return saveImageLinkToUserServer(currentUserObj.id, imageLink);
+        return saveImageLinkToUserServer(userId, imageLink);
     })
     .then(userData => {
         console.log('Link da imagem salvo no JSON do usuário:', userData.profilePhoto);
@@ -243,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('logout').addEventListener('click', function(event) {
-    fetch(`http://localhost:3000/usuarios/${currentUserObj.id}`, {
+    fetch(`http://localhost:3000/usuarios/${userId}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'

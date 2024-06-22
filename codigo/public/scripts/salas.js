@@ -49,11 +49,51 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
             <p>Dono: ${sala.dono}</p>
             <p>Jogadores: ${sala.jogadores.join(', ')}</p>
             <p>Sala: ${sala.sala}</p>
-            <a href="sala.html?id=${sala.id}">Entrar na Sala</a>
+            <button onclick="enterSala('${sala.id}')">Entrar na Sala</button>
           `;
           container.appendChild(salaDiv);
         });
       }
   
-      // Initial load
-      fetchSalas().then(displaySalas);
+      async function enterSala(salaId) {
+        const currentUser = JSON.parse(localStorage.getItem('usuarioCorrente'));
+        if (!currentUser || !currentUser.id) {
+          console.error('Usuário não está logado');
+          return;
+        }
+  
+        try {
+          const response = await fetch(`http://localhost:3000/salas/${salaId}`);
+          if (!response.ok) {
+            console.error('Erro ao buscar sala:', response.statusText);
+            return;
+          }
+            const sala = await response.json();
+        if (!sala.jogadores.includes(currentUser.id)) {
+          sala.jogadores.push(currentUser.id);
+          const updateResponse = await fetch(`http://localhost:3000/salas/${salaId}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ jogadores: sala.jogadores })
+          });
+
+          if (updateResponse.ok) {
+            console.log('Entrou na sala:', salaId);
+            window.location.href = `sala.html?salaId=${salaId}`;  // Redireciona para a nova página
+          } else {
+            console.error('Erro ao atualizar a sala:', updateResponse.statusText);
+          }
+        } else {
+          console.log('Usuário já está na sala:', salaId);
+          window.location.href = `sala.html?salaId=${salaId}`;  // Redireciona para a nova página
+        }
+      } catch (error) {
+        console.error('Erro ao entrar na sala:', error);
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchSalas().then(displaySalas);
+      });
