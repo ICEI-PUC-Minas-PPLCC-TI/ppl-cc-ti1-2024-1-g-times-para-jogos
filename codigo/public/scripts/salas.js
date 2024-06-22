@@ -116,17 +116,24 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
       }
   
       function applyFilters() {
-        const jogo = document.getElementById('jogo').value;
-        const modo = document.getElementById('modo').value;
-        const sala = document.getElementById('sala').value;
+        const jogoFilter = document.getElementById('jogo').value;
+        const modoFilter = document.getElementById('modo').value;
+        const salaFilter = document.getElementById('sala').value;
   
         fetchSalas().then(salas => {
-          const filteredSalas = salas.filter(sala => {
-            return (!jogo || sala.jogo === jogo) &&
-                   (!modo || sala.modo === modo) &&
-                   (!sala || sala.sala === sala);
+          const salasFiltradas = salas.filter(sala => {
+            if (jogoFilter && sala.jogo !== jogoFilter && jogoFilter !== 'Todos') {
+              return false;
+            }
+            if (modoFilter && sala.modo !== modoFilter && modoFilter !== 'Todos') {
+              return false;
+            }
+            if (salaFilter && sala.sala !== salaFilter && salaFilter !== 'Todas') {
+              return false;
+            }
+            return true;
           });
-          displaySalas(filteredSalas);
+              displaySalas(salasFiltradas);
         });
       }
 
@@ -143,6 +150,11 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
         const container = document.getElementById('browser');
         container.innerHTML = '';
       
+        if (salas.length === 0) {
+          container.innerHTML = '<p style="font-size: 65px; text-align: center;">Nenhuma sala encontrada.</p>';
+          return;
+        }
+
         for (const sala of salas) {
           const salaDiv = document.createElement('div');
           salaDiv.className = 'sala';
