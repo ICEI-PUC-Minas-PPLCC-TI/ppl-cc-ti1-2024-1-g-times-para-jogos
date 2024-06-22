@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Lato", sans-serif;
     margin: 0;
     padding: 0;
     color: white;
@@ -74,4 +76,17 @@ div.faq {
     width: 75%;
     margin: 0 auto;
     margin-top: 50px;
+}
+
+.accordion {
+    --bs-accordion-btn-bg: #ffffff;
+    --bs-accordion-active-bg: rgb(0, 89, 255);
+    --bs-accordion-active-color: white;
+    --bs-accordion-btn-focus-box-shadow: none;
+    --bs-accordion-bg: gainsboro;
+    border-radius: 10px;
+}
+
+.accordion-button:not(.collapsed) {
+    box-shadow: none;
 }
