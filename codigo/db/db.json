@@ -23,7 +23,8 @@
       "jogo": "",
       "modo": "",
       "dono": "",
-      "jogadores": []
+      "jogadores": [],
+      "sala": ""
     }
   ]
 }
