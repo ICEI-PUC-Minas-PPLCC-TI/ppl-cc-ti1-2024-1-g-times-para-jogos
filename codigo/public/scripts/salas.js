@@ -1,6 +1,84 @@
 const userId = localStorage.getItem('usuarioCorrente');
 const currentUserObj = JSON.parse(userId);
 const id = currentUserObj.id;
+var modal = document.getElementById("create-room-modal");
+var btn = document.getElementById("create-room-btn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+document.getElementById("visibilidade").addEventListener("change", function() {
+  const senhaLabel = document.getElementById("senha-label");
+  const senhaInput = document.getElementById("senha");
+  if (this.value === "privada") {
+    senhaLabel.style.display = "block";
+    senhaInput.style.display = "block";
+  } else {
+    senhaLabel.style.display = "none";
+    senhaInput.style.display = "none";
+  }
+});
+
+function generateId() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
+
+document.getElementById("create-room-form").addEventListener("submit", async function(event) {
+  event.preventDefault();
+  const currentUser = JSON.parse(localStorage.getItem('usuarioCorrente'));
+  const nome = document.getElementById("nome").value;
+  var getJogo = document.getElementById("jogo_select");
+  var jogo = getJogo.options[getJogo.selectedIndex].text;
+  var getModo = document.getElementById("modo_select");
+  var modo = getModo.options[getModo.selectedIndex].text;
+  const visibilidade = document.getElementById("visibilidade").value;
+  const senha = visibilidade === "privada" ? document.getElementById("senha").value : "";
+  const capacidade = modo === "Competitivo" ? 5 : 2;
+  console.log("Jogo: " + jogo + " Modo: " + modo);
+  const sala = {
+    id: generateId(),
+    nome: nome,
+    jogo: jogo,
+    modo: modo,
+    dono: currentUser.login,
+    jogadores: [currentUser.id],
+    capacidade: capacidade,
+    sala: visibilidade,
+    senha: senha
+  };
+
+  try {
+    const response = await fetch('http://localhost:3000/salas', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(sala)
+    });
+
+    if (response.ok) {
+      modal.style.display = "none";
+      location.reload();
+    } else {
+      console.error('Erro ao criar a sala:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Erro ao criar a sala:', error);
+  }
+});
+
 
 fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
     .then(response => {
@@ -60,13 +138,13 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
           const jogadoresNomes = jogadores.map(user => user ? user.login : 'Usuário desconhecido');
       
           salaDiv.innerHTML = `
-            <h3>${sala.jogo} - ${sala.modo}</h3>
+            <h3>${sala.nome}</h3>
+            <h5>${sala.jogo} - ${sala.modo}</h5>
             <p>Dono: ${sala.dono}</p>
             <p>Jogadores: ${jogadoresNomes.join(', ')}</p>
             <p>Sala: ${sala.sala}</p>
             <button onclick="enterSala('${sala.id}')">Entrar na Sala</button>
           `;
-          
           container.appendChild(salaDiv);
         }
       }

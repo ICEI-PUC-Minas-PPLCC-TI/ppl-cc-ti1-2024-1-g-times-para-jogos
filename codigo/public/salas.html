@@ -63,9 +63,36 @@
           <option value="privada">Privada</option>
         </select>
         <button onclick="applyFilters()">Aplicar Filtros</button>
+        <button id="create-room-btn">Criar uma Sala</button>
       </div>
       <div class="browser" id="browser">
-
+      </div>
+      <div id="create-room-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Criar uma Sala</h2>
+          <form id="create-room-form">
+            <label for="nome">Nome da Sala:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+            <label for="jogo_select">Jogo:</label>
+            <select id="jogo_select" name="jogo">
+              <option value="CS2">CS2</option>
+            </select><br><br>
+            <label for="modo_select">Modo:</label>
+            <select id="modo_select" name="modo">
+              <option value="Competitivo">Competitivo</option>
+              <option value="Braço Direito">Braço Direito</option>
+            </select><br><br>
+            <label for="visibilidade">Visibilidade:</label>
+            <select id="visibilidade" name="visibilidade">
+              <option value="publica">Pública</option>
+              <option value="privada">Privada</option>
+            </select><br><br>
+            <label for="senha" id="senha-label" style="display: none;">Senha:</label>
+            <input type="password" id="senha" name="senha" style="display: none;"><br><br>
+            <button type="submit">Criar Sala</button>
+          </form>
+        </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/imask"></script>

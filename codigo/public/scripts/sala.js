@@ -55,11 +55,65 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
           const user = await fetchUser(userId);
           if (user) {
             const listItem = document.createElement('li');
-            listItem.innerHTML = `<img src="${user.profilePhoto}" alt="Foto de ${user.nome}" style="width: 30px; height: 30px;"> ${user.nome}`;
+            listItem.innerHTML = `<img src="${user.profilePhoto}" alt="Foto de ${user.nome}" style="width: 30px; height: 30px;"> ${user.nome}
+            ${(currentUserObj.login === sala.dono && user.login !== sala.dono) ? `<span class="kick-icon" onclick="kickPlayer('${salaId}', '${userId}')">✖</span>` : ''}`;
             jogadoresList.appendChild(listItem);
+          }
+          if (currentUserObj.login === sala.dono) {
+            document.getElementById('delete-sala').style.display = 'block';
           }
         }
       }
+    
+      async function kickPlayer(salaId, userId) {
+        try {
+          const response = await fetch(`http://localhost:3000/salas/${salaId}`);
+          if (!response.ok) {
+            console.error('Erro ao buscar sala:', response.statusText);
+            return;
+          }
+  
+          const sala = await response.json();
+          sala.jogadores = sala.jogadores.filter(jogador => jogador !== userId);
+          
+          const updateResponse = await fetch(`http://localhost:3000/salas/${salaId}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ jogadores: sala.jogadores })
+          });
+  
+          if (updateResponse.ok) {
+            console.log('Jogador removido da sala:', userId);
+            displaySalaDetails();  // Atualizar a lista de jogadores
+          } else {
+            console.error('Erro ao atualizar a sala:', updateResponse.statusText);
+          }
+        } catch (error) {
+          console.error('Erro ao expulsar jogador:', error);
+        }
+      }
+
+      async function deleteSala() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const salaId = urlParams.get('salaId');
+        try {
+          const response = await fetch(`http://localhost:3000/salas/${salaId}`, {
+            method: 'DELETE'
+          });
+  
+          if (response.ok) {
+            console.log('Sala excluída:', salaId);
+            window.location.href = 'salas.html';  // Redireciona de volta para a lista de salas
+          } else {
+            console.error('Erro ao excluir a sala:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Erro ao excluir a sala:', error);
+        }
+      }
+      
   
       async function leaveSala() {
         const urlParams = new URLSearchParams(window.location.search);
