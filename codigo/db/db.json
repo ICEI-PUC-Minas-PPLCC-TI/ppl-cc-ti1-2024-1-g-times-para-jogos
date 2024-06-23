@@ -85,7 +85,7 @@
       "cidade": "Asd",
       "telefone": "(92) 87412-3311",
       "amigos": [],
-      "status": "online"
+      "status": "offline"
     }
   ],
   "salas": [
@@ -173,6 +173,12 @@
       "status": "tapioca",
       "horario": "2024-06-23T15:46:49.591Z",
       "id": 9
+    },
+    {
+      "usuario": "gerson",
+      "status": "arroz",
+      "horario": "2024-06-23T17:35:07.905Z",
+      "id": 10
     }
   ]
 }
