@@ -53,42 +53,46 @@
       </div>
       <div class="browser" id="browser">
       </div>
-      <div id="create-room-modal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Criar uma Sala</h2>
-          <form id="create-room-form">
-            <label for="nome">Nome da Sala:</label><br>
-            <input type="text" id="nome" name="nome" required><br>
-            <label for="jogo_select">Jogo:</label><br>
-            <select id="jogo_select" name="jogo" required>
-              <option value="" disabled selected hidden>Selecione um Jogo</option>
-              <option value="CS2">CS2</option>
-              <option value="League of Legends">League of Legends</option>
-              <option value="Valorant">Valorant</option>
-              <option value="Rainbow Six Siege">Rainbow Six Siege</option>
-              <option value="Apex Legends">Apex Legends</option>
-              <option value="Dota 2">Dota 2</option>
-            </select><br>
-            <label for="modo_select">Modo:</label><br>
-            <select id="modo_select" name="modo" required>
-              <option value="" disabled selected hidden>Selecione um Modo</option>
-            </select><br>
-            <label for="nivel_select">Nivel:</label><br>
-            <select id="nivel_select" name="nivel" required>
-              <option value="" disabled selected hidden>Selecione um Nível</option>
-            </select><br>
-            <label for="visibilidade">Visibilidade:</label><br>
-            <select id="visibilidade" name="visibilidade">
-              <option value="publica">Pública</option>
-              <option value="privada">Privada</option>
-            </select><br>
-            <label for="senha" id="senha-label" style="display: none;">Senha:</label>
-            <input type="password" id="senha" name="senha" style="display: none;"><br><br>
-            <button type="submit">Criar Sala</button>
-          </form>
+      <div id="modal-container" class="two">
+        <div id="create-room-modal" class="modal">
+          <div id="modal-background" class="modal-background">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Criar uma Sala</h2>
+              <form id="create-room-form">
+                <label for="nome">Nome da Sala:</label><br>
+                <input type="text" id="nome" name="nome" required><br>
+                <label for="jogo_select">Jogo:</label><br>
+                <select id="jogo_select" name="jogo" required>
+                  <option value="" disabled selected hidden>Selecione um Jogo</option>
+                  <option value="CS2">CS2</option>
+                  <option value="League of Legends">League of Legends</option>
+                  <option value="Valorant">Valorant</option>
+                  <option value="Rainbow Six Siege">Rainbow Six Siege</option>
+                  <option value="Apex Legends">Apex Legends</option>
+                  <option value="Dota 2">Dota 2</option>
+                </select><br>
+                <label for="modo_select">Modo:</label><br>
+                <select id="modo_select" name="modo" required>
+                  <option value="" disabled selected hidden>Selecione um Modo</option>
+                </select><br>
+                <label for="nivel_select">Nivel:</label><br>
+                <select id="nivel_select" name="nivel" required>
+                  <option value="" disabled selected hidden>Selecione um Nível</option>
+                </select><br>
+                <label for="visibilidade">Visibilidade:</label><br>
+                <select id="visibilidade" name="visibilidade">
+                  <option value="publica">Pública</option>
+                  <option value="privada">Privada</option>
+                </select><br>
+                <label for="senha" id="senha-label" style="display: none;">Senha:</label>
+                <input type="password" id="senha" name="senha" style="display: none;"><br><br>
+                <button type="submit">Criar Sala</button>
+              </form>
+            </div>
         </div>
       </div>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/imask"></script>
     <script src="scripts/salas.js"></script>

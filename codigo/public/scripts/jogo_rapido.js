@@ -85,6 +85,15 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
         console.error('Houve um problema com a operacao fetch:', error);
     });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    var buscarPartidaBtn = document.getElementById('buscar-partida-btn');
+    var loader = document.querySelector('.loader');
+    buscarPartidaBtn.addEventListener('click', function() {
+        loader.style.display = 'block';
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const jogoSelect = document.getElementById('jogo');
     const modoSelect = document.getElementById('modo');
@@ -92,6 +101,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const buscarPartidaBtn = document.getElementById('buscar-partida-btn');
     modoSelect.disabled = true;
     nivelSelect.disabled = true;
+    buscarPartidaBtn.disabled = true;
+    function verificarSelecao() {
+        if (jogoSelect.value !== "" && modoSelect.value !== "" && nivelSelect.value !== "") {
+          buscarPartidaBtn.disabled = false;
+          buscarPartidaBtn.style.opacity = 1;
+          buscarPartidaBtn.style.pointerEvents = 'auto';
+        } else {
+          buscarPartidaBtn.disabled = true;
+          buscarPartidaBtn.style.opacity = 0.6;
+          buscarPartidaBtn.style.pointerEvents = 'none';
+        }
+      }
+    jogoSelect.addEventListener('change', verificarSelecao);
+    modoSelect.addEventListener('change', verificarSelecao);
+    nivelSelect.addEventListener('change', verificarSelecao);
     buscarPartidaBtn.addEventListener('click', buscarPartida);
     jogoSelect.addEventListener('change', function() {
         const jogoSelecionado = jogoSelect.value;

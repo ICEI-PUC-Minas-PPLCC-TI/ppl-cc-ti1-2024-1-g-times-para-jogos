@@ -167,6 +167,7 @@ div.sala button:hover{
 
 .modal {
     display: none;
+    opacity: 1;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -176,6 +177,8 @@ div.sala button:hover{
     overflow: auto;
     background-color: rgba(0,0,0,0.6);
     padding-top: 60px;
+    box-sizing:border-box;
+    transition: all 300ms ease-in-out;
   }
 
 #nome, #jogo_select, #modo_select, #nivel_select, #visibilidade, #senha, .modal-content button{
@@ -196,10 +199,11 @@ div.sala button:hover{
 .modal-content {
     background-color: var(--secondary-color);
     margin: 0 auto;
+    font-size: large;
+    width: 40vh;
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid #888;
-    width: 10%;
+    box-shadow: 0 0 10px var(--secondary-color);
 }
 
 .close {
