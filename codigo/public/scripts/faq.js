@@ -1,11 +1,11 @@
-const userId = localStorage.getItem('usuarioCorrente');
-const currentUserObj = JSON.parse(userId);
-const id = currentUserObj.id;
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
 if (!usuarioLogado) {
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png';
 }
+const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
+const currentUserObj = JSON.parse(userId);
+const id = currentUserObj.id;
 fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
     .then(response => {
         if (!response.ok) {

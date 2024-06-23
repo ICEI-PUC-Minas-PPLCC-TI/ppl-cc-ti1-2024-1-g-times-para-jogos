@@ -7,7 +7,7 @@
       "nome": "",
       "email": "",
       "steamID": "",
-      "profilePhoto": "",
+      "profilePhoto": "../assets/images/default_profile.png",
       "nascimento": "",
       "genero": "",
       "estado": "",
