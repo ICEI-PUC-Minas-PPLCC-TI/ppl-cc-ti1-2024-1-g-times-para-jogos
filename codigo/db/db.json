@@ -120,6 +120,12 @@
       "status": "ola",
       "horario": "2024-06-23T11:48:19.424Z",
       "id": 1
+    },
+    {
+      "usuario": "admin",
+      "status": "massa",
+      "horario": "2024-06-23T12:10:04.073Z",
+      "id": 2
     }
   ]
 }

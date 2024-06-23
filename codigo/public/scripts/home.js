@@ -6,6 +6,8 @@ if (usuarioLogado == false) {
   fotoPerfil.src = '../assets/images/default_profile.png';
   const listaAmigos = document.getElementById('lista_amigos');
   listaAmigos.innerHTML = 'Você não está logado. <a href="login.html">Entre ou registre-se</a>.';
+  const statusElement = document.querySelector('.status');
+  statusElement.classList.add('hidden');
 } 
     const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
     const currentUserObj = JSON.parse(userId);

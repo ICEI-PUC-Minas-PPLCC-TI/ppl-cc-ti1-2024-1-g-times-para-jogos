@@ -161,3 +161,7 @@ img.logo{
 }
 
 /* Fim da barra de navegacao */
+
+.hidden{
+    display: none;
+}
