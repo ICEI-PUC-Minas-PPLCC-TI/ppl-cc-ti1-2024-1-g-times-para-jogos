@@ -225,7 +225,7 @@ div.status-item{
     transform: scale(1.3);
 }
 
-.delete, button.cancel-sol-button {
+.delete, button.cancel-sol-button, button.decline-sol-button {
     background-color: var(--error-color);
     border: none;
     align-items: center;
@@ -237,9 +237,26 @@ div.status-item{
     border-radius: 10px;
 }
 
-.delete:hover, button.cancel-sol-button:hover{
+.delete:hover, button.cancel-sol-button:hover, button.decline-sol-button:hover{
     transform: scale(1.3);
     box-shadow: 0 0 10px var(--error-color);
+}
+
+button.accept-sol-button{
+    background-color: var(--success-color);
+    border: none;
+    align-items: center;
+    font-weight: bolder;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button.accept-sol-button:hover{
+    transform: scale(1.3);
+    box-shadow: 0 0 10px var(--success-color);
 }
 
 .hidden {

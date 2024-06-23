@@ -95,13 +95,15 @@ if (usuarioLogado == false) {
                                 nomeAmigo.textContent = amigo.login;
         
                                 const acceptButton = document.createElement('button');
-                                acceptButton.textContent = 'Aceitar';
+                                acceptButton.textContent = '✓';
+                                acceptButton.classList.add('accept-sol-button');
                                 acceptButton.addEventListener('click', () => {
                                     acceptFriendRequest(request.id);
                                 });
         
                                 const declineButton = document.createElement('button');
-                                declineButton.textContent = 'Recusar';
+                                declineButton.textContent = 'x';
+                                declineButton.classList.add('decline-sol-button');
                                 declineButton.addEventListener('click', () => {
                                     declineFriendRequest(request.id);
                                 });
