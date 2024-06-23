@@ -312,9 +312,13 @@ if (usuarioLogado == false) {
         
                                 const nomeAmigo = document.createElement('span');
                                 nomeAmigo.textContent = amigo.login;
-        
+                                
+                                const statusPedido = document.createElement('span');
+                                statusPedido.textContent = 'Pendente';
+
                                 const cancelButton = document.createElement('button');
-                                cancelButton.textContent = 'Cancelar';
+                                cancelButton.textContent = 'x';
+                                cancelButton.classList.add('cancel-sol-button')
                                 cancelButton.addEventListener('click', () => {
                                     cancelSentFriendRequest(request.id);
                                 });
@@ -325,6 +329,7 @@ if (usuarioLogado == false) {
         
                                 li.appendChild(img);
                                 li.appendChild(nomeAmigo);
+                                li.appendChild(statusPedido);
                                 li.appendChild(buttonsDiv);
         
                                 sentFriendRequestsList.appendChild(li);
