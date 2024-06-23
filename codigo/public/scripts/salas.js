@@ -274,6 +274,8 @@ if (usuarioLogado == false) {
         const jogoSelect = document.getElementById('jogo_select');
         const modoSelect = document.getElementById('modo_select');
         const nivelSelect = document.getElementById('nivel_select');
+        modoSelect.disabled = true;
+        nivelSelect.disabled = true;
         const modosPorJogo = {
             'CS2': ['Competitivo', 'Braço Direito'],
             'League of Legends': ['Ranqueada Solo/Duo', 'Ranqueada Flexivel'],
@@ -338,9 +340,10 @@ if (usuarioLogado == false) {
         }
         jogoSelect.addEventListener('change', function() {
             const jogoSelecionado = jogoSelect.value;
-            // Limpa o campo de modo
-            modoSelect.innerHTML = '<option value="">Selecione um Modo</option>';
-
+            modoSelect.innerHTML = '<option value="" disabled selected hidden>Selecione um Modo</option>';
+            nivelSelect.innerHTML = '<option value="" disabled selected hidden>Selecione um Nível</option>';
+            modoSelect.disabled = true;
+            nivelSelect.disabled = true;
             if (jogoSelecionado) {
                 modosPorJogo[jogoSelecionado].forEach(modo => {
                     const option = document.createElement('option');
@@ -348,6 +351,7 @@ if (usuarioLogado == false) {
                     option.textContent = modo;
                     modoSelect.appendChild(option);
                 });
+                modoSelect.disabled = false;
             }
 
           modoSelect.addEventListener('change', function() {
@@ -362,6 +366,7 @@ if (usuarioLogado == false) {
                       option.textContent = nivel.text;
                       nivelSelect.appendChild(option);
                   });
+                  nivelSelect.disabled = false;
               }
           });
         });
