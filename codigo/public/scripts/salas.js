@@ -11,6 +11,68 @@ if (usuarioLogado == false) {
   const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
   const currentUserObj = JSON.parse(userId);
   const id = currentUserObj.id;
+  const modosPorJogo = {
+    'CS2': ['Competitivo', 'Braço Direito'],
+    'League of Legends': ['Ranqueada Solo/Duo', 'Ranqueada Flexivel'],
+    'Valorant': ['Ranqueada'],
+    'Rainbow Six Siege': ['Ranqueada'],
+    'Apex Legends': ['Battle Royale', 'Ranqueada'],
+    'Dota 2': ['Competitivo']
+  };
+  const niveisPorJogo = {
+      'CS2': [
+        { value: 'grey', text: '0 - 4999' },
+        { value: 'light_blue', text: '5000 - 9999' },
+        { value: 'blue', text: '10000 - 14999' },
+        { value: 'purple', text: '15000 - 19999' },
+        { value: 'pink', text: '20000 - 24999' },
+        { value: 'red', text: '25000 - 29999' },
+        { value: 'yellow', text: '30000+' }
+      ],
+      'League of Legends': {
+        'Ranqueada Solo/Duo': [
+        { value: 'low', text: 'Ferro IV - Prata I'},
+        { value: 'low-med', text: 'Ferro IV - Ouro I'},
+        { value: 'med', text: 'Prata IV - Platina I'},
+        { value: 'med-high', text: 'Ouro IV - Esmeralda I'},
+        { value: 'high', text: 'Platina IV - Diamante III'},
+        { value: 'highest', text: 'Diamante IV - Diamante I'},
+        { value: 'master', text: 'Diamante I - Mestre'}
+        ],
+        'Ranqueada Flexivel': [
+        { value: 'default', text: 'Ferro IV - Diamante I'},
+        { value: 'high', text: 'Platina 4 - Challenger'}
+        ]},
+      'Valorant': [
+        { value: 'low', text: 'Ferro 1 - Prata 3' },
+        { value: 'low-med', text: 'Prata 1 - Ouro 3'},
+        { value: 'med', text: 'Ouro 1 - Platina 3'},
+        { value: 'med-high', text: 'Platina 1 - Diamante 1'},
+        { value: 'high', text: 'Diamante 1 - Imortal 1'},
+        { value: 'highest', text: 'Imortal 1 - Radiante'}
+      ],
+      'Rainbow Six Siege': [
+        { value: 'low', text: '0 - 2200'},
+        { value: 'med', text: '2200 - 3400'},
+        { value: 'high', text: '3400 - 4400'},
+        { value: 'highest', text: '4400+'}
+        ],
+      'Apex Legends': {
+        'Battle Royale': [
+        { value: 'default', text: 'Livre'},
+        ],
+        'Ranqueada': [
+        { value: 'low', text: 'Rookie IV - Silver I'},
+        { value: 'med', text: 'Silver IV - Platinum I'},
+        { value: 'high', text: 'Platinum IV - Master'},
+        { value: 'highest', text: 'Master - Apex Predator'}
+        ]},
+      'Dota 2': [
+        { value: 'low', text: '0 - 2499' },
+        { value: 'med', text: '2500 - 4999' },
+        { value: 'high', text: '5000+' }
+      ]
+  }
   var modal = document.getElementById("create-room-modal");
   var btn = document.getElementById("create-room-btn");
   var span = document.getElementsByClassName("close")[0];
@@ -276,68 +338,6 @@ if (usuarioLogado == false) {
         const nivelSelect = document.getElementById('nivel_select');
         modoSelect.disabled = true;
         nivelSelect.disabled = true;
-        const modosPorJogo = {
-            'CS2': ['Competitivo', 'Braço Direito'],
-            'League of Legends': ['Ranqueada Solo/Duo', 'Ranqueada Flexivel'],
-            'Valorant': ['Ranqueada'],
-            'Rainbow Six Siege': ['Ranqueada'],
-            'Apex Legends': ['Battle Royale', 'Ranqueada'],
-            'Dota 2': ['Competitivo']
-        };
-        const niveisPorJogo = {
-            'CS2': [
-              { value: 'grey', text: '0 - 4999' },
-              { value: 'light_blue', text: '5000 - 9999' },
-              { value: 'blue', text: '10000 - 14999' },
-              { value: 'purple', text: '15000 - 19999' },
-              { value: 'pink', text: '20000 - 24999' },
-              { value: 'red', text: '25000 - 29999' },
-              { value: 'yellow', text: '30000+' }
-            ],
-            'League of Legends': {
-              'Ranqueada Solo/Duo': [
-              { value: 'low', text: 'Ferro IV - Prata I'},
-              { value: 'low-med', text: 'Ferro IV - Ouro I'},
-              { value: 'med', text: 'Prata IV - Platina I'},
-              { value: 'med-high', text: 'Ouro IV - Esmeralda I'},
-              { value: 'high', text: 'Platina IV - Diamante III'},
-              { value: 'highest', text: 'Diamante IV - Diamante I'},
-              { value: 'master', text: 'Diamante I - Mestre'}
-              ],
-              'Ranqueada Flexivel': [
-              { value: 'default', text: 'Ferro IV - Diamante I'},
-              { value: 'high', text: 'Platina 4 - Challenger'}
-              ]},
-            'Valorant': [
-              { value: 'low', text: 'Ferro 1 - Prata 3' },
-              { value: 'low-med', text: 'Prata 1 - Ouro 3'},
-              { value: 'med', text: 'Ouro 1 - Platina 3'},
-              { value: 'med-high', text: 'Platina 1 - Diamante 1'},
-              { value: 'high', text: 'Diamante 1 - Imortal 1'},
-              { value: 'highest', text: 'Imortal 1 - Radiante'}
-            ],
-            'Rainbow Six Siege': [
-              { value: 'low', text: '0 - 2200'},
-              { value: 'med', text: '2200 - 3400'},
-              { value: 'high', text: '3400 - 4400'},
-              { value: 'highest', text: '4400+'}
-              ],
-            'Apex Legends': {
-              'Battle Royale': [
-              { value: 'default', text: 'Livre'},
-              ],
-              'Ranqueada': [
-              { value: 'low', text: 'Rookie IV - Silver I'},
-              { value: 'med', text: 'Silver IV - Platinum I'},
-              { value: 'high', text: 'Platinum IV - Master'},
-              { value: 'highest', text: 'Master - Apex Predator'}
-              ]},
-            'Dota 2': [
-              { value: 'low', text: '0 - 2499' },
-              { value: 'med', text: '2500 - 4999' },
-              { value: 'high', text: '5000+' }
-            ]
-        }
         jogoSelect.addEventListener('change', function() {
             const jogoSelecionado = jogoSelect.value;
             modoSelect.innerHTML = '<option value="" disabled selected hidden>Selecione um Modo</option>';
