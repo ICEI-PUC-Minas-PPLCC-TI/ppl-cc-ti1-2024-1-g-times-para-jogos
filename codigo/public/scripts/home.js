@@ -98,7 +98,7 @@ if (usuarioLogado == false) {
                         friendInfo.appendChild(img);
                         friendInfo.appendChild(nomeAmigo);
                         friendInfo.appendChild(statusAmigo);
-                        deleteButton.textContent = 'Remover';
+                        deleteButton.textContent = 'x';
                         deleteButton.classList.add('delete');
                         deleteButton.addEventListener('click', () => {
                             deleteFriend(friend);
