@@ -167,6 +167,12 @@
       "status": "raimundo",
       "horario": "2024-06-23T14:59:36.430Z",
       "id": 8
+    },
+    {
+      "usuario": "admin",
+      "status": "tapioca",
+      "horario": "2024-06-23T15:46:49.591Z",
+      "id": 9
     }
   ]
 }

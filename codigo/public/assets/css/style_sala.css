@@ -1,12 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 
+:root {
+    --primary-color: rgb(22, 24, 29);
+    --secondary-color: rgb(28, 31, 38);
+    --tertiary-color: rgb(0, 136, 255);
+    --success-color: rgb(3, 197, 3);
+    --neutral-color: rgb(106, 106, 106);
+    --error-color: #ff4d4d;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Lato", sans-serif;
     margin: 0;
     padding: 0;
     color: white;
-    background-color: rgb(35, 36, 55);
+    box-sizing: border-box;
     overflow-x: hidden;
+    background-color: var(--primary-color);
 }
 
 /* Ajustando a barra de navegacao */
