@@ -195,7 +195,7 @@ div.status-item{
     border: none;
     outline: none;
     transition: all 0.3s ease-in-out;
-    border-radius: 20px;
+    border-radius: 4px;
 }
 
 #friendName:focus{

@@ -132,6 +132,10 @@ div.sala button{
     box-shadow: 0 0 10px rgb(0, 255, 0);
 }
 
+div.sala button:hover{
+    cursor: pointer;
+}
+
 #jogo, #modo, #nivel, #sala{
     border-radius: 4px;
     padding: 2.5px;
