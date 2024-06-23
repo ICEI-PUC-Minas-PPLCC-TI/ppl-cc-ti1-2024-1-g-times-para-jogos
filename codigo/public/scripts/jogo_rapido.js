@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
       modoSelect.addEventListener('change', function() {
           const jogoSelecionado = jogoSelect.value;
           const modoSelecionado = modoSelect.value;
-          nivelSelect.innerHTML = '<option value="">Selecione um Nível</option>';
+          nivelSelect.innerHTML = '<option value="" disabled selected hidden>Selecione um Nível</option>';
           if (jogoSelecionado && modoSelecionado) {
               const niveis = niveisPorJogo[jogoSelecionado][modoSelecionado] || niveisPorJogo[jogoSelecionado];
               niveis.forEach(nivel => {
