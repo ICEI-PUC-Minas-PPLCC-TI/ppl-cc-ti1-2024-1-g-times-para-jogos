@@ -96,6 +96,20 @@
       "capacidade": 5,
       "sala": "publica",
       "senha": ""
+    },
+    {
+      "id": "_u2w34ii9j",
+      "nome": "ta top",
+      "jogo": "League of Legends",
+      "modo": "Ranqueada Solo/Duo",
+      "nivel": "master",
+      "dono": "admin",
+      "jogadores": [
+        "fa32c412-0699-497f-82c0-5943d57f5ba5"
+      ],
+      "capacidade": 2,
+      "sala": "publica",
+      "senha": ""
     }
   ]
 }
