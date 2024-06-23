@@ -1,5 +1,5 @@
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (usuarioLogado) {
+if (usuarioLogado == false) {
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png'; // Substitua pelo caminho da sua foto padrão
 } 

@@ -1,5 +1,5 @@
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (usuarioLogado) {
+if (usuarioLogado == false) {
   const atividadeAmigos = document.getElementById('atividade_amigos');
   atividadeAmigos.innerHTML = 'Você não está logado. <a href="login.html">Entre ou registre-se</a>.';
   const fotoPerfil = document.getElementById('foto_de_perfil');

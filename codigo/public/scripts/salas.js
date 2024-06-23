@@ -1,5 +1,5 @@
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (usuarioLogado) {
+if (usuarioLogado == false) {
   document.getElementById('jogo').disabled = true;
   document.getElementById('modo').disabled = true;
   document.getElementById('sala').disabled = true;
