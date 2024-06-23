@@ -1,7 +1,7 @@
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
 if (usuarioLogado == false) {
   const fotoPerfil = document.getElementById('foto_de_perfil');
-  fotoPerfil.src = '../assets/images/default_profile.png'; // Substitua pelo caminho da sua foto padrão
+  fotoPerfil.src = '../assets/images/default_profile.png';
 } 
   const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
   const currentUserObj = JSON.parse(userId);
@@ -91,7 +91,7 @@ if (usuarioLogado == false) {
     
             if (updateResponse.ok) {
               console.log('Jogador removido da sala:', userId);
-              displaySalaDetails();  // Atualizar a lista de jogadores
+              displaySalaDetails();
             } else {
               console.error('Erro ao atualizar a sala:', updateResponse.statusText);
             }
@@ -110,7 +110,7 @@ if (usuarioLogado == false) {
     
             if (response.ok) {
               console.log('Sala excluída:', salaId);
-              window.location.href = 'salas.html';  // Redireciona de volta para a lista de salas
+              window.location.href = 'salas.html'; 
             } else {
               console.error('Erro ao excluir a sala:', response.statusText);
             }
@@ -150,7 +150,7 @@ if (usuarioLogado == false) {
     
               if (updateResponse.ok) {
                 console.log('Saiu da sala:', salaId);
-                window.location.href = 'salas.html';  // Redireciona de volta para a lista de salas
+                window.location.href = 'salas.html';
               } else {
                 console.error('Erro ao atualizar a sala:', updateResponse.statusText);
               }
@@ -162,7 +162,6 @@ if (usuarioLogado == false) {
           }
         }
     
-        // Initial load
         document.addEventListener('DOMContentLoaded', () => {
           displaySalaDetails();
         });

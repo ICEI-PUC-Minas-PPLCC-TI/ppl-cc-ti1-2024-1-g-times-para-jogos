@@ -25,6 +25,7 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
 document.addEventListener('DOMContentLoaded', function() {
     const jogoSelect = document.getElementById('jogo');
     const modoSelect = document.getElementById('modo');
+    const nivelSelect = document.getElementById('nivel');
     const buscarPartidaBtn = document.getElementById('buscar-partida-btn');
 
     buscarPartidaBtn.addEventListener('click', buscarPartida);
@@ -32,9 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
     async function buscarPartida() {
         const jogo = jogoSelect.value;
         const modo = modoSelect.value;
+        const nivel = nivelSelect.value;
 
         try {
-            const salaDisponivel = await procurarSalaDisponivel(jogo, modo);
+            const salaDisponivel = await procurarSalaDisponivel(jogo, modo, nivel);
             if (salaDisponivel) {
                 console.log('Sala encontrada:', salaDisponivel.id);
                 entrarNaSala(salaDisponivel.id);
@@ -47,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    async function procurarSalaDisponivel(jogo, modo) {
+    async function procurarSalaDisponivel(jogo, modo, nivel) {
         try {
-            const response = await fetch(`http://localhost:3000/salas?jogo=${jogo}&modo=${modo}&_limit=1`);
+            const response = await fetch(`http://localhost:3000/salas?jogo=${jogo}&modo=${modo}&nivel=${nivel}&_limit=1`);
             if (!response.ok) {
                 throw new Error('Não foi possível buscar as salas.');
             }

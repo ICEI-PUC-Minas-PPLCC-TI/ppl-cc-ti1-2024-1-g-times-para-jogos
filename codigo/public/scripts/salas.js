@@ -40,7 +40,7 @@ if (usuarioLogado == false) {
       return sala.jogadores.length >= sala.capacidade;
     } catch (error) {
       console.error('Erro ao verificar capacidade máxima:', error);
-      return false; // Retornar falso em caso de erro
+      return false;
     }
   }
 
@@ -253,13 +253,13 @@ if (usuarioLogado == false) {
 
             if (updateResponse.ok) {
               console.log('Entrou na sala:', salaId);
-              window.location.href = `sala.html?salaId=${salaId}`;  // Redireciona para a nova página
+              window.location.href = `sala.html?salaId=${salaId}`;
             } else {
               console.error('Erro ao atualizar a sala:', updateResponse.statusText);
             }
           } else {
             console.log('Usuário já está na sala:', salaId);
-            window.location.href = `sala.html?salaId=${salaId}`;  // Redireciona para a nova página
+            window.location.href = `sala.html?salaId=${salaId}`;
           }
         } catch (error) {
           console.error('Erro ao entrar na sala:', error);
