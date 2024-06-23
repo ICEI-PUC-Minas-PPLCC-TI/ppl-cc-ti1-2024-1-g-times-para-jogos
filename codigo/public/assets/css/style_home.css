@@ -146,10 +146,15 @@ img.logo{
 .nav-links li a {
     color: #fff;
     text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-links li a:hover {
     text-decoration: underline;
+    transform: scale(1.5);
+    text-underline-offset: 10px;
+    opacity: 1;
 }
 
 #foto_de_perfil{
