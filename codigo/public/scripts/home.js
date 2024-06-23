@@ -42,6 +42,7 @@ if (usuarioLogado == false) {
         const statusForm = document.getElementById('statusForm');
         const statusContent = document.getElementById('statusContent');
         const atividadeAmigos = document.getElementById('atividade_amigos');
+        const friendRequestsList = document.getElementById('friendList')
 
         statusContent.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' && !event.shiftKey) {
@@ -72,93 +73,268 @@ if (usuarioLogado == false) {
                 }
         });
 
+        function fetchFriendRequests() {
+            fetch(`http://localhost:3000/solicitacoesAmizade?para=${id}`)
+                .then(response => response.json())
+                .then(requests => {
+                    const friendRequestsList = document.getElementById('friendRequestsList');
+                    friendRequestsList.innerHTML = '';
+        
+                    requests.forEach(request => {
+                        fetch(`http://localhost:3000/usuarios/${request.de}`)
+                            .then(response => response.json())
+                            .then(amigo => {
+                                const li = document.createElement('li');
+                                li.classList.add('friend-request-item');
+        
+                                const img = document.createElement('img');
+                                img.src = amigo.profilePhoto;
+                                img.alt = "Foto de " + amigo.login;
+        
+                                const nomeAmigo = document.createElement('span');
+                                nomeAmigo.textContent = amigo.login;
+        
+                                const acceptButton = document.createElement('button');
+                                acceptButton.textContent = 'Aceitar';
+                                acceptButton.addEventListener('click', () => {
+                                    acceptFriendRequest(request.id);
+                                });
+        
+                                const declineButton = document.createElement('button');
+                                declineButton.textContent = 'Recusar';
+                                declineButton.addEventListener('click', () => {
+                                    declineFriendRequest(request.id);
+                                });
+        
+                                const buttonsDiv = document.createElement('div');
+                                buttonsDiv.classList.add('friend-request-buttons');
+                                buttonsDiv.appendChild(acceptButton);
+                                buttonsDiv.appendChild(declineButton);
+        
+                                li.appendChild(img);
+                                li.appendChild(nomeAmigo);
+                                li.appendChild(buttonsDiv);
+        
+                                friendRequestsList.appendChild(li);
+                            })
+                            .catch(error => console.error('Erro ao buscar usuário:', error));
+                    });
+                })
+                .catch(error => console.error('Erro ao buscar solicitações de amizade:', error));
+        }
+
         function fetchFriends() {
             fetch(`http://localhost:3000/usuarios/${id}`)
                 .then(response => response.json())
                 .then(user => {
+                    const friendsList = document.getElementById('friendsList');
                     friendsList.innerHTML = '';
-                    user.amigos.forEach(friend => { fetch(`http://localhost:3000/usuarios/${friend}`).then(response => response.json()).then(amigo => {
-                        const li = document.createElement('li');
-                        li.classList.add('friend-item')
-                        const img = document.createElement('img');
-                        img.src = amigo.profilePhoto;
-                        img.alt = "Foto de " + amigo.login;
-                        const nomeAmigo = document.createElement('span');
-                        nomeAmigo.textContent = amigo.login;
-                        const statusAmigo = document.createElement('span');
-                        if(amigo.status == "online"){
-                            statusAmigo.textContent = "Online";
-                        } else {
-                            statusAmigo.textContent = "Offline";
-                        }
-                        statusAmigo.classList.add('status', amigo.status);
-                        const deleteButton = document.createElement('button');
-                        const friendInfo = document.createElement('div');
-                        friendInfo.classList.add('friend-info');
-                        friendInfo.appendChild(img);
-                        friendInfo.appendChild(nomeAmigo);
-                        friendInfo.appendChild(statusAmigo);
-                        deleteButton.textContent = 'x';
-                        deleteButton.classList.add('delete');
-                        deleteButton.addEventListener('click', () => {
-                            deleteFriend(friend);
-                        });
-                        li.appendChild(friendInfo);
-                        li.appendChild(deleteButton);
-                        friendsList.appendChild(li);
-                    })});
+        
+                    user.amigos.forEach(friend => {
+                        fetch(`http://localhost:3000/usuarios/${friend}`)
+                            .then(response => response.json())
+                            .then(amigo => {
+                                const li = document.createElement('li');
+                                li.classList.add('friend-item');
+        
+                                const img = document.createElement('img');
+                                img.src = amigo.profilePhoto;
+                                img.alt = "Foto de " + amigo.login;
+        
+                                const nomeAmigo = document.createElement('span');
+                                nomeAmigo.textContent = amigo.login;
+        
+                                const statusAmigo = document.createElement('span');
+                                statusAmigo.textContent = amigo.status === "online" ? "Online" : "Offline";
+                                statusAmigo.classList.add('status', amigo.status);
+        
+                                const deleteButton = document.createElement('button');
+                                deleteButton.textContent = 'x';
+                                deleteButton.classList.add('delete');
+                                deleteButton.addEventListener('click', () => {
+                                    deleteFriend(friend);
+                                });
+        
+                                const friendInfo = document.createElement('div');
+                                friendInfo.classList.add('friend-info');
+                                friendInfo.appendChild(img);
+                                friendInfo.appendChild(nomeAmigo);
+                                friendInfo.appendChild(statusAmigo);
+        
+                                li.appendChild(friendInfo);
+                                li.appendChild(deleteButton);
+        
+                                friendsList.appendChild(li);
+                            })
+                            .catch(error => console.error('Erro ao buscar amigo:', error));
+                    });
                 })
                 .catch(error => console.error('Erro ao buscar amigos:', error));
         }
 
         function addFriend(friendName) {
-            fetch(`http://localhost:3000/usuarios/${id}`)
+            fetch(`http://localhost:3000/usuarios`)
                 .then(response => response.json())
-                .then(user => {
-                    let userFound = false;
-                    for (var i = 0; i < db_usuarios.length; i++) {
-                        var usuario = db_usuarios[i];
-                        if (friendName == usuario.login) {
-                            userFound = true;
-                            const updatedFriends = [...user.amigos, usuario.id];
-                            return fetch(`http://localhost:3000/usuarios/${id}`, {
-                                method: 'PUT',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({ ...user, amigos: updatedFriends })
-                            });
-                        }
+                .then(usuarios => {
+                    const friend = usuarios.find(usuario => usuario.login === friendName);
+                    if (!friend) {
+                        alert("Usuário não encontrado!");
+                        return;
                     }
-                    if (!userFound) {
-                    alert("Usuario nao encontrado!");
-                }
-                }).then(response => response.json()).then(() => {
-                    fetchFriends();
-                    friendNameInput.value = '';
-                }).catch(error => console.error('Erro ao adicionar amigo:', error));
-        }
-
-        function deleteFriend(friendName) {
-            fetch(`http://localhost:3000/usuarios/${id}`)
-                .then(response => response.json())
-                .then(user => {
-                    const updatedFriends = user.amigos.filter(friend => friend !== friendName);
-                    return fetch(`http://localhost:3000/usuarios/${id}`, {
-                        method: 'PUT',
+        
+                    const newRequest = {
+                        de: id,
+                        para: friend.id
+                    };
+        
+                    fetch(`http://localhost:3000/solicitacoesAmizade`, {
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ ...user, amigos: updatedFriends })
-                    });
+                        body: JSON.stringify(newRequest)
+                    })
+                    .then(response => response.json())
+                    .then(() => {
+                        alert("Solicitação de amizade enviada!");
+                        fetchFriendRequests(); // Atualiza a lista de solicitações de amizade
+                        fetchFriends(); // Atualiza a lista de amigos
+                        document.getElementById('friendName').value = '';
+                    })
+                    .catch(error => console.error('Erro ao enviar solicitação de amizade:', error));
                 })
-                .then(response => response.json())
-                .then(() => {
-                    fetchFriends();
-                })
-                .catch(error => console.error('Erro ao deletar amigo:', error));
+                .catch(error => console.error('Erro ao buscar usuários:', error));
         }
 
+        function deleteFriend(friendId) {
+            fetch(`http://localhost:3000/solicitacoesAmizade?para=${id}&de=${friendId}`)
+                .then(response => response.json())
+                .then(request => {
+                    if (request.length > 0) {
+                        const requestId = request[0].id;
+                        fetch(`http://localhost:3000/solicitacoesAmizade/${requestId}`, {
+                            method: 'DELETE'
+                        })
+                        .then(() => {
+                            alert("Solicitação de amizade cancelada!");
+                            fetchFriendRequests(); // Atualiza a lista de solicitações de amizade
+                        })
+                        .catch(error => console.error('Erro ao cancelar solicitação de amizade:', error));
+                    } else {
+                        fetch(`http://localhost:3000/usuarios/${id}`)
+                            .then(response => response.json())
+                            .then(user => {
+                                const updatedFriends = user.amigos.filter(friend => friend !== friendId);
+                                fetch(`http://localhost:3000/usuarios/${id}`, {
+                                    method: 'PUT',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ ...user, amigos: updatedFriends })
+                                })
+                                .then(() => {
+                                    alert("Amigo removido!");
+                                    fetchFriends(); // Atualiza a lista de amigos
+                                })
+                                .catch(error => console.error('Erro ao remover amigo:', error));
+                            })
+                            .catch(error => console.error('Erro ao buscar usuário:', error));
+                    }
+                })
+                .catch(error => console.error('Erro ao buscar solicitação de amizade:', error));
+        }
+
+        function acceptFriendRequest(requestId) {
+            fetch(`http://localhost:3000/solicitacoesAmizade/${requestId}`, {
+                method: 'DELETE'
+            })
+            .then(() => {
+                fetchFriendRequests(); // Atualiza a lista de solicitações de amizade
+        
+                // Busca a solicitação para adicionar o amigo
+                fetch(`http://localhost:3000/solicitacoesAmizade?para=${id}&id=${requestId}`)
+                    .then(response => response.json())
+                    .then(request => {
+                        const friendId = request[0].de;
+                        fetch(`http://localhost:3000/usuarios/${id}`)
+                            .then(response => response.json())
+                            .then(user => {
+                                const updatedFriends = [...user.amigos, friendId];
+                                fetch(`http://localhost:3000/usuarios/${id}`, {
+                                    method: 'PATCH',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        amigos: updatedFriends
+                                    })
+                                })
+                                .then(() => {
+                                    alert("Solicitação de amizade aceita!");
+                                    fetchFriends(); // Atualiza a lista de amigos
+                                })
+                                .catch(error => console.error('Erro ao atualizar lista de amigos:', error));
+                            })
+                            .catch(error => console.error('Erro ao buscar usuário:', error));
+                    })
+                    .catch(error => console.error('Erro ao buscar solicitação de amizade:', error));
+            })
+            .catch(error => console.error('Erro ao aceitar solicitação de amizade:', error));
+        }
+
+        function declineFriendRequest(requestId) {
+            fetch(`http://localhost:3000/solicitacoesAmizade/${requestId}`, {
+                method: 'DELETE'
+            })
+            .then(() => {
+                fetchFriendRequests();
+                alert("Solicitação de amizade recusada!");
+            })
+            .catch(error => console.error('Erro ao recusar solicitação de amizade:', error));
+        }
+
+        function fetchSentFriendRequests() {
+            fetch(`http://localhost:3000/solicitacoesAmizade?de=${id}`)
+                .then(response => response.json())
+                .then(requests => {
+                    const sentFriendRequestsList = document.getElementById('friendRequestsList');
+                    sentFriendRequestsList.innerHTML = '';
+                    requests.forEach(request => {
+                        fetch(`http://localhost:3000/usuarios/${request.para}`)
+                            .then(response => response.json())
+                            .then(amigo => {
+                                const li = document.createElement('li');
+                                li.classList.add('sent-friend-request-item');
+        
+                                const img = document.createElement('img');
+                                img.src = amigo.profilePhoto;
+                                img.alt = "Foto de " + amigo.login;
+        
+                                const nomeAmigo = document.createElement('span');
+                                nomeAmigo.textContent = amigo.login;
+        
+                                const cancelButton = document.createElement('button');
+                                cancelButton.textContent = 'Cancelar';
+                                cancelButton.addEventListener('click', () => {
+                                    cancelSentFriendRequest(request.id);
+                                });
+        
+                                const buttonsDiv = document.createElement('div');
+                                buttonsDiv.classList.add('sent-friend-request-buttons');
+                                buttonsDiv.appendChild(cancelButton);
+        
+                                li.appendChild(img);
+                                li.appendChild(nomeAmigo);
+                                li.appendChild(buttonsDiv);
+        
+                                sentFriendRequestsList.appendChild(li);
+                            })
+                            .catch(error => console.error('Erro ao buscar usuário:', error));
+                    });
+                })
+                .catch(error => console.error('Erro ao buscar solicitações de amizade enviadas:', error));
+        }
+    
         function fetchAndDisplayStatuses() {
             fetch(`http://localhost:3000/usuarios/${currentUserObj.id}`)
                 .then(response => response.json())
@@ -217,5 +393,7 @@ if (usuarioLogado == false) {
             }
         });
         fetchFriends();
+        fetchFriendRequests();
+        fetchSentFriendRequests();
         fetchAndDisplayStatuses();
     });
