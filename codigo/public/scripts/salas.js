@@ -244,7 +244,6 @@ function mapearNivel(sala) {
           const modoFilter = document.getElementById('modo').value;
           const salaFilter = document.getElementById('sala').value;
           const nivelFilter = document.getElementById('nivel').value;
-    
           fetchSalas().then(salas => {
             const salasFiltradas = salas.filter(sala => {
               if (jogoFilter && sala.jogo !== jogoFilter && jogoFilter !== 'Todos') {
@@ -264,7 +263,6 @@ function mapearNivel(sala) {
                 displaySalas(salasFiltradas);
           });
         }
-
         async function fetchUser(userId) {
           const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
           if (!response.ok) {
@@ -273,7 +271,6 @@ function mapearNivel(sala) {
           }
           return await response.json();
         }
-
         async function displaySalas(salas) {
           const container = document.getElementById('browser');
           container.innerHTML = '';
@@ -282,7 +279,6 @@ function mapearNivel(sala) {
             container.innerHTML = '<p style="font-size: 65px; text-align: center;">Nenhuma sala encontrada.</p>';
             return;
           }
-
           for (const sala of salas) {
             const salaDiv = document.createElement('div');
             salaDiv.className = 'sala';
@@ -328,7 +324,6 @@ function mapearNivel(sala) {
               console.error('Erro ao entrar na sala:', error);
           }
       }
-
       async function entrarNaSala(sala, currentUser, salaId) {
         try {
             if (!sala.jogadores.includes(currentUser.id)) {

@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function procurarSalaDisponivel(jogo, modo, nivel) {
         try {
-            const response = await fetch(`http://localhost:3000/salas?jogo=${jogo}&modo=${modo}&nivel=${nivel}&_limit=1`);
+            const response = await fetch(`http://localhost:3000/salas?jogo=${jogo}&modo=${modo}&nivel=${nivel}&sala=publica&_limit=1`);
             if (!response.ok) {
                 throw new Error('Não foi possível buscar as salas.');
             }
