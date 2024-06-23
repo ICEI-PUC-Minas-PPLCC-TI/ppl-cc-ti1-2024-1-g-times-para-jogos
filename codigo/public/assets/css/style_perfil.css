@@ -9,6 +9,10 @@
     --error-color: #ff4d4d;
 }
 
+*{
+    font-family: "Lato", sans-serif;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -86,18 +90,21 @@ div.container-nav {
 }
 
 .perfil-container {
-    margin-top: 10px;
-    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
     display: flex;
+    gap: 20%;
     align-items: center;
+    justify-content: center;
 }
 
 .fotoperfil {
-    display: flex; 
+    display: flex;
+    flex: 1; 
     flex-direction: column; 
     justify-content: center; 
     align-items: center;
-    flex-grow: 1;
 }
 
 .fotoperfil img{
@@ -107,8 +114,19 @@ div.container-nav {
 }
 
 div.editarperfil{
-    flex-grow: 1;
+    flex: 1;
     font-size: large;
+    padding: 25px;
+    border-radius: 8px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--secondary-color);
+}
+
+input, select{
+    padding: 4px;
+    border-radius: 8px;
+    outline: none;
+    border: 0;
 }
 
 input[type="file"] {
@@ -119,16 +137,22 @@ label[for="profile_picture"] {
     display: block;
     margin-top: 10px;
     cursor: pointer;
-    color: blue;
 }
 
 .salvar-conta,
 .salvar-pessoal {
-    background-color: #024fa1;
+    background-color: #005cc5;
     color: #fff;
     border: none;
-    font-weight: bolder;
-    border-radius: 4px;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+.salvar-conta:hover,
+.salvar-pessoal:hover {
+    background-color: #03a9db;
+    opacity: 1;
     cursor: pointer;
 }
 
@@ -162,6 +186,10 @@ div.connect-item span.connection-status{
     height: 50px;
     margin-bottom: 5px;
     cursor: pointer;
+}
+
+a {
+    color:rgb(0, 89, 255);
 }
 
 /* Fim dos campos de perfil */
