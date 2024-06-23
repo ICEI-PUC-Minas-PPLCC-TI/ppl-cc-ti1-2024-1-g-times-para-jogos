@@ -154,7 +154,7 @@ div.status-item{
     max-width: 600px;
 }
 
-.friend-item, .sent-friend-request-item{
+.friend-item, .sent-friend-request-item, .friend-request-item{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,6 +164,11 @@ div.status-item{
     margin-bottom: 10px;
     background-color: var(--secondary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+div.friend-request-buttons{
+    display: flex;
+    justify-content: space-between;
 }
 
 .friend-info {
@@ -188,7 +193,7 @@ div.status-item{
     text-shadow: 0 0 10px orange;
 }
 
-.friend-item img, .sent-friend-request-item img {
+.friend-item img, .sent-friend-request-item img, .friend-request-item img{
     border-radius: 50px;
     margin-right: 10px;
     width: 64px;
