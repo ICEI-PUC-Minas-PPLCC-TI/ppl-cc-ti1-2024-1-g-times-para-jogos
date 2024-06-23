@@ -98,6 +98,14 @@ textarea#statusContent::placeholder{
     text-align: center;
 }
 
+div.status-item{
+    background-color: var(--primary-color);
+    padding-left: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
 .amigos {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
