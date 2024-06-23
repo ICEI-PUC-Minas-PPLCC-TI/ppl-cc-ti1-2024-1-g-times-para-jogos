@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+:root {
+    --primary-color: rgb(22, 24, 29);
+    --secondary-color: rgb(28, 31, 38);
+    --tertiary-color: rgb(0, 136, 255);
+    --success-color: rgb(3, 197, 3);
+    --neutral-color: rgb(106, 106, 106);
+    --error-color: #ff4d4d;
+}
+
+*{
+    font-family: "Lato", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+}
+
+/* Ajustando a barra de navegação */
+
+nav.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px var(--secondary-color);
+    color: #fff;
+    padding: 10px 0;
+    top: 0;
+    transition: all 0.3 ease-in-out;
+    height: 20vh;
+}
+
+div.container-nav {
+    display: flex;
+    flex-direction: row;
+    transition: all 0.3 ease-in-out;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 40px;
+}
+
+.nav-links li a, .nav-links li i{
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    font-size: xx-large;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover{
+    text-decoration: underline;
+    transform: scale(1.5);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+.nav-links li i:hover{
+    transform: scale(1.5);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+/* Fim da barra de navegação */
+
+/* Ajustando os campos de foto de perfil e dados do perfil */
+
+.fas.fa-camera {
+    color: white; 
+    font-size: 48px; 
+    z-index: 999;
+}
+
+.perfil-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    display: flex;
+    gap: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.fotoperfil {
+    display: flex;
+    flex: 1; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.fotoperfil img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+div.editarperfil{
+    flex: 1;
+    font-size: large;
+    padding: 25px;
+    border-radius: 8px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--secondary-color);
+}
+
+input, select{
+    padding: 4px;
+    border-radius: 8px;
+    outline: none;
+    border: 0;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label[for="profile_picture"] {
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.salvar-conta,
+.salvar-pessoal {
+    background-color: #005cc5;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+.salvar-conta:hover,
+.salvar-pessoal:hover {
+    background-color: #03a9db;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.connect {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 10px;
+}
+
+div.connect-item{
+    display: flex;
+    align-items: center;
+}
+
+div.connect-item span.connection-status{
+    margin-left: 10px;
+    color:white;
+    text-decoration-style: none ;
+}
+
+.connect i {
+    font-size: 52px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.connect img {
+    width: 60px;
+    height: 50px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+a {
+    color:rgb(0, 89, 255);
+}
+
+/* Fim dos campos de perfil */

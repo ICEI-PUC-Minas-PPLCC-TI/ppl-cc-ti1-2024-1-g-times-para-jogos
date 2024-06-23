@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/fd3c424b96.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style_perfil.css">
+    <title>Playershub - Meu Perfil</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-nav">
+            <img src="assets/images/logo.png" alt="logo" class="logo" style="width: 196px; height: 196px;" draggable="false">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="salas.html">Salas</a></li>
+                <li><a href="jogo_rapido.html">Jogo Rapido</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><i class="fa fa-sign-out" aria-hidden="true" id="logout"></i></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="perfil-container">
+        <div class="fotoperfil">
+            <img src="" alt="Minha Foto de Perfil" class="foto_perfil" id="foto_de_perfil">
+            <input type="file" id="profile_picture" name="profile_picture">
+            <label for="profile_picture"><i class="fas fa-camera"></i></label>
+            <p></p>
+            <p>Conecte suas contas</p>
+            <div class="connect">
+                <div class="connect-item">
+                    <i class="fab fa-steam"></i>
+                    <span class="connection-status" id="steam-status">Não conectado</span>
+                </div>
+            </div>
+        </div>
+        <div class="editarperfil">
+            <h2>Editar Perfil</h2>
+            <h3>Informações da conta</h3>
+            <form id="formConta" action="#" method="post" enctype="multipart/form-data">
+                <label for="username">Nome de Usuário:</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email">
+            </form>
+            <br><a href="#" id="alterarSenha">Alterar senha</a><br>
+            <br><button class="salvar-conta">Salvar Alterações</button><br>
+            <h3>Informações pessoais</h3>
+            <form id="formPessoal" action="#" method="post" enctype="multipart/form-data">
+                <label for="nome">Nome completo:</label><br>
+                <input type="text" id="nome" name="nome"><br>
+                <label for="birthday">Data de nascimento:</label><br>
+                <input type="date" id="birthday" name="birthday"><br>
+                <label for="genero">Gênero:</label><br>
+                <select name="genero" id="genero">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                </select><br>
+                <label for="estado">Estado:</label><br>
+                <select id="estado" name="estado"><br>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select><br>            
+                <label for="cidade">Cidade:</label><br>
+                <input type="text" id="cidade" name="cidade"><br>
+                <label for="telefone">Telefone:</label><br>
+                <input type="tel" id="telefone" name="telefone" pattern="\([0-9]{2}\) [9][0-9]{4}-[0-9]{4}">
+            </form>
+            <br><button class="salvar-pessoal">Salvar Alterações</button>
+        </div>
+    </div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/imask"></script>
+    <script src="scripts/perfil.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+</body>
+</html>

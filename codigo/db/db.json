@@ -1,0 +1,187 @@
+{
+  "usuarios": [
+    {
+      "id": "-1",
+      "login": "",
+      "senha": "",
+      "nome": "",
+      "email": "",
+      "steamID": "",
+      "profilePhoto": "../assets/images/default_profile.png",
+      "nascimento": "",
+      "genero": "",
+      "estado": "",
+      "cidade": "",
+      "telefone": "",
+      "amigos": [],
+      "status": ""
+    },
+    {
+      "id": "fa32c412-0699-497f-82c0-5943d57f5ba5",
+      "login": "admin",
+      "senha": "123",
+      "nome": "admin",
+      "email": "admin@abc.com",
+      "steamID": "76561199362949674",
+      "profilePhoto": "https://robohash.org/adcab8e8-e932-46bd-860b-81e37ba0ce30.png",
+      "nascimento": "",
+      "genero": "Masculino",
+      "estado": "",
+      "cidade": "",
+      "telefone": "",
+      "amigos": [
+        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+        "e8c1b3bd-d0fd-4875-af2b-04619320dcd8",
+        "850ff9f1-43ef-4fde-bf3f-405f9948d30a"
+      ],
+      "status": "online"
+    },
+    {
+      "id": "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
+      "login": "lucas",
+      "senha": "123",
+      "nome": "Lucas",
+      "email": "lucas@abc.com",
+      "steamID": "76561199273364819",
+      "profilePhoto": "https://robohash.org/850ff9f1-43ef-4fde-bf3f-405f9948d30a.png",
+      "nascimento": "",
+      "genero": "",
+      "estado": "",
+      "cidade": "",
+      "telefone": "",
+      "amigos": [
+        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+        "fa32c412-0699-497f-82c0-5943d57f5ba5"
+      ],
+      "status": "online"
+    },
+    {
+      "id": "e8c1b3bd-d0fd-4875-af2b-04619320dcd8",
+      "login": "breno",
+      "senha": "123",
+      "nome": "Breno",
+      "email": "breno@abc.com",
+      "steamID": "76561198136432726",
+      "profilePhoto": "https://robohash.org/e8c1b3bd-d0fd-4875-af2b-04619320dcd8.png",
+      "nascimento": "",
+      "genero": "",
+      "estado": "",
+      "cidade": "",
+      "telefone": "",
+      "amigos": [],
+      "status": "online"
+    },
+    {
+      "id": "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+      "login": "gerson",
+      "senha": "123",
+      "nome": "Gerson",
+      "email": "gerson@abc.com",
+      "steamID": "76561198131622359",
+      "profilePhoto": "https://robohash.org/5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1.png",
+      "nascimento": "",
+      "genero": "Feminino",
+      "estado": "PE",
+      "cidade": "Asd",
+      "telefone": "(92) 87412-3311",
+      "amigos": [],
+      "status": "offline"
+    },
+    {
+      "id": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+      "login": "rian",
+      "senha": "123",
+      "nome": "Rian Eduardo",
+      "email": "rian@abc.com",
+      "steamID": "",
+      "profilePhoto": "https://robohash.org/6e2930e8-24c8-48f8-93c6-9493c255a7c9.png",
+      "nascimento": "2002-12-01",
+      "genero": "Masculino",
+      "estado": "MG",
+      "cidade": "Belo Horizonte",
+      "telefone": "",
+      "amigos": [],
+      "status": "offline"
+    }
+  ],
+  "salas": [
+    {
+      "id": "_nywcq6iwd",
+      "nome": "oies",
+      "jogo": "CS2",
+      "modo": "Competitivo",
+      "nivel": "grey",
+      "dono": "gerson",
+      "jogadores": [
+        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+        "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
+        "fa32c412-0699-497f-82c0-5943d57f5ba5"
+      ],
+      "capacidade": 5,
+      "sala": "publica",
+      "senha": ""
+    }
+  ],
+  "status": [
+    {
+      "usuario": "admin",
+      "status": "ola",
+      "horario": "2024-06-23T11:48:19.424Z",
+      "id": 1
+    },
+    {
+      "usuario": "admin",
+      "status": "massa",
+      "horario": "2024-06-23T12:10:04.073Z",
+      "id": 2
+    },
+    {
+      "usuario": "gerson",
+      "status": "pao",
+      "horario": "2024-06-23T12:27:00.022Z",
+      "id": 3
+    },
+    {
+      "usuario": "lucas",
+      "status": "farinha",
+      "horario": "2024-06-23T12:50:55.611Z",
+      "id": 4
+    },
+    {
+      "usuario": "admin",
+      "status": "testando",
+      "horario": "2024-06-23T14:41:23.938Z",
+      "id": 5
+    },
+    {
+      "usuario": "breno",
+      "status": "pastel",
+      "horario": "2024-06-23T14:44:24.746Z",
+      "id": 6
+    },
+    {
+      "usuario": "admin",
+      "status": "varias mensagens",
+      "horario": "2024-06-23T14:57:25.545Z",
+      "id": 7
+    },
+    {
+      "usuario": "gerson",
+      "status": "raimundo",
+      "horario": "2024-06-23T14:59:36.430Z",
+      "id": 8
+    },
+    {
+      "usuario": "admin",
+      "status": "tapioca",
+      "horario": "2024-06-23T15:46:49.591Z",
+      "id": 9
+    },
+    {
+      "usuario": "gerson",
+      "status": "arroz",
+      "horario": "2024-06-23T17:35:07.905Z",
+      "id": 10
+    }
+  ]
+}

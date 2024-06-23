@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+:root {
+    --primary-color: rgb(22, 24, 29);
+    --secondary-color: rgb(28, 31, 38);
+    --tertiary-color: rgb(0, 136, 255);
+    --success-color: rgb(3, 197, 3);
+    --neutral-color: rgb(106, 106, 106);
+    --error-color: #ff4d4d;
+}
+
+*{
+    font-family: "Lato", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0 auto;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+}
+
+/* Ajustando a barra de navegacao */
+
+nav.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px var(--secondary-color);
+    color: #fff;
+    padding: 10px 0;
+    top: 0;
+    transition: all 0.3 ease-in-out;
+    height: 20vh;
+}
+
+div.container-nav {
+    display: flex;
+    flex-direction: row;
+    transition: all 0.3 ease-in-out;
+    justify-content: space-between;
+    gap: 2.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 40px;
+}
+
+.nav-links li a {
+    display: inline-block;
+    color: #fff;
+    font-size: xx-large;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+    transform: scale(1.5);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+#foto_de_perfil {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+/* Fim da barra de navegação */
+
+/* Section */
+
+#sala-detalhes{
+    display: flex;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+div.jogador img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+li{
+    list-style: none;
+}
+
+.botoes{
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.delete-room{
+    padding: 5px;
+    background-color: #e04b4b;
+    border: 0;
+    outline: 0;
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+.delete-room:hover{
+    cursor: pointer;
+    background-color: red;
+    box-shadow: 0 0 10px red;
+}
+
+.button{
+    padding: 5px;
+    background-color: rgb(0, 102, 255);
+    border: 0;
+    outline: 0;
+    transition: all 0.3 ease-in-out;
+    border-radius: 8px;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: rgb(0, 162, 255);
+    box-shadow: 0 0 10px rgb(0, 162, 255);
+}

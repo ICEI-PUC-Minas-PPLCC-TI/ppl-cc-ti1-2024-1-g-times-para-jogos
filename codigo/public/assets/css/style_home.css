@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+:root {
+    --primary-color: rgb(22, 24, 29);
+    --secondary-color: rgb(28, 31, 38);
+    --tertiary-color: rgb(0, 136, 255);
+    --success-color: rgb(3, 197, 3);
+    --neutral-color: rgb(106, 106, 106);
+    --error-color: #ff4d4d;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+}
+
+/* Ajustando a barra de navegação */
+
+nav.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px var(--secondary-color);
+    color: #fff;
+    padding: 10px 0;
+    top: 0;
+    transition: all 0.3 ease-in-out;
+    height: 20vh;
+}
+
+div.container-nav {
+    display: flex;
+    flex-direction: row;
+    transition: all 0.3 ease-in-out;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 40px;
+}
+
+.nav-links li a {
+    display: inline-block;
+    color: #fff;
+    font-size: xx-large;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+    transform: scale(1.5);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+#foto_de_perfil {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+/* Fim da barra de navegação */
+
+div.home {
+    display: flex;
+    margin-top: 20px;
+    padding: 20px;
+    gap: 10px;
+    overflow: hidden;
+    justify-content: flex-start;
+}
+
+div.feed {
+    flex: 3;
+    margin-left: 10%;
+    margin-right: 1%;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+div.status{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3 ease-in-out;
+}
+
+form#statusForm {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+textarea#statusContent {
+    transition: all 0.3s ease;
+    font-family: 'Lato', sans-serif;
+    width: 100vh;
+    opacity: 0.3;
+    resize: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+textarea#statusContent:focus{
+    transform: scale(1.1);
+    padding: 20px; 
+    opacity: 1;
+}
+
+textarea#statusContent::placeholder{
+    text-align: center;
+}
+
+div.status-item{
+    background-color: var(--primary-color);
+    padding-left: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.amigos {
+    border-radius: 20px;
+    flex: 1;
+    top: 0;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: var(--primary-color);
+}
+
+.friends-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 2.5rem;
+    margin-bottom: 10px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.friend-info {
+    gap: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status.online {
+    color: var(--success-color);
+    text-shadow: 0 0 10px var(--success-color);
+}
+
+.status.offline {
+    color: var(--neutral-color);
+    text-shadow: 0 0 10px var(--neutral-color);
+
+}
+
+.friend-item img {
+    border-radius: 50px;
+    margin-right: 10px;
+    width: 64px;
+    height: 64px;
+}
+
+#friendName{
+    border: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    border-radius: 4px;
+}
+
+#friendName:focus{
+    transform: scale(1.1);
+}
+
+#friendName::placeholder{
+    text-align: center;
+}
+
+.add {
+    background-color: white;
+    border: none;
+    margin-left: 10px;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+}
+
+.add:hover {
+    transform: scale(1.3);
+}
+
+.delete {
+    background-color: var(--error-color);
+    border: none;
+    align-items: center;
+    font-weight: bolder;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.delete:hover {
+    transform: scale(1.3);
+    box-shadow: 0 0 10px var(--error-color);
+}
+
+.hidden {
+    display: none;
+}
