@@ -68,6 +68,7 @@ if (usuarioLogado == false) {
     var jogo = getJogo.options[getJogo.selectedIndex].text;
     var getModo = document.getElementById("modo_select");
     var modo = getModo.options[getModo.selectedIndex].text;
+    var nivel = document.getElementById("nivel_select").value;
     const visibilidade = document.getElementById("visibilidade").value;
     const senha = visibilidade === "privada" ? document.getElementById("senha").value : "";
     const capacidade = modo === "Competitivo" ? 5 : 2;
@@ -77,6 +78,7 @@ if (usuarioLogado == false) {
       nome: nome,
       jogo: jogo,
       modo: modo,
+      nivel: nivel,
       dono: currentUser.login,
       jogadores: [currentUser.id],
       capacidade: capacidade,
