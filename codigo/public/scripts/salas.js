@@ -168,16 +168,35 @@ if (usuarioLogado == false) {
     }
   });
 
-  function calcularCapacidadeMaxima(modo) {
-    switch (modo) {
-      case 'Competitivo':
-        return 5;
-      case 'Braço Direito':
-        return 2;
-      default:
-        return 0;
-    }
+function calcularCapacidadeMaxima(jogo, modo) {
+  switch (jogo) {
+      case 'CS2':
+          switch (modo) {
+              case 'Competitivo':
+                  return 5;
+              case 'Braço Direito':
+                  return 2;
+          }
+          break;
+      case 'League of Legends':
+          switch (modo) {
+              case 'Ranqueada Solo/Duo':
+                  return 2;
+              case 'Ranqueada Flexivel':
+                  return 5;
+          }
+          break;
+      case 'Valorant':
+          return 5;
+      case 'Rainbow Six Siege':
+          return 5;
+      case 'Apex Legends':
+          return 3;
+      case 'Dota 2':
+          return 5;
   }
+  return 0; 
+}
 
 function mapearNivel(sala) {
   const { jogo, modo, nivel } = sala;
@@ -267,7 +286,7 @@ function mapearNivel(sala) {
             const jogadoresCount = sala.jogadores.length;
             var nivel = mapearNivel(sala);
             const visibilidade = sala.sala === 'publica' ? 'Pública' : 'Privada';
-            const capacidadeMaxima = calcularCapacidadeMaxima(sala.modo);
+            const capacidadeMaxima = calcularCapacidadeMaxima(sala.jogo, sala.modo);
             salaDiv.innerHTML = `
               <h1>${sala.nome}</h1>
               <h4>${sala.jogo} - ${sala.modo}</h4>

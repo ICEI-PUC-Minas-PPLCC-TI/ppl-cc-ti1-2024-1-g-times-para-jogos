@@ -96,34 +96,6 @@
       "capacidade": 5,
       "sala": "publica",
       "senha": ""
-    },
-    {
-      "id": "_12jz7fj96",
-      "nome": "so os challenger",
-      "jogo": "CS2",
-      "modo": "Competitivo",
-      "nivel": "yellow",
-      "dono": "admin",
-      "jogadores": [
-        "fa32c412-0699-497f-82c0-5943d57f5ba5"
-      ],
-      "capacidade": 5,
-      "sala": "publica",
-      "senha": ""
-    },
-    {
-      "id": "_01b26uzme",
-      "nome": "assa",
-      "jogo": "League of Legends",
-      "modo": "Ranqueada Flexivel",
-      "nivel": "high",
-      "dono": "admin",
-      "jogadores": [
-        "fa32c412-0699-497f-82c0-5943d57f5ba5"
-      ],
-      "capacidade": 2,
-      "sala": "publica",
-      "senha": ""
     }
   ]
 }
