@@ -181,7 +181,11 @@ div.status-item{
 .status.offline {
     color: var(--neutral-color);
     text-shadow: 0 0 10px var(--neutral-color);
+}
 
+.pending-status-friend{
+    color: orange;
+    text-shadow: 0 0 10px orange;
 }
 
 .friend-item img, .sent-friend-request-item img {
@@ -221,7 +225,7 @@ div.status-item{
     transform: scale(1.3);
 }
 
-.delete, #friendRequestsList button.cancel-sol-button {
+.delete, button.cancel-sol-button {
     background-color: var(--error-color);
     border: none;
     align-items: center;
@@ -233,7 +237,7 @@ div.status-item{
     border-radius: 10px;
 }
 
-.delete:hover {
+.delete:hover, button.cancel-sol-button:hover{
     transform: scale(1.3);
     box-shadow: 0 0 10px var(--error-color);
 }

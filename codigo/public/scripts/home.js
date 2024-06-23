@@ -315,6 +315,7 @@ if (usuarioLogado == false) {
                                 
                                 const statusPedido = document.createElement('span');
                                 statusPedido.textContent = 'Pendente';
+                                statusPedido.classList.add('pending-status-friend');
 
                                 const cancelButton = document.createElement('button');
                                 cancelButton.textContent = 'x';
