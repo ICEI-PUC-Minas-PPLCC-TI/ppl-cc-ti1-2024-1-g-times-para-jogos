@@ -31,7 +31,6 @@ nav.navbar {
     color: #fff;
     padding: 10px 0;
     top: 0;
-    z-index: 1000;
     transition: all 0.3 ease-in-out;
     height: 20vh;
 }
@@ -42,6 +41,40 @@ div.container-nav {
     transition: all 0.3 ease-in-out;
     justify-content: space-between;
 }
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 40px;
+}
+
+.nav-links li a {
+    display: inline-block;
+    color: #fff;
+    font-size: xx-large;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+    transform: scale(1.5);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+#foto_de_perfil {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+/* Fim da barra de navegação */
 
 div.home {
     display: flex;
@@ -202,40 +235,6 @@ div.status-item{
     transform: scale(1.3);
     box-shadow: 0 0 10px var(--error-color);
 }
-
-.nav-links {
-    display: flex;
-    list-style-type: none;
-    align-items: center;
-}
-
-.nav-links li {
-    margin: 40px;
-}
-
-.nav-links li a {
-    display: inline-block;
-    color: #fff;
-    font-size: xx-large;
-    text-decoration: none;
-    opacity: 0.6;
-    transition: all 0.3s ease;
-}
-
-.nav-links li a:hover {
-    text-decoration: underline;
-    transform: scale(1.5);
-    text-underline-offset: 10px;
-    opacity: 1;
-}
-
-#foto_de_perfil {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-}
-
-/* Fim da barra de navegação */
 
 .hidden {
     display: none;
