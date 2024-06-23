@@ -85,14 +85,27 @@ div.faq {
 }
 
 .accordion {
-    --bs-accordion-btn-bg: #ffffff;
-    --bs-accordion-active-bg: rgb(0, 89, 255);
-    --bs-accordion-active-color: white;
-    --bs-accordion-btn-focus-box-shadow: none;
-    --bs-accordion-bg: gainsboro;
-    border-radius: 10px;
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: all 0.4s ease-in-out;
 }
-
-.accordion-button:not(.collapsed) {
-    box-shadow: none;
+  
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+  
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    color: black;
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    max-height: 0px;
 }
