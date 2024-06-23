@@ -216,6 +216,9 @@ function mapearNivel(sala) {
   return "Nível desconhecido";
 }
 
+
+
+
   fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
       .then(response => {
           if (!response.ok) {
@@ -348,8 +351,68 @@ function mapearNivel(sala) {
         const jogoSelect = document.getElementById('jogo_select');
         const modoSelect = document.getElementById('modo_select');
         const nivelSelect = document.getElementById('nivel_select');
+        const jogoFilter = document.getElementById('jogo');
+        const modoFilter = document.getElementById('modo');
+        const nivelFilter = document.getElementById('nivel');
         modoSelect.disabled = true;
         nivelSelect.disabled = true;
+        modoFilter.disabled = true;
+        nivelFilter.disabled = true;
+        jogoFilter.addEventListener('change', function() {
+            const jogoSelecionado = jogoFilter.value;
+            modoFilter.innerHTML = '<option value="">Todos</option>';
+            nivelFilter.innerHTML = '<option value="">Todos</option>';
+            if (jogoSelecionado !== "") {
+              if (modosPorJogo.hasOwnProperty(jogoSelecionado)) {
+                  modosPorJogo[jogoSelecionado].forEach(modo => {
+                      const option = document.createElement('option');
+                      option.value = modo;
+                      option.textContent = modo;
+                      modoFilter.appendChild(option);
+                  });
+                  modoFilter.disabled = false;
+              } else {
+                  modoFilter.disabled = true;
+                  nivelFilter.disabled = true;
+              }
+          } else {
+              modoFilter.disabled = true;
+              nivelFilter.disabled = true;
+          }
+        });
+        modoFilter.addEventListener('change', function(){
+          const jogoSelecionado = jogoFilter.value;
+          const modoSelecionado = modoFilter.value;
+          nivelFilter.innerHTML = '<option value="">Todos</option>';
+          if (jogoSelecionado && modoSelecionado) {
+            if (niveisPorJogo.hasOwnProperty(jogoSelecionado)) {
+                const niveis = niveisPorJogo[jogoSelecionado];
+                if (Array.isArray(niveis)) {
+                    niveis.forEach(nivel => {
+                        const option = document.createElement('option');
+                        option.value = nivel.value;
+                        option.textContent = nivel.text;
+                        nivelFilter.appendChild(option);
+                    });
+                } else {
+                    const niveisModo = niveis[modoSelecionado];
+                    if (niveisModo) {
+                        niveisModo.forEach(nivel => {
+                            const option = document.createElement('option');
+                            option.value = nivel.value;
+                            option.textContent = nivel.text;
+                            nivelFilter.appendChild(option);
+                        });
+                    }
+                }
+                nivelFilter.disabled = false;
+            } else {
+                nivelFilter.disabled = true;
+            }
+              } else {
+                  nivelFilter.disabled = true;
+              }
+        });
         jogoSelect.addEventListener('change', function() {
             const jogoSelecionado = jogoSelect.value;
             modoSelect.innerHTML = '<option value="" disabled selected hidden>Selecione um Modo</option>';
@@ -363,7 +426,6 @@ function mapearNivel(sala) {
                 });
                 modoSelect.disabled = false;
             }
-
           modoSelect.addEventListener('change', function() {
               const jogoSelecionado = jogoSelect.value;
               const modoSelecionado = modoSelect.value;
