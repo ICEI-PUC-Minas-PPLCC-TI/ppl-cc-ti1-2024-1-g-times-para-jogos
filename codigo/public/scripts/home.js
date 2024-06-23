@@ -158,14 +158,10 @@ if (usuarioLogado == false) {
         }
 
         function fetchAndDisplayStatuses() {
-            // Passo 1: Buscar o ID do usuário atual
             fetch(`http://localhost:3000/usuarios/${currentUserObj.id}`)
                 .then(response => response.json())
                 .then(currentUser => {
-                    // Passo 2: Buscar os IDs dos amigos do usuário atual
                     const amigosIds = currentUser.amigos || [];
-        
-                    // Passo 3: Buscar os nomes dos amigos (login) correspondentes aos IDs
                     const fetchAmigos = amigosIds.map(amigoId => {
                         return fetch(`http://localhost:3000/usuarios/${amigoId}`)
                             .then(response => response.json())
@@ -177,30 +173,20 @@ if (usuarioLogado == false) {
                             })
                             .catch(error => console.error(`Erro ao buscar amigo ${amigoId}:`, error));
                     });
-        
-                    // Passo 4: Esperar que todas as promises de fetchAmigos sejam resolvidas
                     Promise.all(fetchAmigos)
                         .then(amigos => {
-                            // Passo 5: Buscar todos os status
                             fetch(`http://localhost:3000/status`)
                                 .then(response => response.json())
                                 .then(statuses => {
-                                    // Passo 6: Filtrar e mostrar os status dos amigos e do usuário atual
                                     const todosStatus = statuses.filter(status => {
-                                        // Verificar se o status é do próprio usuário ou de algum amigo
                                         return amigos.some(amigo => amigo.nome === status.usuario) || status.usuario === currentUserObj.login;
                                     });
-        
-                                    // Ordenar por horário decrescente
                                     todosStatus.sort((a, b) => new Date(b.horario) - new Date(a.horario));
-        
-                                    // Exibir os status no HTML
                                     const atividadeAmigos = document.getElementById('atividade_amigos');
                                     atividadeAmigos.innerHTML = '';
                                     todosStatus.forEach(status => {
                                         const amigo = amigos.find(amigo => amigo.nome === status.usuario);
                                         const fotoPerfil = amigo ? amigo.fotoPerfil : currentUser.profilePhoto;
-        
                                         const statusDiv = document.createElement('div');
                                         statusDiv.classList.add('status-item');
                                         statusDiv.innerHTML = `
