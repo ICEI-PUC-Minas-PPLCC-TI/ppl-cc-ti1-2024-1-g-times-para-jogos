@@ -5,12 +5,10 @@ if (!usuarioLogado) {
   document.getElementById('sala').disabled = true;
   document.getElementById('apply-filters-btn').disabled = true;
   document.getElementById('create-room-btn').disabled = true;
-  const browserDiv = document.getElementById('browser');
-  browserDiv.innerHTML = '<p style="text-align: center; font-size: 20px;">Você não está logado. Por favor, entre ou registre-se.</p>';
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png';
-} else {
-  const userId = localStorage.getItem('usuarioCorrente');
+} 
+  const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
   const currentUserObj = JSON.parse(userId);
   const id = currentUserObj.id;
   var modal = document.getElementById("create-room-modal");
@@ -238,4 +236,3 @@ if (!usuarioLogado) {
       document.addEventListener('DOMContentLoaded', () => {
           fetchSalas().then(displaySalas);
         });
-      }
