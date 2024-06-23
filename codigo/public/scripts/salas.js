@@ -301,29 +301,22 @@ function mapearNivel(sala) {
             container.appendChild(salaDiv);
           }
         }
-        
         async function enterSala(salaId) {
           const currentUser = JSON.parse(localStorage.getItem('usuarioCorrente'));
           if (!currentUser || !currentUser.id) {
               console.error('Usuário não está logado');
               return;
           }
-      
           try {
               const response = await fetch(`http://localhost:3000/salas/${salaId}`);
               if (!response.ok) {
                   console.error('Erro ao buscar sala:', response.statusText);
                   return;
               }
-      
               const sala = await response.json();
-      
-              // Verificar se a sala é pública ou privada
               if (sala.publica) {
-                  // Sala pública: não precisa de senha
                   entrarNaSala(sala, currentUser, salaId);
               } else {
-                  // Sala privada: solicitar senha
                   const senha = prompt('Digite a senha da sala:');
                   if (senha === sala.senha) {
                       entrarNaSala(sala, currentUser, salaId);
