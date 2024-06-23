@@ -85,8 +85,11 @@ div.faq {
 }
 
 .accordion {
-    background-color: #eee;
-    color: #444;
+    font-family: "Lato", sans-serif;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: large;
+    margin-top: 20px;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -94,10 +97,11 @@ div.faq {
     border: none;
     outline: none;
     transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
 }
   
 .active, .accordion:hover {
-    background-color: #ccc;
+    background-color: var(--secondary-color);
 }
   
 .panel {
@@ -106,6 +110,7 @@ div.faq {
     color: black;
     display: none;
     overflow: hidden;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
     transition: max-height 0.3s ease-out;
     max-height: 0px;
 }
