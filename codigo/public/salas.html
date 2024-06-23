@@ -80,21 +80,31 @@
           <h2>Criar uma Sala</h2>
           <form id="create-room-form">
             <label for="nome">Nome da Sala:</label>
-            <input type="text" id="nome" name="nome" required><br><br>
+            <input type="text" id="nome" name="nome" required><br>
             <label for="jogo_select">Jogo:</label>
             <select id="jogo_select" name="jogo">
               <option value="CS2">CS2</option>
-            </select><br><br>
+            </select><br>
             <label for="modo_select">Modo:</label>
             <select id="modo_select" name="modo">
               <option value="Competitivo">Competitivo</option>
               <option value="Braço Direito">Braço Direito</option>
-            </select><br><br>
+            </select><br>
+            <label for="nivel_select">Nivel:</label>
+            <select id="nivel_select" name="nivel">
+              <option value="grey">0 - 4999</option>
+              <option value="light_blue">5000 - 9999</option>
+              <option value="blue">10000 - 14999</option>
+              <option value="purple">15000 - 19999</option>
+              <option value="pink">20000 - 24999</option>
+              <option value="red">25000 - 29999</option>
+              <option value="yellow">30000+</option>
+            </select><br>
             <label for="visibilidade">Visibilidade:</label>
             <select id="visibilidade" name="visibilidade">
               <option value="publica">Pública</option>
               <option value="privada">Privada</option>
-            </select><br><br>
+            </select><br>
             <label for="senha" id="senha-label" style="display: none;">Senha:</label>
             <input type="password" id="senha" name="senha" style="display: none;"><br><br>
             <button type="submit">Criar Sala</button>
