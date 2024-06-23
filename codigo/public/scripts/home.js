@@ -158,60 +158,69 @@ if (usuarioLogado == false) {
         }
 
         function fetchAndDisplayStatuses() {
-            const atividadeAmigos = document.getElementById('atividade_amigos');
+            // Passo 1: Buscar o ID do usuário atual
             fetch(`http://localhost:3000/usuarios/${currentUserObj.id}`)
-            .then(response => response.json())
-            .then(usuario => {
-                const amigosIds = usuario.amigos || [];
-                if (amigosIds.length === 0) {
-                    console.log('O usuário não tem amigos.');
-                    return;
-                }
-                const fetchAmigos = amigosIds.map(amigoId => {
-                    return fetch(`http://localhost:3000/usuarios/${amigoId}`)
+                .then(response => response.json())
+                .then(currentUser => {
+                    // Passo 2: Buscar os IDs dos amigos do usuário atual
+                    const amigosIds = currentUser.amigos || [];
+        
+                    // Passo 3: Buscar os nomes dos amigos (login) correspondentes aos IDs
+                    const fetchAmigos = amigosIds.map(amigoId => {
+                        return fetch(`http://localhost:3000/usuarios/${amigoId}`)
                             .then(response => response.json())
+                            .then(amigo => {
+                                return {
+                                    nome: amigo.login,
+                                    fotoPerfil: amigo.profilePhoto
+                                };
+                            })
                             .catch(error => console.error(`Erro ao buscar amigo ${amigoId}:`, error));
-                });
-                const fetchStatusUsuario = fetch(`http://localhost:3000/usuarios/${currentUserObj.id}/status`)
-                                            .then(response => response.json())
-                                            .catch(error => console.error('Erro ao buscar os status do usuário:', error));
-                Promise.all([...fetchAmigos, fetchStatusUsuario])
-                .then(results => {
-                    var amigos = results.slice(0, amigosIds.length);
-                    const statusUsuario = results[amigosIds.length];
-                    amigos = amigos.filter(amigo => amigo && amigosIds.includes(amigo.id));
-                    if (amigos.length === 0) {
-                        console.log('Nenhum amigo válido encontrado.');
-                        return;
-                    }
-                    const amigosIdsArray = amigos.map(amigo => amigo.id);
-                    fetch(`http://localhost:3000/status`)
-                    .then(response => response.json())
-                    .then(statuses => {
-                        const statusDosAmigos = statuses.filter(status => amigosIdsArray.includes(status.usuario_id));
-                        const todosStatus = [...statusUsuario, ...statusDosAmigos];
-                        todosStatus.sort((a, b) => new Date(b.horario) - new Date(a.horario));
-                        atividadeAmigos.innerHTML = '';
-                        todosStatus.forEach(status => {
-                            const statusDiv = document.createElement('div');
-                            statusDiv.classList.add('status-item');
-                            statusDiv.innerHTML = `
-                                <p>${status.usuario} (${formatarHorario(status.horario)}):</p>
-                                <p>${status.status}</p>
-                            `;
-                            atividadeAmigos.appendChild(statusDiv);
-                        });
-                    })
-                    .catch(error => console.error('Erro ao buscar os status dos amigos:', error));
+                    });
+        
+                    // Passo 4: Esperar que todas as promises de fetchAmigos sejam resolvidas
+                    Promise.all(fetchAmigos)
+                        .then(amigos => {
+                            // Passo 5: Buscar todos os status
+                            fetch(`http://localhost:3000/status`)
+                                .then(response => response.json())
+                                .then(statuses => {
+                                    // Passo 6: Filtrar e mostrar os status dos amigos e do usuário atual
+                                    const todosStatus = statuses.filter(status => {
+                                        // Verificar se o status é do próprio usuário ou de algum amigo
+                                        return amigos.some(amigo => amigo.nome === status.usuario) || status.usuario === currentUserObj.login;
+                                    });
+        
+                                    // Ordenar por horário decrescente
+                                    todosStatus.sort((a, b) => new Date(b.horario) - new Date(a.horario));
+        
+                                    // Exibir os status no HTML
+                                    const atividadeAmigos = document.getElementById('atividade_amigos');
+                                    atividadeAmigos.innerHTML = '';
+                                    todosStatus.forEach(status => {
+                                        const amigo = amigos.find(amigo => amigo.nome === status.usuario);
+                                        const fotoPerfil = amigo ? amigo.fotoPerfil : currentUser.profilePhoto;
+        
+                                        const statusDiv = document.createElement('div');
+                                        statusDiv.classList.add('status-item');
+                                        statusDiv.innerHTML = `
+                                            <p style="display: flex; align-items: center;"><img src="${fotoPerfil}" alt="Foto de perfil" style="width: 64px; height: 64px; border-radius: 50%; margin-right: 10px; display: inline;"><strong>${status.usuario} (${formatarHorario(status.horario)}):</strong></p>
+                                            <p>${status.status}</p>
+                                        `;
+                                        atividadeAmigos.appendChild(statusDiv);
+                                    });
+                                })
+                                .catch(error => console.error('Erro ao buscar os status:', error));
+                        })
+                        .catch(error => console.error('Erro ao buscar os nomes dos amigos:', error));
                 })
-                .catch(error => console.error('Erro ao buscar os amigos ou os próprios status:', error));
-            })
-            .catch(error => console.error('Erro ao buscar informações do usuário:', error));
+                .catch(error => console.error('Erro ao buscar informações do usuário atual:', error));
         }
+    
         function formatarHorario(data) {
             const date = new Date(data);
             return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
-        } 
+        }
         addFriendForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const friendName = friendNameInput.value.trim();

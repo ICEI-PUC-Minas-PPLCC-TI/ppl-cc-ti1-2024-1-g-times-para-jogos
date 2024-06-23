@@ -47,7 +47,10 @@
       "estado": "",
       "cidade": "",
       "telefone": "",
-      "amigos": [],
+      "amigos": [
+        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+        "fa32c412-0699-497f-82c0-5943d57f5ba5"
+      ],
       "status": "online"
     },
     {
@@ -126,6 +129,18 @@
       "status": "massa",
       "horario": "2024-06-23T12:10:04.073Z",
       "id": 2
+    },
+    {
+      "usuario": "gerson",
+      "status": "pao",
+      "horario": "2024-06-23T12:27:00.022Z",
+      "id": 3
+    },
+    {
+      "usuario": "lucas",
+      "status": "farinha",
+      "horario": "2024-06-23T12:50:55.611Z",
+      "id": 4
     }
   ]
 }
