@@ -159,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 entrarNaSala(salaDisponivel.id);
             } else {
                 console.log('Nenhuma sala encontrada. Continuando a busca...');
-                // Aqui você pode atualizar uma mensagem na tela informando que está procurando uma partida
             }
         } catch (error) {
             console.error('Erro ao buscar partida:', error);
@@ -205,13 +204,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (updateResponse.ok) {
                     console.log('Entrou na sala:', salaId);
-                    window.location.href = `sala.html?salaId=${salaId}`;  // Redireciona para a nova página da sala
+                    window.location.href = `sala.html?salaId=${salaId}`;
                 } else {
                     console.error('Erro ao atualizar a sala:', updateResponse.statusText);
                 }
             } else {
                 console.log('Usuário já está na sala:', salaId);
-                window.location.href = `sala.html?salaId=${salaId}`;  // Redireciona para a nova página da sala
+                window.location.href = `sala.html?salaId=${salaId}`; 
             }
         } catch (error) {
             console.error('Erro ao entrar na sala:', error);
