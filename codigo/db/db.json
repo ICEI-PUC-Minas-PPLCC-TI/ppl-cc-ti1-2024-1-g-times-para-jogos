@@ -104,6 +104,20 @@
       "capacidade": 5,
       "sala": "publica",
       "senha": ""
+    },
+    {
+      "id": "_s9588moxv",
+      "nome": "privado",
+      "jogo": "Rainbow Six Siege",
+      "modo": "Ranqueada",
+      "nivel": "low",
+      "dono": "admin",
+      "jogadores": [
+        "fa32c412-0699-497f-82c0-5943d57f5ba5"
+      ],
+      "capacidade": 2,
+      "sala": "privada",
+      "senha": "123"
     }
   ],
   "status": [

@@ -314,7 +314,7 @@ function mapearNivel(sala) {
                   return;
               }
               const sala = await response.json();
-              if (sala.publica) {
+              if (sala.sala === 'publica') {
                   entrarNaSala(sala, currentUser, salaId);
               } else {
                   const senha = prompt('Digite a senha da sala:');
