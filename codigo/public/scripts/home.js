@@ -1,13 +1,13 @@
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (!usuarioLogado) {
+if (usuarioLogado) {
   const atividadeAmigos = document.getElementById('atividade_amigos');
   atividadeAmigos.innerHTML = 'Você não está logado. <a href="login.html">Entre ou registre-se</a>.';
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png';
   const listaAmigos = document.getElementById('lista_amigos');
   listaAmigos.innerHTML = 'Você não está logado. <a href="login.html">Entre ou registre-se</a>.';
-} else {
-    const userId = localStorage.getItem('usuarioCorrente');
+} 
+    const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
     const currentUserObj = JSON.parse(userId);
     const id = currentUserObj.id;
     var db_usuarios = {}
@@ -141,4 +141,3 @@ if (!usuarioLogado) {
         // Carregar lista de amigos quando a página é carregada
         fetchFriends();
     });
-}

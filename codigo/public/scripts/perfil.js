@@ -1,5 +1,5 @@
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (!usuarioLogado) {
+if (usuarioLogado) {
     window.location.href = 'login.html';
 }
 const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
