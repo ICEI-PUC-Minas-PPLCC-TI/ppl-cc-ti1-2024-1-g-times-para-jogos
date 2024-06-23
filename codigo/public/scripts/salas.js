@@ -139,6 +139,7 @@ if (usuarioLogado == false) {
           const jogoFilter = document.getElementById('jogo').value;
           const modoFilter = document.getElementById('modo').value;
           const salaFilter = document.getElementById('sala').value;
+          const nivelFilter = document.getElementById('nivel').value;
     
           fetchSalas().then(salas => {
             const salasFiltradas = salas.filter(sala => {
@@ -149,6 +150,9 @@ if (usuarioLogado == false) {
                 return false;
               }
               if (salaFilter && sala.sala !== salaFilter && salaFilter !== 'Todas') {
+                return false;
+              }
+              if (nivelFilter && sala.nivel !== nivelFilter && nivelFilter !== 'Todos') {
                 return false;
               }
               return true;
@@ -179,12 +183,39 @@ if (usuarioLogado == false) {
             const salaDiv = document.createElement('div');
             salaDiv.className = 'sala';
             const jogadoresCount = sala.jogadores.length;
+            var nivel = "";
+            if(sala.jogo === 'CS2'){
+              switch (sala.nivel){
+                case 'grey':
+                  nivel = "0 - 4999";
+                  break;
+                case 'light_blue':
+                  nivel = "5000 - 9999";
+                  break;
+                case 'blue':
+                  nivel = "10000 - 14999";
+                  break;
+                case 'purple':
+                  nivel = '15000 - 19999';
+                  break;
+                case 'pink':
+                  nivel = '20000 - 24999';
+                  break;
+                case 'red':
+                  nivel = "25000 - 29999";
+                  break;
+                case 'yellow':
+                  nivel = "30000+";
+                  break;
+              }
+            }
             const visibilidade = sala.sala === 'publica' ? 'Pública' : 'Privada';
             const capacidadeMaxima = calcularCapacidadeMaxima(sala.modo);
             salaDiv.innerHTML = `
               <h1>${sala.nome}</h1>
               <h4>${sala.jogo} - ${sala.modo}</h4>
               <p>Jogadores: ${jogadoresCount}/${capacidadeMaxima}</p>
+              <p>Nivel: ${nivel}</p>
               <p>Sala: ${visibilidade}</p>
               <button onclick="enterSala('${sala.id}')">Entrar na Sala</button>
             `;
