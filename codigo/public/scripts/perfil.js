@@ -1,7 +1,10 @@
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
 if (!usuarioLogado) {
     window.location.href = 'login.html';
-  } else {
+}
+const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
+const currentUserObj = JSON.parse(userId);
+const id = currentUserObj.id;
     //Pegando o usuario atual logado
     async function updateLocalStorageFromServer(userId) {
         try {
@@ -17,7 +20,6 @@ if (!usuarioLogado) {
         }
     }
 
-    const userId = JSON.parse(localStorage.getItem('usuarioCorrente')).id;
     updateLocalStorageFromServer(userId).then(() => {
         const currentUserObj = JSON.parse(localStorage.getItem('usuarioCorrente'));
         const steamID = currentUserObj.steamID;
@@ -341,4 +343,3 @@ if (!usuarioLogado) {
         localStorage.setItem('usuarioCorrente', JSON.stringify (usuarioCorrente));
         window.location = 'login.html';
     });
-  }
