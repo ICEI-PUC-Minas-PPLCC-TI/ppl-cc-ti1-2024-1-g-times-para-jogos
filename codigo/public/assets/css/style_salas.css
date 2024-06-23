@@ -9,6 +9,10 @@
     --error-color: #ff4d4d;
 }
 
+* {
+    font-family: "Lato", sans-serif;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -86,25 +90,46 @@ div.salas{
     gap: 5rem;
 }
 
-div.sala{
-    margin-top: 10px;
+h1{
+    margin: 0;
 }
 
 div.filtros{
     flex: 1;
     font-size: large;
     font-weight: bolder;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: var(--primary-color);
+    padding: 15px;
     gap: 0.2rem;
     display: flex;
     flex-direction: column;
 }
 
 div.browser{
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     flex: 6;
-    padding: 10px;
+    padding: 15px;
+}
+
+div.sala{
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+div.sala button{
+    padding: 5px;
+    outline: none;
+    border: 0;
+    border-radius: 8px;
+    background-color: rgb(0, 255, 0);
+    box-shadow: 0 0 10px rgb(0, 255, 0);
 }
 
 #jogo, #modo, #nivel, #sala{
@@ -127,7 +152,7 @@ div.browser{
 
 #apply-filters-btn{
     margin-top: 10px;
-    background-color: rgb(0, 255, 0);
+    background-color: var(--tertiary-color);
 }
 
 #create-room-btn{
