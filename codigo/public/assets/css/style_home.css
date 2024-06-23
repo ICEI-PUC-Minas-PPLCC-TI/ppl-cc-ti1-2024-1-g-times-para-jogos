@@ -61,7 +61,7 @@ div.status{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3 ease;
+    transition: all 0.3 ease-in-out;
 }
 
 form#statusForm {
@@ -72,17 +72,17 @@ form#statusForm {
 
 textarea#statusContent {
     transition: all 0.3s ease;
-    color: var(--primary-color);
     font-family: 'Lato', sans-serif;
     width: 70vh;
+    opacity: 0.3;
     resize: none;
+    outline: none;
     border-radius: 10px;
 }
 
 textarea#statusContent:focus{
     transform: scale(1.1);
-    outline-style: solid;
-    outline-color: blue;
+    opacity: 1;
 }
 
 .amigos {
