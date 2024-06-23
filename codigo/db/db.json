@@ -30,7 +30,8 @@
       "cidade": "",
       "telefone": "",
       "amigos": [
-        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1"
+        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+        "e8c1b3bd-d0fd-4875-af2b-04619320dcd8"
       ],
       "status": "online"
     },
@@ -141,6 +142,18 @@
       "status": "farinha",
       "horario": "2024-06-23T12:50:55.611Z",
       "id": 4
+    },
+    {
+      "usuario": "admin",
+      "status": "testando",
+      "horario": "2024-06-23T14:41:23.938Z",
+      "id": 5
+    },
+    {
+      "usuario": "breno",
+      "status": "pastel",
+      "horario": "2024-06-23T14:44:24.746Z",
+      "id": 6
     }
   ]
 }

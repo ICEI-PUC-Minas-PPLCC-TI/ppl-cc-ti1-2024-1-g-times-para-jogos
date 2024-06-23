@@ -43,31 +43,33 @@ if (usuarioLogado == false) {
         const statusContent = document.getElementById('statusContent');
         const atividadeAmigos = document.getElementById('atividade_amigos');
 
-        statusForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const status = statusContent.value.trim();
-            if (status === '') {
-                alert('Por favor, digite algo para publicar.');
-                return;
-            }
-            const data = {
-                usuario: currentUserObj.login,
-                status: status,
-                horario: new Date().toISOString() 
-            };
-            fetch('http://localhost:3000/status', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(status => {
-                statusContent.value = '';
-                fetchAndDisplayStatuses();
-            })
-            .catch(error => console.error('Erro ao enviar o status:', error));
+        statusContent.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                const status = statusContent.value.trim();
+                    if (status === '') {
+                        alert('Por favor, digite algo para publicar.');
+                        return;
+                    }
+                    const data = {
+                        usuario: currentUserObj.login,
+                        status: status,
+                        horario: new Date().toISOString() 
+                    };
+                    fetch('http://localhost:3000/status', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(status => {
+                        statusContent.value = '';
+                        fetchAndDisplayStatuses();
+                    })
+                    .catch(error => console.error('Erro ao enviar o status:', error));
+                }
         });
 
         function fetchFriends() {

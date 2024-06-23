@@ -8,6 +8,14 @@
     --neutral-color: rgb(106, 106, 106);
     --error-color: #ff4d4d;
 }
+/*:root {
+    --primary-color: rgb(22, 24, 29);
+    --secondary-color: rgb(28, 31, 38);
+    --tertiary-color: rgb(0, 136, 255);
+    --success-color: rgb(3, 197, 3);
+    --neutral-color: rgb(106, 106, 106);
+    --error-color: #ff4d4d;
+} */
 
 body {
     font-family: "Lato", sans-serif;
@@ -54,7 +62,7 @@ div.feed {
     margin-right: 1%;
     padding: 20px;
     border-radius: 20px;
-    background-color: rgba(28, 31, 38, 0.5);
+    background-color: var(--secondary-color);
 }
 
 div.status{
@@ -73,7 +81,7 @@ form#statusForm {
 textarea#statusContent {
     transition: all 0.3s ease;
     font-family: 'Lato', sans-serif;
-    width: 70vh;
+    width: 100vh;
     opacity: 0.3;
     resize: none;
     outline: none;
@@ -82,12 +90,17 @@ textarea#statusContent {
 
 textarea#statusContent:focus{
     transform: scale(1.1);
+    padding: 20px; 
     opacity: 1;
+}
+
+textarea#statusContent::placeholder{
+    text-align: center;
 }
 
 .amigos {
     padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .friends-list {
