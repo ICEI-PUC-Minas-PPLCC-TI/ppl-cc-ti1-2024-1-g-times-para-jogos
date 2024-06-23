@@ -340,8 +340,7 @@ if (usuarioLogado == false) {
             const jogoSelecionado = jogoSelect.value;
             // Limpa o campo de modo
             modoSelect.innerHTML = '<option value="">Selecione um Modo</option>';
-            modoSelect.disabled = true;
-            nivelSelect.disabled = true;
+
             if (jogoSelecionado) {
                 modosPorJogo[jogoSelecionado].forEach(modo => {
                     const option = document.createElement('option');
@@ -363,7 +362,6 @@ if (usuarioLogado == false) {
                       option.textContent = nivel.text;
                       nivelSelect.appendChild(option);
                   });
-                  nivelSelect.disabled = false;
               }
           });
         });
