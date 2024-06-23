@@ -342,8 +342,6 @@ if (usuarioLogado == false) {
             const jogoSelecionado = jogoSelect.value;
             modoSelect.innerHTML = '<option value="" disabled selected hidden>Selecione um Modo</option>';
             nivelSelect.innerHTML = '<option value="" disabled selected hidden>Selecione um Nível</option>';
-            modoSelect.disabled = true;
-            nivelSelect.disabled = true;
             if (jogoSelecionado) {
                 modosPorJogo[jogoSelecionado].forEach(modo => {
                     const option = document.createElement('option');
