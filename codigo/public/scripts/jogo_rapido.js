@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modoSelect = document.getElementById('modo');
     const nivelSelect = document.getElementById('nivel');
     const buscarPartidaBtn = document.getElementById('buscar-partida-btn');
-
+    modoSelect.disabled = true;
+    nivelSelect.disabled = true;
     buscarPartidaBtn.addEventListener('click', buscarPartida);
     jogoSelect.addEventListener('change', function() {
         const jogoSelecionado = jogoSelect.value;
