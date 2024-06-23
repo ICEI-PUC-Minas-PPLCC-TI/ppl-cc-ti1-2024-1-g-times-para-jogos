@@ -206,7 +206,7 @@ const id = currentUserObj.id;
     });
 
     document.getElementById('logout').addEventListener('click', function(event) {
-        fetch(`http://localhost:3000/usuarios/${userId}`, {
+        fetch(`http://localhost:3000/usuarios/${currentUserObj.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

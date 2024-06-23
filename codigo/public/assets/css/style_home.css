@@ -11,25 +11,23 @@ body {
 
 /* Ajustando a barra de navegacao */
 
-.navbar {
+nav.navbar {
+    border-bottom: 4px solid rgb(131, 1, 103);
+    box-shadow: 0 5px 10px rgb(131, 1, 103);
     width: 100%;
     color: #fff;
     padding: 10px 0;
 }
 
-.container-nav {
-    width: 95%;
-    height: 150px;
-    margin: 0 auto;
+div.container-nav{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    align-content: center;
 }
 
-.container-nav img{
-    position: relative;
-    display: inline-block;
+div.container-nav img{
+    max-width: 100%;
+    height: auto;
 }
 
 div.home {
