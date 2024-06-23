@@ -52,8 +52,9 @@ div.container-nav {
     margin: 40px;
 }
 
-.nav-links li a {
+.nav-links li a, .nav-links li i{
     display: inline-block;
+    cursor: pointer;
     color: #fff;
     font-size: xx-large;
     text-decoration: none;
@@ -61,8 +62,14 @@ div.container-nav {
     transition: all 0.3s ease;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover{
     text-decoration: underline;
+    transform: scale(1.5);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+.nav-links li i:hover{
     transform: scale(1.5);
     text-underline-offset: 10px;
     opacity: 1;
