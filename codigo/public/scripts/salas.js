@@ -179,6 +179,24 @@ if (usuarioLogado == false) {
     }
   }
 
+function mapearNivel(sala) {
+  const { jogo, modo, nivel } = sala;
+  const niveis = niveisPorJogo[jogo];
+  if (niveis) {
+      if (Array.isArray(niveis)) {
+          const nivelObj = niveis.find(n => n.value === nivel);
+          return nivelObj ? nivelObj.text : "Nível desconhecido";
+      } else {
+          const niveisModo = niveis[modo];
+          if (niveisModo) {
+              const nivelObj = niveisModo.find(n => n.value === nivel);
+              return nivelObj ? nivelObj.text : "Nível desconhecido";
+          }
+      }
+  }
+  return "Nível desconhecido";
+}
+
   fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
       .then(response => {
           if (!response.ok) {
@@ -247,32 +265,7 @@ if (usuarioLogado == false) {
             const salaDiv = document.createElement('div');
             salaDiv.className = 'sala';
             const jogadoresCount = sala.jogadores.length;
-            var nivel = "";
-            if(sala.jogo === 'CS2'){
-              switch (sala.nivel){
-                case 'grey':
-                  nivel = "0 - 4999";
-                  break;
-                case 'light_blue':
-                  nivel = "5000 - 9999";
-                  break;
-                case 'blue':
-                  nivel = "10000 - 14999";
-                  break;
-                case 'purple':
-                  nivel = '15000 - 19999';
-                  break;
-                case 'pink':
-                  nivel = '20000 - 24999';
-                  break;
-                case 'red':
-                  nivel = "25000 - 29999";
-                  break;
-                case 'yellow':
-                  nivel = "30000+";
-                  break;
-              }
-            }
+            var nivel = mapearNivel(sala);
             const visibilidade = sala.sala === 'publica' ? 'Pública' : 'Privada';
             const capacidadeMaxima = calcularCapacidadeMaxima(sala.modo);
             salaDiv.innerHTML = `
