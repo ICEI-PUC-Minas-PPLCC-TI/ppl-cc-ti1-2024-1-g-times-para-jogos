@@ -29,7 +29,9 @@
       "estado": "",
       "cidade": "",
       "telefone": "",
-      "amigos": [],
+      "amigos": [
+        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1"
+      ],
       "status": "online"
     },
     {
@@ -46,7 +48,7 @@
       "cidade": "",
       "telefone": "",
       "amigos": [],
-      "status": "offline"
+      "status": "online"
     },
     {
       "id": "e8c1b3bd-d0fd-4875-af2b-04619320dcd8",
@@ -73,10 +75,10 @@
       "steamID": "76561198131622359",
       "profilePhoto": "https://robohash.org/5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1.png",
       "nascimento": "",
-      "genero": "",
-      "estado": "",
-      "cidade": "",
-      "telefone": "",
+      "genero": "Feminino",
+      "estado": "PE",
+      "cidade": "Asd",
+      "telefone": "(92) 87412-3311",
       "amigos": [],
       "status": "online"
     }
@@ -110,6 +112,14 @@
       "capacidade": 2,
       "sala": "publica",
       "senha": ""
+    }
+  ],
+  "status": [
+    {
+      "usuario": "admin",
+      "status": "ola",
+      "horario": "2024-06-23T11:48:19.424Z",
+      "id": 1
     }
   ]
 }

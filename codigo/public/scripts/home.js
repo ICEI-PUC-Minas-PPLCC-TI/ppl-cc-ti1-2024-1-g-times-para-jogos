@@ -37,8 +37,37 @@ if (usuarioLogado == false) {
         const addFriendForm = document.getElementById('addFriendForm');
         const friendNameInput = document.getElementById('friendName');
         const friendsList = document.getElementById('friendsList');
+        const statusForm = document.getElementById('statusForm');
+        const statusContent = document.getElementById('statusContent');
+        const atividadeAmigos = document.getElementById('atividade_amigos');
 
-        // Função para buscar os amigos do usuário
+        statusForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const status = statusContent.value.trim();
+            if (status === '') {
+                alert('Por favor, digite algo para publicar.');
+                return;
+            }
+            const data = {
+                usuario: currentUserObj.login,
+                status: status,
+                horario: new Date().toISOString() 
+            };
+            fetch('http://localhost:3000/status', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(status => {
+                statusContent.value = '';
+                fetchAndDisplayStatuses();
+            })
+            .catch(error => console.error('Erro ao enviar o status:', error));
+        });
+
         function fetchFriends() {
             fetch(`http://localhost:3000/usuarios/${id}`)
                 .then(response => response.json())
@@ -50,7 +79,6 @@ if (usuarioLogado == false) {
                         const img = document.createElement('img');
                         img.src = amigo.profilePhoto;
                         img.alt = "Foto de " + amigo.login;
-                        console.log(amigo);
                         const nomeAmigo = document.createElement('span');
                         nomeAmigo.textContent = amigo.login;
                         const statusAmigo = document.createElement('span');
@@ -60,7 +88,6 @@ if (usuarioLogado == false) {
                             statusAmigo.textContent = "Offline";
                         }
                         statusAmigo.classList.add('status', amigo.status);
-                        console.log(amigo.login + " status: " + amigo.status);
                         const deleteButton = document.createElement('button');
                         const friendInfo = document.createElement('div');
                         friendInfo.classList.add('friend-info');
@@ -80,7 +107,6 @@ if (usuarioLogado == false) {
                 .catch(error => console.error('Erro ao buscar amigos:', error));
         }
 
-        // Função para adicionar um novo amigo ao servidor
         function addFriend(friendName) {
             fetch(`http://localhost:3000/usuarios/${id}`)
                 .then(response => response.json())
@@ -108,7 +134,7 @@ if (usuarioLogado == false) {
                     friendNameInput.value = '';
                 }).catch(error => console.error('Erro ao adicionar amigo:', error));
         }
-        // Função para deletar um amigo do servidor
+
         function deleteFriend(friendName) {
             fetch(`http://localhost:3000/usuarios/${id}`)
                 .then(response => response.json())
@@ -129,7 +155,61 @@ if (usuarioLogado == false) {
                 .catch(error => console.error('Erro ao deletar amigo:', error));
         }
 
-        // Evento de submissão do formulário
+        function fetchAndDisplayStatuses() {
+            const atividadeAmigos = document.getElementById('atividade_amigos');
+            fetch(`http://localhost:3000/usuarios/${currentUserObj.id}`)
+            .then(response => response.json())
+            .then(usuario => {
+                const amigosIds = usuario.amigos || [];
+                if (amigosIds.length === 0) {
+                    console.log('O usuário não tem amigos.');
+                    return;
+                }
+                const fetchAmigos = amigosIds.map(amigoId => {
+                    return fetch(`http://localhost:3000/usuarios/${amigoId}`)
+                            .then(response => response.json())
+                            .catch(error => console.error(`Erro ao buscar amigo ${amigoId}:`, error));
+                });
+                const fetchStatusUsuario = fetch(`http://localhost:3000/usuarios/${currentUserObj.id}/status`)
+                                            .then(response => response.json())
+                                            .catch(error => console.error('Erro ao buscar os status do usuário:', error));
+                Promise.all([...fetchAmigos, fetchStatusUsuario])
+                .then(results => {
+                    var amigos = results.slice(0, amigosIds.length);
+                    const statusUsuario = results[amigosIds.length];
+                    amigos = amigos.filter(amigo => amigo && amigosIds.includes(amigo.id));
+                    if (amigos.length === 0) {
+                        console.log('Nenhum amigo válido encontrado.');
+                        return;
+                    }
+                    const amigosIdsArray = amigos.map(amigo => amigo.id);
+                    fetch(`http://localhost:3000/status`)
+                    .then(response => response.json())
+                    .then(statuses => {
+                        const statusDosAmigos = statuses.filter(status => amigosIdsArray.includes(status.usuario_id));
+                        const todosStatus = [...statusUsuario, ...statusDosAmigos];
+                        todosStatus.sort((a, b) => new Date(b.horario) - new Date(a.horario));
+                        atividadeAmigos.innerHTML = '';
+                        todosStatus.forEach(status => {
+                            const statusDiv = document.createElement('div');
+                            statusDiv.classList.add('status-item');
+                            statusDiv.innerHTML = `
+                                <p>${status.usuario} (${formatarHorario(status.horario)}):</p>
+                                <p>${status.status}</p>
+                            `;
+                            atividadeAmigos.appendChild(statusDiv);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao buscar os status dos amigos:', error));
+                })
+                .catch(error => console.error('Erro ao buscar os amigos ou os próprios status:', error));
+            })
+            .catch(error => console.error('Erro ao buscar informações do usuário:', error));
+        }
+        function formatarHorario(data) {
+            const date = new Date(data);
+            return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+        } 
         addFriendForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const friendName = friendNameInput.value.trim();
@@ -137,7 +217,6 @@ if (usuarioLogado == false) {
                 addFriend(friendName);
             }
         });
-
-        // Carregar lista de amigos quando a página é carregada
         fetchFriends();
+        fetchAndDisplayStatuses();
     });
