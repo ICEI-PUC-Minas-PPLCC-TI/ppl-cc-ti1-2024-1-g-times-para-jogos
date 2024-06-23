@@ -8,7 +8,7 @@ const id = currentUserObj.id;
     //Pegando o usuario atual logado
     async function updateLocalStorageFromServer(userId) {
         try {
-            const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
+            const response = await fetch(`http://localhost:3000/usuarios/${currentUserObj.id}`);
             if (!response.ok) {
                 throw new Error('Não foi possível requisitar o ID: ' + response.statusText);
             }
