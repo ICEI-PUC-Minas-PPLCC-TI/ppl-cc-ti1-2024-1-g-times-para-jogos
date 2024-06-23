@@ -305,43 +305,63 @@ function mapearNivel(sala) {
         async function enterSala(salaId) {
           const currentUser = JSON.parse(localStorage.getItem('usuarioCorrente'));
           if (!currentUser || !currentUser.id) {
-            console.error('Usuário não está logado');
-            return;
-          }
-          if (checkCapacidadeMaxima(salaId) === true) {
-            alert('A sala já está cheia. Não é possível entrar.');
-          } else {
-          try {
-            const response = await fetch(`http://localhost:3000/salas/${salaId}`);
-            if (!response.ok) {
-              console.error('Erro ao buscar sala:', response.statusText);
+              console.error('Usuário não está logado');
               return;
-            }
-              const sala = await response.json();
-          if (!sala.jogadores.includes(currentUser.id)) {
-            sala.jogadores.push(currentUser.id);
-            const updateResponse = await fetch(`http://localhost:3000/salas/${salaId}`, {
-              method: 'PATCH',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ jogadores: sala.jogadores })
-            });
-
-            if (updateResponse.ok) {
-              console.log('Entrou na sala:', salaId);
-              window.location.href = `sala.html?salaId=${salaId}`;
-            } else {
-              console.error('Erro ao atualizar a sala:', updateResponse.statusText);
-            }
-          } else {
-            console.log('Usuário já está na sala:', salaId);
-            window.location.href = `sala.html?salaId=${salaId}`;
           }
-        } catch (error) {
-          console.error('Erro ao entrar na sala:', error);
-        }}
+      
+          try {
+              const response = await fetch(`http://localhost:3000/salas/${salaId}`);
+              if (!response.ok) {
+                  console.error('Erro ao buscar sala:', response.statusText);
+                  return;
+              }
+      
+              const sala = await response.json();
+      
+              // Verificar se a sala é pública ou privada
+              if (sala.publica) {
+                  // Sala pública: não precisa de senha
+                  entrarNaSala(sala, currentUser, salaId);
+              } else {
+                  // Sala privada: solicitar senha
+                  const senha = prompt('Digite a senha da sala:');
+                  if (senha === sala.senha) {
+                      entrarNaSala(sala, currentUser, salaId);
+                  } else {
+                      alert('Senha incorreta. Acesso negado.');
+                  }
+              }
+          } catch (error) {
+              console.error('Erro ao entrar na sala:', error);
+          }
       }
+
+      async function entrarNaSala(sala, currentUser, salaId) {
+        try {
+            if (!sala.jogadores.includes(currentUser.id)) {
+                sala.jogadores.push(currentUser.id);
+                const updateResponse = await fetch(`http://localhost:3000/salas/${salaId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ jogadores: sala.jogadores })
+                });
+    
+                if (updateResponse.ok) {
+                    console.log('Entrou na sala:', salaId);
+                    window.location.href = `sala.html?salaId=${salaId}`;
+                } else {
+                    console.error('Erro ao atualizar a sala:', updateResponse.statusText);
+                }
+            } else {
+                console.log('Usuário já está na sala:', salaId);
+                window.location.href = `sala.html?salaId=${salaId}`;
+            }
+        } catch (error) {
+            console.error('Erro ao entrar na sala:', error);
+        }
+    }
     
       document.addEventListener('DOMContentLoaded', () => {
           fetchSalas().then(displaySalas);
