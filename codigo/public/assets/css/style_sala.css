@@ -85,12 +85,11 @@ div.container-nav {
 
 #sala-detalhes{
     display: flex;
+    flex: 1;
     padding: 20px;
     box-shadow: 0 0 10px rgb(0, 0, 0);
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 20px;
     flex-direction: column;
+    border-radius: 16px;
 }
 
 div.jogador img{
@@ -99,8 +98,24 @@ div.jogador img{
     border-radius: 50%;
 }
 
+div#sala{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    padding: 20px;
+    gap: 2.5rem;
+}
+
 div#sala-detalhes h1, div#sala-detalhes h4, div#sala-detalhes p{
     line-height: 0;
+}
+
+div#chat_box{
+    flex: 1;
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 0 5px rgb(0,0,0);
 }
 
 #sala-detalhes ul{
