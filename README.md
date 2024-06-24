@@ -16,4 +16,4 @@ O objetivo deste projeto é criar uma experiência simples e agradável para tod
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Clone o repositório na sua máquina, acesse a pasta "docs/" e então digite o comando npm install. Após isso, inicie o JSON Server com "npm start".
