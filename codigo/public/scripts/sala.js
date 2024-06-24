@@ -217,28 +217,40 @@ if (usuarioLogado == false) {
             const messageDiv = document.getElementById('messages_chat');
             messageDiv.innerHTML = "";
               messages.forEach(msg => {
-                const message = document.createElement('div');
-                message.classList.add('message');
-
-                const timeSpan = document.createElement('span');
-                timeSpan.classList.add('time');
-                timeSpan.textContent = msg.horario;
-
-                const authorSpan = document.createElement('span');
-                authorSpan.classList.add('author');
-                authorSpan.textContent = msg.autor+": ";
-
-                const contentSpan = document.createElement('span');
-                contentSpan.classList.add('content');
-                contentSpan.textContent = msg.mensagem;
-
-                message.appendChild(timeSpan);
-                message.appendChild(authorSpan);
-                message.appendChild(contentSpan);
-                messageDiv.appendChild(message);
+                fetch(`http://localhost:3000/usuarios/${msg.autorId}`)
+                  .then(response => response.json())
+                  .then(user => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message');
+                    const timeSpan = document.createElement('span');
+                    timeSpan.classList.add('time');
+                    timeSpan.textContent = msg.horario;
+                    const messageHeader = document.createElement('div');
+                    messageHeader.classList.add('message-header');
+                    messageHeader.appendChild(timeSpan);
+                    const messageContent = document.createElement('div');
+                    messageContent.classList.add('message-content');
+                    const profileImg = document.createElement('img');
+                    profileImg.classList.add('profile-img');
+                    profileImg.src = user.profilePhoto;
+                    profileImg.alt = `${msg.autor} profile picture`;
+                    const authorSpan = document.createElement('span');
+                    authorSpan.classList.add('author');
+                    authorSpan.textContent = `${msg.autor}: `;
+                    const contentSpan = document.createElement('span');
+                    contentSpan.classList.add('content');
+                    contentSpan.textContent = msg.mensagem;
+                    messageContent.appendChild(profileImg);
+                    messageContent.appendChild(authorSpan);
+                    messageContent.appendChild(contentSpan);
+                    messageDiv.appendChild(messageHeader);
+                    messageDiv.appendChild(messageContent);
+                    messagesChat.appendChild(messageDiv);
+                    messagesChat.scrollTop = messagesChat.scrollHeight;
+                  })
+                  .catch(error => console.error('Erro ao buscar usuário:', error));
               });
-              messagesChat.scrollTop = messagesChat.scrollHeight;
-          }
+            }
       
           sendMessageButton.addEventListener("click", sendMessage);
       

@@ -34,7 +34,7 @@
         "e8c1b3bd-d0fd-4875-af2b-04619320dcd8",
         "850ff9f1-43ef-4fde-bf3f-405f9948d30a"
       ],
-      "status": "online"
+      "status": "offline"
     },
     {
       "id": "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
@@ -85,7 +85,7 @@
       "cidade": "Asd",
       "telefone": "(92) 87412-3311",
       "amigos": [],
-      "status": "online"
+      "status": "offline"
     },
     {
       "id": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
@@ -104,32 +104,7 @@
       "status": "online"
     }
   ],
-  "salas": [
-    {
-      "id": "_nywcq6iwd",
-      "nome": "oies",
-      "jogo": "CS2",
-      "modo": "Competitivo",
-      "nivel": "grey",
-      "dono": "gerson",
-      "jogadores": [
-        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
-        "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
-        "fa32c412-0699-497f-82c0-5943d57f5ba5"
-      ],
-      "capacidade": 5,
-      "sala": "publica",
-      "senha": "",
-      "mensagens": [
-        {
-          "autor": "admin",
-          "autorId": "fa32c412-0699-497f-82c0-5943d57f5ba5",
-          "horario": "24/6/2024 7:22",
-          "mensagem": "asdada"
-        }
-      ]
-    }
-  ],
+  "salas": [],
   "status": [
     {
       "usuario": "admin",
