@@ -3,6 +3,7 @@ if (usuarioLogado == false) {
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png';
 } 
+  const urlParams = new URLSearchParams(window.location.search);
   const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
   const currentUserObj = JSON.parse(userId);
   const id = currentUserObj.id;
@@ -165,3 +166,98 @@ if (usuarioLogado == false) {
         document.addEventListener('DOMContentLoaded', () => {
           displaySalaDetails();
         });
+
+        document.addEventListener("DOMContentLoaded", () => {
+          const salaId = urlParams.get('salaId');
+          const messagesChat = document.getElementById("messages_chat");
+          const messageInput = document.getElementById("messagesInput");
+          const sendMessageButton = document.getElementById("sendMessageButton");
+      
+          function formatarHorario(data) {
+            const date = new Date(data);
+            return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+        }
+
+            function sendMessage() {
+              const messageText = messageInput.value;
+              if (messageText.trim() === "") return;
+      
+              const message = {
+                  autor: currentUserObj.login,
+                  autorId: currentUserObj.id,
+                  horario: formatarHorario(new Date().toISOString()),
+                  mensagem: messageText
+              };
+      
+              fetch(`http://localhost:3000/salas/${salaId}`)
+              .then(response => response.json())
+              .then(sala => {
+                  const updatedMessages = sala.mensagens || [];
+                  updatedMessages.push(message);
+      
+                  return fetch(`http://localhost:3000/salas/${salaId}`, {
+                      method: 'PATCH',
+                      headers: {
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({
+                          mensagens: updatedMessages
+                      })
+                  });
+              })
+              .then(response => response.json())
+              .then(updatedSala => {
+                  displayMessages(updatedSala.mensagens);
+                  messageInput.value = "";
+              })
+              .catch(error => console.error('Erro ao enviar a mensagem:', error));
+      }
+      
+          function displayMessages(messages) {
+            const messageDiv = document.getElementById('messages_chat');
+            messageDiv.innerHTML = "";
+              messages.forEach(msg => {
+                const message = document.createElement('div');
+                message.classList.add('message');
+
+                const timeSpan = document.createElement('span');
+                timeSpan.classList.add('time');
+                timeSpan.textContent = msg.horario;
+
+                const authorSpan = document.createElement('span');
+                authorSpan.classList.add('author');
+                authorSpan.textContent = msg.autor+": ";
+
+                const contentSpan = document.createElement('span');
+                contentSpan.classList.add('content');
+                contentSpan.textContent = msg.mensagem;
+
+                message.appendChild(timeSpan);
+                message.appendChild(authorSpan);
+                message.appendChild(contentSpan);
+                messageDiv.appendChild(message);
+              });
+              messagesChat.scrollTop = messagesChat.scrollHeight;
+          }
+      
+          sendMessageButton.addEventListener("click", sendMessage);
+      
+          messageInput.addEventListener("keypress", (event) => {
+              if (event.key === "Enter") {
+                  sendMessage();
+              }
+          });
+      
+          function loadMessages() {
+              fetch(`http://localhost:3000/salas/${salaId}`)
+                  .then(response => response.json())
+                  .then(sala => {
+                      displayMessages(sala.mensagens || []);
+                  })
+                  .catch(error => console.error('Erro ao carregar as mensagens:', error));
+          }
+      
+      
+          loadMessages();
+          /*setInterval(loadMessages, 3000);*/
+      });

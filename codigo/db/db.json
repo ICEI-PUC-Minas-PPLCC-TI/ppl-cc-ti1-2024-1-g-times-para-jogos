@@ -85,7 +85,7 @@
       "cidade": "Asd",
       "telefone": "(92) 87412-3311",
       "amigos": [],
-      "status": "offline"
+      "status": "online"
     },
     {
       "id": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
@@ -119,7 +119,15 @@
       ],
       "capacidade": 5,
       "sala": "publica",
-      "senha": ""
+      "senha": "",
+      "mensagens": [
+        {
+          "autor": "admin",
+          "autorId": "fa32c412-0699-497f-82c0-5943d57f5ba5",
+          "horario": "24/6/2024 7:22",
+          "mensagem": "asdada"
+        }
+      ]
     }
   ],
   "status": [
