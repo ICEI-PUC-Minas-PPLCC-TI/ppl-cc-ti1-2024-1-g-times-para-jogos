@@ -271,5 +271,5 @@ if (usuarioLogado == false) {
       
       
           loadMessages();
-          /*setInterval(loadMessages, 3000);*/
+          setInterval(loadMessages, 3000);
       });
