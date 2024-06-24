@@ -3,26 +3,26 @@ cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: 
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
+  - family-names: Dias
+    given-names: Rian
+  - family-names: Amorim
+    given-names: Luan
+  - family-names: Comini
+    given-names: Joao
+  - family-names: Paiva
+    given-names: Lucas
   - family-names: 
     given-names: 
   - family-names: 
     given-names:
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Vieira
+    given-names: Rommel
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Simões
+    given-names: Tamara
 keywords:
   - 
   - 
@@ -35,26 +35,26 @@ cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: 
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
+  - family-names: Dias
+    given-names: Rian
+  - family-names: Amorim
+    given-names: Luan
+  - family-names: Comini
+    given-names: Joao
+  - family-names: Paiva
+    given-names: Lucas
   - family-names: 
     given-names: 
   - family-names: 
     given-names:
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Vieira
+    given-names: Rommel
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Simões
+    given-names: Tamara
 keywords:
   - 
   - 
