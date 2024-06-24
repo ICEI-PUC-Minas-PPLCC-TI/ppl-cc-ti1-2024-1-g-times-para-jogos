@@ -182,18 +182,25 @@
       "status": "arroz",
       "horario": "2024-06-23T17:35:07.905Z",
       "id": 10
+    },
+    {
+      "usuario": "admin",
+      "status": "ola",
+      "horario": "2024-06-24T07:49:12.469Z",
+      "id": 11
+    },
+    {
+      "usuario": "admin",
+      "status": "amigo",
+      "horario": "2024-06-24T08:15:31.290Z",
+      "id": 12
     }
   ],
   "solicitacoesAmizade": [
     {
-      "de": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
-      "para": "fa32c412-0699-497f-82c0-5943d57f5ba5",
+      "de": "fa32c412-0699-497f-82c0-5943d57f5ba5",
+      "para": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
       "id": 1
-    },
-    {
-      "de": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
-      "para": "fa32c412-0699-497f-82c0-5943d57f5ba5",
-      "id": 2
     }
   ]
 }

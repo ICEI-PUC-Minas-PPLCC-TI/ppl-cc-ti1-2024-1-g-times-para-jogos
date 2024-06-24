@@ -38,11 +38,7 @@ if (usuarioLogado == false) {
     document.addEventListener('DOMContentLoaded', () => {
         const addFriendForm = document.getElementById('addFriendForm');
         const friendNameInput = document.getElementById('friendName');
-        const friendsList = document.getElementById('friendsList');
-        const statusForm = document.getElementById('statusForm');
         const statusContent = document.getElementById('statusContent');
-        const atividadeAmigos = document.getElementById('atividade_amigos');
-        const friendRequestsList = document.getElementById('friendList')
 
         statusContent.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' && !event.shiftKey) {
@@ -174,66 +170,71 @@ if (usuarioLogado == false) {
                 .catch(error => console.error('Erro ao buscar amigos:', error));
         }
 
-        function addFriend(friendName) {
-            fetch(`http://localhost:3000/usuarios/${id}`)
-                .then(response => response.json())
-                .then(user => {
-                    // Verificar se está tentando adicionar a si mesmo
-                    if (user.login === friendName) {
-                        alert("Você não pode enviar uma solicitação de amizade para si mesmo!");
-                        return;
-                    }
+        async function addFriend(friendName) {
+            try {
+                const userResponse = await fetch(`http://localhost:3000/usuarios/${id}`);
+                if (!userResponse.ok) {
+                    throw new Error('Erro ao buscar informações do usuário');
+                }
+                const user = await userResponse.json();
         
-                    // Verificar se já existe uma solicitação pendente para essa pessoa
-                    fetch(`http://localhost:3000/solicitacoesAmizade?de=${id}&para=${friendName}`)
-                        .then(response => response.json())
-                        .then(requests => {
-                            if (requests.length > 0) {
-                                alert("Você já enviou uma solicitação de amizade para essa pessoa!");
-                                return;
-                            }
+                if (user.login === friendName) {
+                    alert("Você não pode enviar uma solicitação de amizade para si mesmo!");
+                    return;
+                }
+                const usuariosResponse = await fetch(`http://localhost:3000/usuarios`);
+                if (!usuariosResponse.ok) {
+                    throw new Error('Erro ao buscar usuários');
+                }
+                const usuarios = await usuariosResponse.json();
         
-                            // Verificar se já são amigos
-                            if (user.amigos.includes(friendName)) {
-                                alert("Você já é amigo dessa pessoa!");
-                                return;
-                            }
+                const friend = usuarios.find(usuario => usuario.login === friendName);
+                if (!friend) {
+                    alert("Usuário não encontrado!");
+                    return;
+                }
         
-                            // Enviar a solicitação de amizade
-                            fetch(`http://localhost:3000/usuarios`)
-                                .then(response => response.json())
-                                .then(usuarios => {
-                                    const friend = usuarios.find(usuario => usuario.login === friendName);
-                                    if (!friend) {
-                                        alert("Usuário não encontrado!");
-                                        return;
-                                    }
+                const friendId = friend.id;
         
-                                    const newRequest = {
-                                        de: id,
-                                        para: friend.id
-                                    };
+                const solicitacoesResponse = await fetch(`http://localhost:3000/solicitacoesAmizade?de=${id}&para=${friendId}`);
+                if (!solicitacoesResponse.ok) {
+                    throw new Error('Erro ao buscar solicitações pendentes');
+                }
+                const requests = await solicitacoesResponse.json();
         
-                                    fetch(`http://localhost:3000/solicitacoesAmizade`, {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json'
-                                        },
-                                        body: JSON.stringify(newRequest)
-                                    })
-                                    .then(response => response.json())
-                                    .then(() => {
-                                        alert("Solicitação de amizade enviada!");
-                                        friendNameInput.value = '';
-                                        fetchFriendRequests(); // Atualizar lista de solicitações
-                                    })
-                                    .catch(error => console.error('Erro ao enviar solicitação:', error));
-                                })
-                                .catch(error => console.error('Erro ao buscar usuários:', error));
-                        })
-                        .catch(error => console.error('Erro ao buscar solicitações pendentes:', error));
-                })
-                .catch(error => console.error('Erro ao buscar informações do usuário:', error));
+                if (requests.length > 0) {
+                    alert("Você já enviou uma solicitação de amizade para essa pessoa!");
+                    return;
+                }
+        
+                if (user.amigos.includes(friendId)) {
+                    alert("Você já é amigo dessa pessoa!");
+                    return;
+                }
+        
+                const newRequest = {
+                    de: id,
+                    para: friendId
+                };
+        
+                const requestResponse = await fetch(`http://localhost:3000/solicitacoesAmizade`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newRequest)
+                });
+        
+                if (!requestResponse.ok) {
+                    throw new Error('Erro ao enviar solicitação');
+                }
+        
+                alert("Solicitação de amizade enviada!");
+                friendNameInput.value = '';
+                fetchFriendRequests();
+            } catch (error) {
+                console.error('Erro ao processar solicitação de amizade:', error);
+            }
         }
         
         function deleteFriend(friendId) {
@@ -263,7 +264,7 @@ if (usuarioLogado == false) {
                             });
                         })
                         .then(() => {
-                            fetchFriends(); // Atualizar lista de amigos
+                            fetchFriends();
                         })
                         .catch(error => console.error('Erro ao atualizar lista de amigos do amigo:', error));
                 })
@@ -271,71 +272,70 @@ if (usuarioLogado == false) {
         }
         
         
-        function acceptFriendRequest(requestId) {
-            fetch(`http://localhost:3000/solicitacoesAmizade/${requestId}`, {
-                method: 'DELETE'
-            })
-            .then(() => {
-                fetchFriendRequests(); // Atualizar lista de solicitações
-                fetch(`http://localhost:3000/solicitacoesAmizade/${requestId}`)
-                    .then(response => response.json())
-                    .then(request => {
-                        fetch(`http://localhost:3000/usuarios/${request.de}`)
-                            .then(response => response.json())
-                            .then(amigo => {
-                                if (!amigo || !amigo.amigos) {
-                                    throw new Error('Usuário ou lista de amigos não encontrados');
-                                }
+        async function acceptFriendRequest(requestId) {
+            try {
+                const requestResponse = await fetch(`http://localhost:3000/solicitacoesAmizade/${requestId}`);
+                if (!requestResponse.ok) {
+                    throw new Error('Erro ao buscar solicitação');
+                }
+                const request = await requestResponse.json();
         
-                                // Verificar se já são amigos
-                                if (amigo.amigos.includes(id)) {
-                                    alert("Vocês já são amigos!");
-                                    return;
-                                }
+                await fetch(`http://localhost:3000/solicitacoesAmizade/${requestId}`, {
+                    method: 'DELETE'
+                });
         
-                                const updatedFriendsOfUser = [...amigo.amigos, id];
-                                fetch(`http://localhost:3000/usuarios/${request.de}`, {
-                                    method: 'PATCH',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        amigos: updatedFriendsOfUser
-                                    })
-                                })
-                                .then(() => {
-                                    fetch(`http://localhost:3000/usuarios/${id}`)
-                                        .then(response => response.json())
-                                        .then(user => {
-                                            const updatedFriendsOfFriend = [...user.amigos, request.de];
-                                            return fetch(`http://localhost:3000/usuarios/${id}`, {
-                                                method: 'PATCH',
-                                                headers: {
-                                                    'Content-Type': 'application/json'
-                                                },
-                                                body: JSON.stringify({
-                                                    amigos: updatedFriendsOfFriend
-                                                })
-                                            });
-                                        })
-                                        .then(() => {
-                                            alert("Solicitação de amizade aceita!");
-                                            fetchFriends(); // Atualizar lista de amigos
-                                            fetchFriendRequests(); // Atualizar lista de solicitações
-                                        })
-                                        .catch(error => console.error('Erro ao atualizar lista de amigos do amigo:', error));
-                                })
-                                .catch(error => console.error('Erro ao atualizar lista de amigos:', error));
-                            })
-                            .catch(error => console.error('Erro ao buscar usuário:', error));
+                fetchFriendRequests();
+        
+                const amigoResponse = await fetch(`http://localhost:3000/usuarios/${request.de}`);
+                if (!amigoResponse.ok) {
+                    throw new Error('Erro ao buscar usuário');
+                }
+                const amigo = await amigoResponse.json();
+        
+                if (!amigo || !amigo.amigos) {
+                    throw new Error('Usuário ou lista de amigos não encontrados');
+                }
+        
+                if (amigo.amigos.includes(id)) {
+                    alert("Vocês já são amigos!");
+                    return;
+                }
+        
+                const updatedFriendsOfUser = [...amigo.amigos, id];
+                await fetch(`http://localhost:3000/usuarios/${request.de}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        amigos: updatedFriendsOfUser
                     })
-                    .catch(error => console.error('Erro ao buscar solicitação:', error));
-            })
-            .catch(error => console.error('Erro ao aceitar solicitação:', error));
+                });
+        
+                const userResponse = await fetch(`http://localhost:3000/usuarios/${id}`);
+                if (!userResponse.ok) {
+                    throw new Error('Erro ao buscar usuário');
+                }
+                const user = await userResponse.json();
+        
+                const updatedFriendsOfFriend = [...user.amigos, request.de];
+                await fetch(`http://localhost:3000/usuarios/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        amigos: updatedFriendsOfFriend
+                    })
+                });
+        
+                alert("Solicitação de amizade aceita!");
+                fetchFriends();
+                fetchFriendRequests();
+            } catch (error) {
+                console.error('Erro ao processar solicitação de amizade:', error);
+            }
         }
-        
-        
-        
         
         function declineFriendRequest(requestId) {
             fetch(`http://localhost:3000/solicitacoesAmizade/${requestId}`, {
@@ -353,7 +353,7 @@ if (usuarioLogado == false) {
                 method: 'DELETE'
             })
             .then(() => {
-                fetchSentFriendRequests(); // Atualiza a lista de solicitações de amizade enviadas
+                fetchSentFriendRequests();
                 alert("Solicitação de amizade cancelada!");
             })
             .catch(error => console.error('Erro ao cancelar solicitação de amizade:', error));
