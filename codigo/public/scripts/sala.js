@@ -60,7 +60,7 @@ if (usuarioLogado == false) {
             const user = await fetchUser(userId);
             if (user) {
               const listItem = document.createElement('li');
-              listItem.innerHTML = `<img src="${user.profilePhoto}" alt="Foto de ${user.nome}" style="width: 30px; height: 30px;"> ${user.login}
+              listItem.innerHTML = `<img src="${user.profilePhoto}" alt="Foto de ${user.nome}" style="width: 30px; height: 30px;"><span class="user-name-text">${user.login}</span>
               ${(currentUserObj.login === sala.dono && user.login !== sala.dono) ? `<span class="kick-icon" onclick="kickPlayer('${salaId}', '${userId}')">✖</span>` : ''}`;
               jogadoresList.appendChild(listItem);
             }

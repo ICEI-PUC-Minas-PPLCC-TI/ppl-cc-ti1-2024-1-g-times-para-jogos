@@ -99,8 +99,22 @@ div.jogador img{
     border-radius: 50%;
 }
 
-li{
+#sala-detalhes ul{
+    display: flex;
+    flex-direction: column;
+    padding-right: 40px;
+    gap: 1rem;
+}
+
+#sala-detalhes li{
+    display: flex;
+    gap: 1rem;
     list-style: none;
+    padding: 10px;
+    align-items: center;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+    border-radius: 16px;
+    background-color: var(--secondary-color);
 }
 
 .botoes{
