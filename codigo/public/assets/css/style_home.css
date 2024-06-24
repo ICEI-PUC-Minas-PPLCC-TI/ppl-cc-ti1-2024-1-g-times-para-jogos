@@ -147,14 +147,14 @@ div.status-item{
     background-color: var(--primary-color);
 }
 
-.friends-list {
+.friends-list, #friendRequestsList {
     list-style-type: none;
     padding: 0;
     width: 100%;
     max-width: 600px;
 }
 
-.friend-item {
+.friend-item, .sent-friend-request-item, .friend-request-item{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,6 +164,11 @@ div.status-item{
     margin-bottom: 10px;
     background-color: var(--secondary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+div.friend-request-buttons{
+    display: flex;
+    justify-content: space-between;
 }
 
 .friend-info {
@@ -181,10 +186,14 @@ div.status-item{
 .status.offline {
     color: var(--neutral-color);
     text-shadow: 0 0 10px var(--neutral-color);
-
 }
 
-.friend-item img {
+.pending-status-friend{
+    color: orange;
+    text-shadow: 0 0 10px orange;
+}
+
+.friend-item img, .sent-friend-request-item img, .friend-request-item img{
     border-radius: 50px;
     margin-right: 10px;
     width: 64px;
@@ -221,7 +230,7 @@ div.status-item{
     transform: scale(1.3);
 }
 
-.delete {
+.delete, button.cancel-sol-button, button.decline-sol-button {
     background-color: var(--error-color);
     border: none;
     align-items: center;
@@ -233,9 +242,26 @@ div.status-item{
     border-radius: 10px;
 }
 
-.delete:hover {
+.delete:hover, button.cancel-sol-button:hover, button.decline-sol-button:hover{
     transform: scale(1.3);
     box-shadow: 0 0 10px var(--error-color);
+}
+
+button.accept-sol-button{
+    background-color: var(--success-color);
+    border: none;
+    align-items: center;
+    font-weight: bolder;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button.accept-sol-button:hover{
+    transform: scale(1.3);
+    box-shadow: 0 0 10px var(--success-color);
 }
 
 .hidden {
