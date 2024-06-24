@@ -99,6 +99,10 @@ div.jogador img{
     border-radius: 50%;
 }
 
+div#sala-detalhes h1, div#sala-detalhes h4, div#sala-detalhes p{
+    line-height: 0;
+}
+
 #sala-detalhes ul{
     display: flex;
     flex-direction: column;
