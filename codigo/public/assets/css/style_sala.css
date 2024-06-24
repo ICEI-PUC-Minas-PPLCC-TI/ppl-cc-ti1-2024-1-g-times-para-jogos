@@ -147,6 +147,7 @@ div#chat_box{
 
 .delete-room{
     padding: 5px;
+    color: white;
     background-color: #e04b4b;
     border: 0;
     outline: 0;

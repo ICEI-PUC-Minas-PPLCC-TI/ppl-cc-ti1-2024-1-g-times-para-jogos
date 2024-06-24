@@ -1,7 +1,6 @@
 const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
 if (usuarioLogado == false) {
-  const fotoPerfil = document.getElementById('foto_de_perfil');
-  fotoPerfil.src = '../assets/images/default_profile.png';
+  window.location.href = 'login.html';
 } 
   const urlParams = new URLSearchParams(window.location.search);
   const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
