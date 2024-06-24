@@ -1,5 +1,6 @@
-const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (usuarioLogado == false) {
+var usuarioLogado = true;
+if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usuarioCorrente') == null) {
+    usuarioLogado = false;
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png';
 }

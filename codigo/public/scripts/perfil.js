@@ -1,5 +1,5 @@
-const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (usuarioLogado == false) {
+var usuarioLogado = true;
+if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usuarioCorrente') == null) {
     window.location.href = 'login.html';
 }
 const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');

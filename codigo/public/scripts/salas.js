@@ -1,5 +1,5 @@
-const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (usuarioLogado == false) {
+var usuarioLogado = true;
+if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usuarioCorrente') == null) {
   document.getElementById('jogo').disabled = true;
   document.getElementById('modo').disabled = true;
   document.getElementById('sala').disabled = true;
@@ -8,7 +8,7 @@ if (usuarioLogado == false) {
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png';
 } 
-  const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
+const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
   const currentUserObj = JSON.parse(userId);
   const id = currentUserObj.id;
   const modosPorJogo = {

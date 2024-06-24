@@ -1,6 +1,6 @@
-const usuarioLogado = localStorage.getItem('usuarioCorrente') !== null;
-if (usuarioLogado == false) {
-  const atividadeAmigos = document.getElementById('atividade_amigos');
+var usuarioLogado = true;
+if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usuarioCorrente') == null) {
+    const atividadeAmigos = document.getElementById('feed');
   atividadeAmigos.innerHTML = 'Você não está logado. <a href="login.html">Entre ou registre-se</a>.';
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png';
@@ -464,8 +464,12 @@ if (usuarioLogado == false) {
                 addFriend(friendName);
             }
         });
-        fetchFriends();
-        fetchFriendRequests();
-        fetchSentFriendRequests();
         fetchAndDisplayStatuses();
+        fetchFriendRequests();
+        fetchAndDisplayStatuses();
+        fetchFriends();
+        setInterval(fetchFriendRequests, 5000);
+        setInterval(fetchSentFriendRequests, 5000);
+        setInterval(fetchAndDisplayStatuses, 5000);
+        setInterval(fetchFriends, 5000);
     });

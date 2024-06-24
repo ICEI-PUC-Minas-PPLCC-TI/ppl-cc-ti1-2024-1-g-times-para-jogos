@@ -233,13 +233,13 @@
                       </tr>
                       <tr>
                         <th scope="row">RF-003</th>
-                        <td>Facilitar a criação de salas no aplicativo para que seja criada uma sala no jogo desejado ao mesmo tempo.</td>
+                        <td>Criação de salas no aplicativo.</td>
                         <td>ALTA</td>
                       </tr>
                       <tr>
                         <th scope="row">RF-004</th>
-                        <td>Permitir que o usuário adquira uma assinatura exclusiva para benefícios.</td>
-                        <td>MEDIA</td>
+                        <td>Feed de atualizações de status dos amigos.</td>
+                        <td>ALTA</td>
                       </tr>
                       <tr>
                         <th scope="row">RF-005</th>
@@ -248,20 +248,15 @@
                       </tr>
                       <tr>
                         <th scope="row">RF-006</th>
-                        <td>Crossplay</td>
-                        <td>MEDIA</td>
+                        <td>Sistema de Chat nas Salas</td>
+                        <td>ALTA</td>
                       </tr>
                       <tr>
                         <th scope="row">RF-007</th>
-                        <td>Forum para Discussao dos Jogadores</td>
-                        <td>MEDIA</td>
+                        <td>Sistema para encontrar partida rápida</td>
+                        <td>ALTA</td>
                       </tr>
-                      <tr>
-                        <th scope="row">RF-008</th>
-                        <td>Espaco de Video-aulas feito por Pro-players</td>
-                        <td>MEDIA</td>
-                      </tr>
-                  </tbody>
+                    </tbody>
                 </table>
 
                 <p><strong>Requisitos Não-Funcionais</strong></p>
@@ -387,123 +382,209 @@
           <!-- Funcionalidades ==================== -->
           <section id="ti_solucao">
             <h2>Solução</h2>
-            <p class="lead">Esta seção apresenta todos os detalhes da solução criada no projeto.
-              <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse" href="#collapseSolucao">Info</button>
-            </p>
-            <div class="alert alert-warning collapse" role="alert" id="collapseSolucao">
-              <p>Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.</p>
-              <p>Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.</p>
-            </div>
+            <p class="lead">Esta seção apresenta todos os detalhes da solução criada no projeto.</p>
 
             <section id="ti_video">
               <h4>Video do Projeto</h4>
-              <p>O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução.
-                <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse" href="#collapseVideo">Info</button>
-              </p>
-              <div class="alert alert-warning collapse" role="alert" id="collapseVideo">
-                <p>O video de apresentação é voltado para que o público externo possa conhecer a solução. O formato é livre, sendo importante que seja apresentado o problema e a solução numa linguagem descomplicada e direta.</p>
-                <p>Utilize o recurso de compartilhamento via embed e inclua o vídeo logo abaixo.</p>
-              </div>
-              <p>......  COLOQUE AQUI O SEU VIDEO ......</p>
+              <p>O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução.</p>
+              <p><iframe width="1080" height="600" src="https://www.youtube.com/embed/HLiM2Z7arhg?si=CRmSiZ6SS-W7c6X6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
             </section>
 
             <section id="ti_funcionalidades">
               <h4>Funcionalidades</h4>
-              <p>Esta seção apresenta as funcionalidades da solução.
-              <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse" href="#collapseFuncionalidades">Info</button>
-              </p>
-              <div class="alert alert-warning collapse" role="alert" id="collapseFuncionalidades">
-                <p>Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.</p>
-                <p>Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.</p>
-              </div>
-
+              <p>Esta seção apresenta as funcionalidades da solução.</p>
               <section>
-                <h5>Funcionalidade 1 - Cadastro de Contatos<span class="exemplo">EXEMPLO</span></h5>
-                <p>Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema</p>
+                <h5>Funcionalidade 1 - Login/Cadastro e Perfil de Usuario</h5>
+                <p>Permite o cadastro e login de usuários, e a alteração de dados do perfil do usuário.</p>
                 <ul class="list-unstyled">
-                  <li><strong>Estrutura de dados: </strong><a href="#ti_ed_contatos">Contatos</a></li>
+                  <li><strong>Estrutura de dados: </strong><a href="#ti_estrutura_usuarios">Usuário</a></li>
                   <li><strong>Instruções de acesso: </strong><ul>
-                    <li>Abra o site e efetue o login</li>
-                    <li>Acesse o menu principal e escolha a opção Cadastros </li>
-                    <li>Em seguida, escolha a opção Contatos</li>
+                    <li>Abra o site e efetue o cadastro ou login</li>
+                    <li>Clique na sua foto de perfil para ser redirecionado ao seu perfil.</li>
                   </ul></li>
                 </ul>
-                <p class="text-center"><img class="img-fluid" src="assets/images/exemplo-funcionalidade.png" alt="Tela Cadastro de Contatos"></p>
+                <p class="text-center"><img class="img-fluid" src="assets/images/tela_login.png" alt="Tela de Login/Cadastro"></p>
+                <p class="text-center"><img class="img-fluid" src="assets/images/tela_perfil.png" alt="Tela de Perfil do Usuario"></p>
               </section>
             </section>
-
+            <section>
+              <h5>Funcionalidade 2 - Cadastro de Salas</h5>
+              <p>Permite o cadastro de salas, com seleção de jogos, modos e níveis.</p>
+              <ul class="list-unstyled">
+                <li><strong>Estrutura de dados: </strong><a href="#ti_estrutura_salas">Salas</a></li>
+                <li><strong>Instruções de acesso: </strong><ul>
+                  <li>Abra o site e efetue o login</li>
+                  <li>Acesse a pagina de Salas clicando em "Salas"</li>
+                  <li>Em seguida, entre em uma sala ou crie uma</li>
+                </ul></li>
+              </ul>
+              <p class="text-center"><img class="img-fluid" src="assets/images/tela_salas.png" alt="Tela das Salas"></p>
+              <p class="text-center"><img class="img-fluid" src="assets/images/tela_dentrosala.png" alt="Tela Dentro da Sala"></p>
+            </section>
+          </section>
+          <section>
+            <h5>Funcionalidade 3 - Partida Rápida</h5>
+            <p>Permite encontrar uma partida de maneira rápida, selecionando jogo, modo e nível.</p>
+            <ul class="list-unstyled">
+              <li><strong>Estrutura de dados: </strong><a href="#ti_estrutura_sala">Salas</a></li>
+              <li><strong>Instruções de acesso: </strong><ul>
+                <li>Abra o site e efetue o login</li>
+                <li>Acesse a pagina de jogo rapido clicando em "Jogo Rapido"</li>
+                <li>Em seguida, selecione seus filtros desejados e clique em buscar.</li>
+              </ul></li>
+            </ul>
+            <p class="text-center"><img class="img-fluid" src="assets/images/tela_jogorapido.png" alt="Tela Jogo Rapido"></p>
+            <p class="text-center"><img class="img-fluid" src="assets/images/tela_jogorapidobuscando.png" alt="Tela Jogo Rapido enquanto esta buscando partida"></p>
+          </section>
+        </section>
+        <section>
+          <h5>Funcionalidade 4 - Partida Rápida</h5>
+          <p>Permite encontrar uma partida de maneira rápida, selecionando jogo, modo e nível.</p>
+          <ul class="list-unstyled">
+            <li><strong>Estrutura de dados: </strong><a href="#ti_estrutura_salas">Salas</a></li>
+            <li><strong>Instruções de acesso: </strong><ul>
+              <li>Abra o site e efetue o login</li>
+              <li>Acesse a pagina de jogo rapido clicando em "Jogo Rapido"</li>
+              <li>Em seguida, selecione seus filtros desejados e clique em buscar.</li>
+            </ul></li>
+          </ul>
+          <p class="text-center"><img class="img-fluid" src="assets/images/tela_jogorapido.png" alt="Tela Jogo Rapido"></p>
+          <p class="text-center"><img class="img-fluid" src="assets/images/tela_jogorapidobuscando.png" alt="Tela Jogo Rapido enquanto esta buscando partida"></p>
+        </section>
+        <section>
+          <h5>Funcionalidade 5 - Sistema de Amizade</h5>
+          <p>Permite os jogadores se adicionarem.</p>
+          <ul class="list-unstyled">
+            <li><strong>Estrutura de dados: </strong><a href="#ti_estrutura_usuarios">Salas</a> e <a href="#ti_estrutura_solicitacoes">Solicitações </a></li>
+            <li><strong>Instruções de acesso: </strong><ul>
+              <li>Abra o site e efetue o login</li>
+              <li>Acesse a pagina de inicial clicando em "Home"</li>
+              <li>Em seguida, adicione seus amigos clicando no campo "Nome de Usuário" e no botão de adicionar, ou peça para seu amigo lhe enviar solicitação.</li>
+            </ul></li>
+          </ul>
+          <p class="text-center"><img class="img-fluid" src="assets/images/tela_home_listaamigos.png" alt="Tela Home com Lista de Amigos e Solicitacoes"></p>
+        </section>
+      </section>
+      <section>
+        <h5>Funcionalidade 6 - Feed de atualizações dos amigos</h5>
+        <p>Mostra o que seus amigos estão postando no site.</p>
+        <ul class="list-unstyled">
+          <li><strong>Estrutura de dados: </strong><a href="#ti_estrutura_status">Status</a></li>
+          <li><strong>Instruções de acesso: </strong><ul>
+            <li>Abra o site e efetue o login</li>
+            <li>Acesse a pagina de inicial clicando em "Home"</li>
+            <li>Em seguida, digite um status no campo "No que você está pensando?" e aperte ENTER ou peça para um amigo postar algo.</li>
+          </ul></li>
+        </ul>
+        <p class="text-center"><img class="img-fluid" src="assets/images/tela_home_listaamigos.png" alt="Tela Home com Feed de Status"></p>
+      </section>
+    </section>
             <!-- Estruturas de dados =============== -->
             <section id="ti_estruturas_dados">
               <h4>Estruturas de Dados</h4>
-              <p>Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.
-                <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse" href="#collapseEstruturas">Info</button>
-              </p>
-              <div class="alert alert-warning collapse" role="alert" id="collapseEstruturas">
-                <p>Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração</p>
-                <p>Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.</p>
-              </div>
-
-              <section>
-                <h5>Estrutura de Dados - Contatos<span class="exemplo">EXEMPLO</span></h5>
-                <p>Contatos da aplicação</p>
-                <pre>
-                  {
-                    "id": 1,
-                    "nome": "Leanne Graham",
-                    "cidade": "Belo Horizonte",
-                    "categoria": "amigos",
-                    "email": "Sincere@april.biz",
-                    "telefone": "1-770-736-8031",
-                    "website": "hildegard.org"
-                  }
-                </pre>
-              </section>
-
-              <section>
-                <h5>Estrutura de Dados - Usuários<span class="exemplo">EXEMPLO</span></h5>
+              <p>Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.</p>
+              <section id="ti_estrutura_usuarios"> 
+                <h5>Estrutura de Dados - Usuários</h5>
                 <p>Registro dos usuários do sistema utilizados para login e para o perfil do sistema</p>
                 <pre>
                   {
-                    id: "eed55b91-45be-4f2c-81bc-7686135503f9"
-                    email: "admin@abc.com"
-                    id: "eed55b91-45be-4f2c-81bc-7686135503f9"
-                    login: "admin"
-                    nome: "Administrador do Sistema"
-                    senha: "123"
+                    "id": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+                    "login": "rian",
+                    "senha": "123",
+                    "nome": "Rian Eduardo",
+                    "email": "rian@abc.com",
+                    "steamID": "",
+                    "profilePhoto": "https://robohash.org/6e2930e8-24c8-48f8-93c6-9493c255a7c9.png",
+                    "nascimento": "2002-12-01",
+                    "genero": "Masculino",
+                    "estado": "MG",
+                    "cidade": "Belo Horizonte",
+                    "telefone": "",
+                    "amigos": [
+                      "9b4ec643-323d-4011-b39a-3aaf34beced1"
+                    ],
+                    "status": "offline"
+                  }
+                </pre>
+              </section>
+              <section id="ti_estrutura_salas">
+                <h5>Estrutura de Dados - Salas</h5>
+                <p>Registro das salas no sistema, juntamente com as mensagens enviadas no chat</p>
+                <pre>
+                  {
+                    "id": "_dj0p3q82v",
+                    "nome": "Vamos jogar",
+                    "jogo": "CS2",
+                    "modo": "Competitivo",
+                    "nivel": "grey",
+                    "dono": "rian",
+                    "jogadores": [
+                      "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
+                    ],
+                    "capacidade": 5,
+                    "sala": "publica",
+                    "senha": "",
+                    "mensagens": [
+                      {
+                        "autor": "rian",
+                        "autorId": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+                        "horario": "24/6/2024 17:1",
+                        "mensagem": "Estou na sala!"
+                      }
+                    ]
+                  }
+                </pre>
+              </section>
+              <section id="ti_estrutura_status">
+                <h5>Estrutura de Dados - Status</h5>
+                <p>Registro de status, serve para salvar o que os usuários postam na página "Home".</p>
+                <pre>
+                  {
+                    "usuario": "admin",
+                    "status": "ola",
+                    "horario": "2024-06-23T11:48:19.424Z",
+                    "id": 1
                   }
                 </pre>
               </section>
             </section>
-
+            <section id="ti_estrutura_solicitacoes">
+              <h5>Estrutura de Dados - Solicitações</h5>
+              <p>Registro de solicitações de amizades, para mostrar as solicitações pendentes.</p>
+              <pre>
+                {
+                  "de": "fa32c412-0699-497f-82c0-5943d57f5ba5",
+                  "para": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+                  "id": 1
+                }
+              </pre>
+            </section>
+            </section>
+        </section>
             <!-- Módulos e APIs ================= -->
             <section id="ti_modulos_apis">
               <h4>Módulos e APIs</h4>
-              <p>Esta seção apresenta os módulos e APIs utilizados na solução.
-                <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse" href="#collapseModulos">Info</button>
-              </p>
-              <div class="alert alert-warning collapse" role="alert" id="collapseModulos">
-                <p>Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.</p>
-              </div>
-
+              <p>Esta seção apresenta os módulos e APIs utilizados na solução.</p>
               <section>
                 <h5>Images:</h5>
                 <ul>
-                  <li>Unsplash - <a target="_blank" href="https://unsplash.com/">https://unsplash.com/</a><span class="exemplo">EXEMPLO</span></li>
+                  <li>Imgbb - <a target="_blank" href="https://pt-br.imgbb.com/">https://pt-br.imgbb.com/</a></li>
                 </ul>
               </section>
 
               <section>
                 <h5>Fonts:</h5>
                 <ul>
-                  <li>Icons Font Face - <a target="_blank" href="https://fontawesome.com/">https://fontawesome.com/</a><span class="exemplo">EXEMPLO</span></li>
+                  <li>Google Fonts - <a target="_blank" href="https://fonts.google.com/">https://fonts.google.com/</a></li>
                 </ul>
               </section>
 
               <section>
                 <h5>Scripts:</h5>
                 <ul>
-                  <li>jQuery - <a target="_blank" href="http://www.jquery.com/">http://www.jquery.com/</a><span class="exemplo">EXEMPLO</span></li>
-                  <li>Bootstrap 4 - <a target="_blank" href="http://getbootstrap.com/">http://getbootstrap.com/</a><span class="exemplo">EXEMPLO</span></li>
+                  <li>jQuery - <a target="_blank" href="http://www.jquery.com/">http://www.jquery.com/</a></li>
+                  <li>Bootstrap 4 - <a target="_blank" href="http://getbootstrap.com/">http://getbootstrap.com/</a></li>
+                  <li>Steam API - <a target="_blank" href="https://steamcommunity.com/dev">https://steamcommunity.com/dev</a></li>
                 </ul>
               </section>
             </section>
@@ -514,53 +595,44 @@
           <!-- FAQ ============================ -->
           <section id="ti_faq">
             <h2>FAQ</h2>
-            <p class="lead">Perguntas e respostas comuns associadas ao projeto.
-              <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse" href="#collapseFAQ">Info</button>
-            </p>
-            <div class="alert alert-warning collapse" role="alert" id="collapseFAQ">
-              <p>Apresente uma lista de perguntas e respostas comuns associadas ao projeto. Inclua perguntas como: (1) detalhes de acesso e uso do projeto; (2) informações sobre a instalação e configuração da aplicação; (3) questões sobre a manutenção da aplicação; (4) detalhes sobre a integração da aplicação com outros sistemas; (5) questões sobre a segurança da aplicação.</p>
-            </div>
-
-            <span class="exemplo">EXEMPLO</span>
+            <p class="lead">Perguntas e respostas comuns associadas ao projeto.</p>
             <div class="row">
               <div class="col-lg-12">
                 <div class="accordion accordion-alterate arrow-right" id="popularTopics">
                   <div class="card">
                     <div class="card-header" id="heading1">
                       <h5 class="mb-0"> <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse1"
-                          aria-expanded="false" aria-controls="collapse1">What does royalty free mean?</a> </h5>
+                          aria-expanded="false" aria-controls="collapse1">O que é a Playershub?</a></h5>
                     </div>
                     <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#popularTopics">
-                      <div class="card-body"> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                        printer took a galley of type and scrambled it to make a type specimen book. It has survived not
-                        only five centuries, but also the leap into electronic typesetting, remaining essentially
-                        unchanged. </div>
+                      <div class="card-body"> Uma plataforma que visa unir jogadores com qualquer nível de habilidade para que todos possam desfrutar de uma ótima experiência.</div>
                     </div>
                   </div>
                   <div class="card">
                     <div class="card-header" id="heading2">
                       <h5 class="mb-0"> <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse2"
-                          aria-expanded="false" aria-controls="collapse2">What is a single application?</a> </h5>
+                          aria-expanded="false" aria-controls="collapse2">Quem pode participar da Playershub?</a> </h5>
                     </div>
                     <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#popularTopics">
-                      <div class="card-body"> Iisque Anim pariatur cliche reprehenderit, enim eiusmod high life
-                        accusamus terry richardson ad squid. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-                        moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
-                        et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                        proident. Ad vegan excepteur butcher vice lomo. </div>
+                      <div class="card-body"> Qualquer jovem de 18 anos já está elegível para entrar na comunidade da Playershub!</div>
                     </div>
                   </div>
                   <div class="card">
                     <div class="card-header" id="heading3">
                       <h5 class="mb-0"> <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse3"
-                          aria-expanded="false" aria-controls="collapse3">What are some examples of permitted end
-                          products?</a> </h5>
+                          aria-expanded="false" aria-controls="collapse3">Quais tipos de jogos são suportados?</a> </h5>
                     </div>
                     <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#popularTopics">
-                      <div class="card-body"> Iisque persius interesset his et, in quot quidam persequeris vim, ad mea
-                        essent possim iriure. Mutat tacimates id sit. Ridens mediocritatem ius an, eu nec magna
-                        imperdiet. </div>
+                      <div class="card-body"> Contamos com uma grande variedade de jogos competitivos multiplayer. </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="heading4">
+                      <h5 class="mb-0"> <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse4"
+                          aria-expanded="false" aria-controls="collapse4">Como posso contribuir para a comunidade?</a> </h5>
+                    </div>
+                    <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#popularTopics">
+                      <div class="card-body"> Você pode contribuir mantendo o espírito esportivo, se divertindo e, claro, denunciando as pessoas que tiverem uma conduta que não aprovamos!</div>
                     </div>
                   </div>
                 </div>

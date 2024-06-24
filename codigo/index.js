@@ -42,5 +42,5 @@ server.get('/dados-steam', async (req, res) => {
 
 server.use(router)
 server.listen(3000, () => {
-  console.log('JSON Server is running in http://localhost:3000/login.html')
+  console.log('JSON Server is running in http://localhost:3000/')
 })

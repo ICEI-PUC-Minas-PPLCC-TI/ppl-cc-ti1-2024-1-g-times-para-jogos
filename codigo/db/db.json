@@ -100,11 +100,70 @@
       "estado": "MG",
       "cidade": "Belo Horizonte",
       "telefone": "",
+      "amigos": [
+        "9b4ec643-323d-4011-b39a-3aaf34beced1"
+      ],
+      "status": "offline"
+    },
+    {
+      "id": "3b43c765-5e60-4dc6-bf64-0e448fc138c3",
+      "login": "testeUsuario",
+      "senha": "123",
+      "nome": "teste",
+      "email": "teste@abc.com",
+      "steamID": "",
+      "profilePhoto": "https://robohash.org/3b43c765-5e60-4dc6-bf64-0e448fc138c3.png",
+      "nascimento": "",
+      "genero": "",
+      "estado": "",
+      "cidade": "",
+      "telefone": "",
       "amigos": [],
+      "status": "online"
+    },
+    {
+      "id": "9b4ec643-323d-4011-b39a-3aaf34beced1",
+      "login": "jogadorTeste",
+      "senha": "123",
+      "nome": "jogador",
+      "email": "jogadorteste@abc.com",
+      "steamID": "76561198069228882",
+      "profilePhoto": "https://robohash.org/9b4ec643-323d-4011-b39a-3aaf34beced1.png",
+      "nascimento": "",
+      "genero": "",
+      "estado": "",
+      "cidade": "",
+      "telefone": "",
+      "amigos": [
+        "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
+      ],
       "status": "online"
     }
   ],
-  "salas": [],
+  "salas": [
+    {
+      "id": "_dj0p3q82v",
+      "nome": "Vamos jogar",
+      "jogo": "CS2",
+      "modo": "Competitivo",
+      "nivel": "grey",
+      "dono": "rian",
+      "jogadores": [
+        "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
+      ],
+      "capacidade": 5,
+      "sala": "publica",
+      "senha": "",
+      "mensagens": [
+        {
+          "autor": "rian",
+          "autorId": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+          "horario": "24/6/2024 17:1",
+          "mensagem": "Estou na sala!"
+        }
+      ]
+    }
+  ],
   "status": [
     {
       "usuario": "admin",
@@ -177,6 +236,12 @@
       "status": "amigo",
       "horario": "2024-06-24T08:15:31.290Z",
       "id": 12
+    },
+    {
+      "usuario": "jogadorTeste",
+      "status": "Meu primeiro post",
+      "horario": "2024-06-24T18:49:35.518Z",
+      "id": 13
     }
   ],
   "solicitacoesAmizade": [
