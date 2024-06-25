@@ -1,7 +1,7 @@
 var usuarioLogado = true;
 if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usuarioCorrente') == null) {
     const atividadeAmigos = document.getElementById('feed');
-  atividadeAmigos.innerHTML = 'Você não está logado. <a href="login.html">Entre ou registre-se</a>.';
+  atividadeAmigos.innerHTML = '<span style="display: block; text-align: center;">Você não está logado. <a href="login.html">Entre ou registre-se</a>.</span>';
   const fotoPerfil = document.getElementById('foto_de_perfil');
   fotoPerfil.src = '../assets/images/default_profile.png';
   const listaAmigos = document.getElementById('lista_amigos');
