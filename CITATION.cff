@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: Playershub
@@ -22,36 +21,7 @@ authors:
 keywords:
   - Jogos Online
   - Formação de Equipes
-repository-code: 
+repository-code: https://github.com/ICEI-PUC-Minas-PPLCC-TI/ti-1-ppl-cc-m-20241-1-times-para-jogos
 license: CC-BY-4.0
 version: 1.0.0
 date-released: 2024-06-30
-=======
-cff-version: 1.0.1
-message: Please cite this software using these metadata.
-title: 
-authors:
-  - family-names: Dias Lopes
-    given-names: Rian Eduardo
-  - family-names: Amorim Dourado Fonseca
-    given-names: Luan
-  - family-names: César de Andrade
-    given-names: João Comini
-  - family-names: Paiva Lamounier
-    given-names: João Lucas
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: Vieira Carneiro
-    given-names: Rommel
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: Simões Silva
-    given-names: Tamara
-keywords:
-  - Jogos Online
-  - Formação de Equipes
-repository-code: 
-license: CC-BY-4.0
-version: 1.0.0
-date-released: 2024-06-30
->>>>>>> 576e4073eb686b7caee5801aac8f95491eb4d605

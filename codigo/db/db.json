@@ -22,7 +22,7 @@
       "senha": "123",
       "nome": "admin",
       "email": "admin@abc.com",
-      "steamID": "76561199362949674",
+      "steamID": "",
       "profilePhoto": "https://robohash.org/adcab8e8-e932-46bd-860b-81e37ba0ce30.png",
       "nascimento": "",
       "genero": "Masculino",
@@ -32,7 +32,8 @@
       "amigos": [
         "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
         "e8c1b3bd-d0fd-4875-af2b-04619320dcd8",
-        "850ff9f1-43ef-4fde-bf3f-405f9948d30a"
+        "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
+        "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
       ],
       "status": "online"
     },
@@ -101,9 +102,10 @@
       "cidade": "Belo Horizonte",
       "telefone": "",
       "amigos": [
-        "9b4ec643-323d-4011-b39a-3aaf34beced1"
+        "9b4ec643-323d-4011-b39a-3aaf34beced1",
+        "fa32c412-0699-497f-82c0-5943d57f5ba5"
       ],
-      "status": "offline"
+      "status": "online"
     },
     {
       "id": "3b43c765-5e60-4dc6-bf64-0e448fc138c3",
@@ -137,7 +139,7 @@
       "amigos": [
         "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
       ],
-      "status": "online"
+      "status": "offline"
     }
   ],
   "salas": [
@@ -242,13 +244,13 @@
       "status": "Meu primeiro post",
       "horario": "2024-06-24T18:49:35.518Z",
       "id": 13
+    },
+    {
+      "usuario": "rian",
+      "status": "pamonha",
+      "horario": "2024-06-24T21:34:59.465Z",
+      "id": 14
     }
   ],
-  "solicitacoesAmizade": [
-    {
-      "de": "fa32c412-0699-497f-82c0-5943d57f5ba5",
-      "para": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
-      "id": 1
-    }
-  ]
+  "solicitacoesAmizade": []
 }
