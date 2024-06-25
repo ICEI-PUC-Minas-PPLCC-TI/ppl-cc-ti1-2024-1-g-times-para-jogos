@@ -29,21 +29,26 @@ body {
 
 /* Ajustando a barra de navegação */
 
+img.logo {
+    margin-left: 20px;
+}
+
 nav.navbar {
     background-color: var(--primary-color);
     box-shadow: 0 2px 10px var(--secondary-color);
     color: #fff;
     padding: 10px 0;
     top: 0;
-    transition: all 0.3 ease-in-out;
-    height: 20vh;
+    transition: all 0.3s ease-in-out;
 }
 
 div.container-nav {
     display: flex;
     flex-direction: row;
-    transition: all 0.3 ease-in-out;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
     justify-content: space-between;
+    height: 10vh;
 }
 
 .nav-links {
@@ -56,27 +61,32 @@ div.container-nav {
     margin: 40px;
 }
 
-.nav-links li a, .nav-links li i{
+.nav-links li a {
     display: inline-block;
-    cursor: pointer;
     color: #fff;
-    font-size: xx-large;
+    font-size: larger;
     text-decoration: none;
     opacity: 0.6;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
-.nav-links li a:hover{
+.nav-links li a:hover {
     text-decoration: underline;
     transform: scale(1.5);
     text-underline-offset: 10px;
     opacity: 1;
 }
 
-.nav-links li i:hover{
-    transform: scale(1.5);
-    text-underline-offset: 10px;
-    opacity: 1;
+.nav-links i{
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links i:hover{
+    transform:scale(1.5);
+}
+
+#foto_de_perfil {
+    border-radius: 50%;
 }
 
 /* Fim da barra de navegação */
@@ -96,12 +106,15 @@ div.container-nav {
     display: flex;
     gap: 20%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+div.container_perfil{
+    flex-grow: 1;
 }
 
 .fotoperfil {
     display: flex;
-    flex: 1; 
     flex-direction: column; 
     justify-content: center; 
     align-items: center;
@@ -114,7 +127,7 @@ div.container-nav {
 }
 
 div.editarperfil{
-    flex: 1;
+    flex-grow: 1;
     font-size: large;
     padding: 25px;
     border-radius: 8px;
