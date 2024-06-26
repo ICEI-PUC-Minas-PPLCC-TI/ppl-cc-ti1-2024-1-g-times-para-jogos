@@ -184,7 +184,7 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
               const message = {
                   autor: currentUserObj.login,
                   autorId: currentUserObj.id,
-                  horario: formatarHorario(new Date().toISOString()),
+                  horario: new Date().toISOString(),
                   mensagem: messageText
               };
       
@@ -223,7 +223,7 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
                     messageDiv.classList.add('message');
                     const timeSpan = document.createElement('span');
                     timeSpan.classList.add('time');
-                    timeSpan.textContent = msg.horario;
+                    timeSpan.textContent = formatarHorario(msg.horario);
                     const messageHeader = document.createElement('div');
                     messageHeader.classList.add('message-header');
                     messageHeader.appendChild(timeSpan);

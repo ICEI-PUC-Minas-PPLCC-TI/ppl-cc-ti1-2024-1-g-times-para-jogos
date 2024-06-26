@@ -156,14 +156,7 @@
       "capacidade": 5,
       "sala": "publica",
       "senha": "",
-      "mensagens": [
-        {
-          "autor": "rian",
-          "autorId": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
-          "horario": "24/6/2024 17:1",
-          "mensagem": "Estou na sala!"
-        }
-      ]
+      "mensagens": []
     }
   ],
   "status": [
