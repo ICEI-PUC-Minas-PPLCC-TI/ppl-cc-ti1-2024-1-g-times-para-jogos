@@ -170,7 +170,7 @@ const id = currentUserObj.id;
                 const userID = currentUserObj.id;
                 if (currentUserObj.steamID == "") {
                     console.log('Iniciar processo de vinculação da conta Steam...');
-                    window.location.href = `http://localhost:3001/auth/steam?userID=${userID}`
+                    window.location.href = `http://localhost:3000/api/auth/steam?userID=${userID}`
                 }
             }
         });
@@ -295,8 +295,7 @@ const id = currentUserObj.id;
             if(event.target.classList.contains('fa-steam')){
                 const userID = currentUserObj.id;
                 if (currentUserObj.steamID == "") {
-                    console.log('Iniciar processo de vinculação da conta Steam...');
-                    window.location.href = `http://localhost:3001/auth/steam?userID=${userID}`
+                    window.location.href = `http://localhost:3000/api/auth/steam?userID=${userID}`
                 }
             }
         });

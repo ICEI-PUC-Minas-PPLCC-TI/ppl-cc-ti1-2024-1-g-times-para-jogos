@@ -4,26 +4,18 @@
   "description": "Laboratório de aplicação Web com backend baseado no JSON Server",
   "main": "index.js",
   "scripts": {
-    "start-index": "node index.js",
-    "start-auth": "node auth.js",
-    "start": "npm-run-all --parallel start-index start-auth"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Rommel Vieira Carneiro",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.8",
+    "axios": "^1.7.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "json-server": "^0.17.3",
-    "node-fetch": "^3.3.2",
-    "passport": "^0.7.0",
-    "passport-steam": "^1.0.18"
-  },
-  "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "openid": "^2.0.12"
   }
 }
