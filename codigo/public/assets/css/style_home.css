@@ -131,6 +131,27 @@ textarea#statusContent::placeholder{
     text-align: center;
 }
 
+#atividade_amigos{
+    height: 600px;
+    overflow-y: scroll;
+}
+
+#atividade_amigos::-webkit-scrollbar{
+    width: 10px;
+}
+
+#atividade_amigos::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+
+#atividade_amigos::-webkit-scrollbar-thumb{
+    background: #888;
+}
+
+#atividade_amigos::-webkit-scrollbar-thumb:hover{
+    background: #555;
+}
+
 div.status-item{
     background-color: var(--primary-color);
     padding-left: 15px;

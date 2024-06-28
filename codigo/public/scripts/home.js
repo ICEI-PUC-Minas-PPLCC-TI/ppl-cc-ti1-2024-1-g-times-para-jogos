@@ -39,7 +39,10 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
         const addFriendForm = document.getElementById('addFriendForm');
         const friendNameInput = document.getElementById('friendName');
         const statusContent = document.getElementById('statusContent');
-
+        if (currentUserObj.login && currentUserObj.userRole === 'admin') {
+            const adminPanelLink = document.getElementById('admin-panel-link');
+            adminPanelLink.removeAttribute('hidden');
+        }
         statusContent.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' && !event.shiftKey) {
                 event.preventDefault();

@@ -87,6 +87,10 @@ div.container-nav {
 
 /* Section */
 
+div.salas{
+    overflow: hidden;
+}
+
 div#sala-detalhes{
     display: flex;
     flex: 2;
