@@ -160,7 +160,7 @@ div.status-item{
 .friend-item, .sent-friend-request-item, .friend-request-item{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 10px;
     padding: 10px;
     gap: 2.5rem;
@@ -175,9 +175,9 @@ div.friend-request-buttons{
 }
 
 .friend-info {
-    gap: 2.5rem;
     display: flex;
     align-items: center;
+    gap: 2.5rem;
     justify-content: space-between;
 }
 
@@ -198,7 +198,6 @@ div.friend-request-buttons{
 
 .friend-item img, .sent-friend-request-item img, .friend-request-item img{
     border-radius: 50px;
-    margin-right: 10px;
     width: 64px;
     height: 64px;
 }
