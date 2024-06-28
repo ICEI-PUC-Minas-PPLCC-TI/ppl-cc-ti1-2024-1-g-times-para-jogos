@@ -94,25 +94,25 @@
     <script>
 
         // Declara uma função para processar o formulário de login
-        function processaFormLogin (event) {                
-                // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-                event.preventDefault ();
+        async function processaFormLogin(event) {
+            // Cancela a submissão do formulário para tratar sem fazer refresh da tela
+            event.preventDefault();
 
-                // Obtem os dados de login e senha a partir do formulário de login
-                var username = document.getElementById('login_email').value;
-                var password = document.getElementById('password').value;
+            // Obtem os dados de login e senha a partir do formulário de login
+            var username = document.getElementById('login_email').value;
+            var password = document.getElementById('password').value;
 
-                // Valida login e se estiver ok, redireciona para tela inicial da aplicação
-                resultadoLogin = loginUser (username, password);
-                if (resultadoLogin == 1) {
-                    window.location.href = 'index.html';
-                }
-                else if(resultadoLogin == 2) { // Se login falhou, avisa ao usuário
-                    alert ('Senha incorreta!');
-                }
-                else{
-                  alert ('Usuario nao encontrado!');
-                }
+            // Valida login e se estiver ok, redireciona para tela inicial da aplicação
+            var resultadoLogin = await loginUser(username, password);
+            if (resultadoLogin == 1) {
+                window.location.href = 'index.html';
+            } else if (resultadoLogin == 2) { // Se login falhou, avisa ao usuário
+                alert('Senha incorreta!');
+            } else if (resultadoLogin == 3) { // Se o usuário está banido, avisa o motivo do banimento
+                // Não faça nada, pois o alerta já foi mostrado na função loginUser
+            } else {
+                alert('Usuário não encontrado!');
+            }
         }
 
         function salvaLogin (event) {

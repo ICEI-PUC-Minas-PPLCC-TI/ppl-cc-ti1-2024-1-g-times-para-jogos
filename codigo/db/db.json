@@ -37,7 +37,7 @@
         "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
         "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
       ],
-      "status": "online"
+      "status": "offline"
     },
     {
       "id": "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
@@ -274,5 +274,14 @@
       "id": 1
     }
   ],
-  "banidos": []
+  "banidos": [
+    {
+      "id": "9b4ec643-323d-4011-b39a-3aaf34beced1",
+      "login": "jogadorTeste",
+      "email": "jogadorteste@abc.com",
+      "profilePhoto": "https://robohash.org/9b4ec643-323d-4011-b39a-3aaf34beced1.png",
+      "userRole": "",
+      "reason": "Hack"
+    }
+  ]
 }
