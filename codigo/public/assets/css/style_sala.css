@@ -220,28 +220,32 @@ div#chat_box{
     padding: 10px;
   }
 
-  #sendMessageBox input[type="text"] {
+#sendMessageBox input[type="text"] {
     flex-grow: 1;
     padding: 10px;
-    border: 1px solid #ccc;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    outline: none;
     border-radius: 4px;
     margin-right: 10px;
     outline: 0;
-  }
+}
   
-  #sendMessageBox button {
+#sendMessageBox button {
     padding: 10px 20px;
     border: none;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: #fff;
+    border: 1px solid var(--primary-color);
     border-radius: 4px;
     cursor: pointer;
-  }
+    transition: all 0.3s ease-in-out;
+}
   
-  #sendMessageBox button:hover {
-    background-color: #0056b3;
-  }
-  
+#sendMessageBox button:hover {
+    background-color: #080707;
+}
 
 div.message{
     padding: 10px;
@@ -268,8 +272,10 @@ img.profile-img{
     align-items: center;
 }
 
-span.content{
-    margin-left: 3px;
+.message-container-ac{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 span.kick-icon{
@@ -356,4 +362,8 @@ span.report-icon:hover{
 .reportingPlayerName{
     margin-top: -10px;
     font-weight: bolder;
+}
+
+.author{
+    font-weight: bold;
 }
