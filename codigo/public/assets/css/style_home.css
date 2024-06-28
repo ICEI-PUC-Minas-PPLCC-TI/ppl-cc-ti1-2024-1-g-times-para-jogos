@@ -133,7 +133,7 @@ textarea#statusContent::placeholder{
 
 #atividade_amigos{
     height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #atividade_amigos::-webkit-scrollbar{

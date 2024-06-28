@@ -196,7 +196,7 @@ div#chat_box{
 #messages_chat{
     flex-grow: 1;
     height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 10px;
 }
 
