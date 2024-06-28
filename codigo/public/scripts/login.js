@@ -47,7 +47,7 @@ function generateUUID() { // Public Domain/MIT
 // Dados de usuários para serem utilizados como carga inicial
 const dadosIniciais = {
     usuarios: [
-        { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "steamID": "", "profilePhoto": "", "nascimento": "", "genero": "", "estado": "", "cidade": "", "telefone": "", "amigos": [], "status": ""},
+        { "id": generateUUID (), "login": "admin", "userRole": "", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "steamID": "", "profilePhoto": "", "nascimento": "", "genero": "", "estado": "", "cidade": "", "telefone": "", "amigos": [], "status": ""},
     ]
 };
 
@@ -84,6 +84,7 @@ function loginUser (login, senha) {
         if ((login == usuario.email || login == usuario.login) && senha == usuario.senha) {
             usuarioCorrente.id = usuario.id;
             usuarioCorrente.login = usuario.login;
+            usuarioCorrente.userRole = usuario.userRole;
             usuarioCorrente.email = usuario.email;
             usuarioCorrente.nome = usuario.nome;
             usuarioCorrente.steamID = usuario.steamID;
@@ -124,7 +125,7 @@ function addUser (nome, login, senha, email) {
     // Cria um objeto de usuario para o novo usuario 
     let newId = generateUUID ();
     let PhotoUrl = "https://robohash.org/" + encodeURIComponent(newId) + ".png";
-    let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "steamID": "", "profilePhoto": PhotoUrl, "nascimento": "", "genero": "", "estado": "", "cidade": "", "telefone": "", "amigos": [], "status": "online"};
+    let usuario = { "id": newId, "login": login, "userRole": "", "senha": senha, "nome": nome, "email": email, "steamID": "", "profilePhoto": PhotoUrl, "nascimento": "", "genero": "", "estado": "", "cidade": "", "telefone": "", "amigos": [], "status": "online"};
 
     // Envia dados do novo usuário para ser inserido no JSON Server
     fetch(apiUrl, {
