@@ -243,7 +243,6 @@ div.sala button:hover{
 
 .modal {
     display: none;
-    opacity: 1;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -252,10 +251,9 @@ div.sala button:hover{
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.6);
-    padding-top: 60px;
-    box-sizing:border-box;
-    transition: all 300ms ease-in-out;
-  }
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
 
 #nome, #jogo_select, #modo_select, #nivel_select, #visibilidade, #senha, .modal-content button{
     margin-bottom: 5px;
@@ -274,12 +272,25 @@ div.sala button:hover{
 
 .modal-content {
     background-color: var(--secondary-color);
-    margin: 0 auto;
-    font-size: large;
-    width: 40vh;
-    padding: 10px;
+    margin: 15% auto;
+    padding: 20px;
     border-radius: 8px;
+    font-size: large;
+    padding: 10px;
+    width: 40vh;
     box-shadow: 0 0 10px var(--secondary-color);
+    transform: scale(0);
+    opacity: 0;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.modal.fade-in .modal-content {
+    animation-name: fade-in;
+}
+
+.modal.fade-out .modal-content {
+    animation-name: fade-out;
 }
 
 .close {
@@ -295,4 +306,26 @@ div.sala button:hover{
     text-shadow: 0 0 10px black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
 }

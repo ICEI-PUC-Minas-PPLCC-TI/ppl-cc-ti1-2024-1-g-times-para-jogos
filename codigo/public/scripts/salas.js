@@ -80,19 +80,29 @@ if (currentUserObj.login && currentUserObj.userRole === 'admin') {
   const adminPanelLink = document.getElementById('admin-panel-link');
   adminPanelLink.removeAttribute('hidden');
 }
-  btn.onclick = function() {
-    modal.style.display = "block";
-  }
+btn.onclick = function() {
+  modal.style.display = "block";
+  modal.classList.remove("fade-out");
+  modal.classList.add("fade-in");
+}
 
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-
-  window.onclick = function(event) {
-    if (event.target == modal) {
+span.onclick = function() {
+  modal.classList.remove("fade-in");
+  modal.classList.add("fade-out");
+  setTimeout(function() {
       modal.style.display = "none";
-    }
+  }, 300); // Match this duration with the animation-duration in CSS
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+      modal.classList.remove("fade-in");
+      modal.classList.add("fade-out");
+      setTimeout(function() {
+          modal.style.display = "none";
+      }, 300); // Match this duration with the animation-duration in CSS
   }
+}
 
   async function checkCapacidadeMaxima(salaId) {
     try {
