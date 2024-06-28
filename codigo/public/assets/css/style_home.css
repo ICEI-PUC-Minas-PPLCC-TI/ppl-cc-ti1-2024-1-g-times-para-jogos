@@ -68,7 +68,7 @@ div.container-nav {
 
 .nav-links li a:hover {
     text-decoration: underline;
-    transform: scale(1.5);
+    transform: scale(1.3);
     text-underline-offset: 10px;
     opacity: 1;
 }
@@ -133,19 +133,22 @@ textarea#statusContent::placeholder{
 
 #atividade_amigos{
     height: 600px;
+    padding-right: 10px;
     overflow-y: auto;
 }
 
 #atividade_amigos::-webkit-scrollbar{
-    width: 10px;
+    width: 5px;
 }
 
 #atividade_amigos::-webkit-scrollbar-track{
     background: #f1f1f1;
+    border-radius: 16px;
 }
 
 #atividade_amigos::-webkit-scrollbar-thumb{
     background: #888;
+    border-radius: 16px;
 }
 
 #atividade_amigos::-webkit-scrollbar-thumb:hover{
@@ -227,15 +230,10 @@ div.friend-request-buttons{
     border: none;
     outline: none;
     transition: all 0.3s ease-in-out;
+    height: 20px;
+    padding: 5px;
+    width: 50%;
     border-radius: 4px;
-}
-
-#friendName:focus{
-    transform: scale(1.1);
-}
-
-#friendName::placeholder{
-    text-align: center;
 }
 
 .add {
@@ -262,11 +260,11 @@ div.friend-request-buttons{
     transition: all 0.3s ease-in-out;
     color: white;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .delete:hover, button.cancel-sol-button:hover, button.decline-sol-button:hover{
-    transform: scale(1.3);
+    transform: scale(1.1);
     box-shadow: 0 0 10px var(--error-color);
 }
 

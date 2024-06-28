@@ -68,7 +68,7 @@ div.container-nav {
 
 .nav-links li a:hover {
     text-decoration: underline;
-    transform: scale(1.5);
+    transform: scale(1.3);
     text-underline-offset: 10px;
     opacity: 1;
 }
@@ -79,7 +79,7 @@ div.container-nav {
     border-radius: 50%;
 }
 
-/* Fim da Barra de Navegacao */
+/* Fim da barra de navegação */
 
 .adminpanel{
     background-color: var(--secondary-color);

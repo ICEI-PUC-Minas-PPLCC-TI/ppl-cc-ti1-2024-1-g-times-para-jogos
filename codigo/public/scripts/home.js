@@ -101,7 +101,7 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
                                 });
         
                                 const declineButton = document.createElement('button');
-                                declineButton.textContent = 'x';
+                                declineButton.textContent = '✖';
                                 declineButton.classList.add('decline-sol-button');
                                 declineButton.addEventListener('click', () => {
                                     declineFriendRequest(request.id);
@@ -150,7 +150,7 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
                                 statusAmigo.classList.add('status', amigo.status);
         
                                 const deleteButton = document.createElement('button');
-                                deleteButton.textContent = 'x';
+                                deleteButton.textContent = '✖';
                                 deleteButton.classList.add('delete');
                                 deleteButton.addEventListener('click', () => {
                                     deleteFriend(friend);

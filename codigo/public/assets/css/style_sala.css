@@ -9,17 +9,13 @@
     --error-color: #ff4d4d;
 }
 
-*{
-    font-family: "Lato", sans-serif;
-}
-
 html {
     scroll-behavior: smooth;
 }
 
 body {
     font-family: "Lato", sans-serif;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     color: white;
     box-sizing: border-box;
@@ -27,7 +23,7 @@ body {
     background-color: var(--primary-color);
 }
 
-/* Ajustando a barra de navegacao */
+/* Ajustando a barra de navegação */
 
 img.logo {
     margin-left: 20px;
@@ -72,7 +68,7 @@ div.container-nav {
 
 .nav-links li a:hover {
     text-decoration: underline;
-    transform: scale(1.5);
+    transform: scale(1.3);
     text-underline-offset: 10px;
     opacity: 1;
 }
@@ -201,15 +197,17 @@ div#chat_box{
 }
 
 #messages_chat::-webkit-scrollbar{
-    width: 10px;
+    width: 5px;
 }
 
 #messages_chat::-webkit-scrollbar-track{
     background: #f1f1f1;
+    border-radius: 16px;
 }
 
 #messages_chat::-webkit-scrollbar-thumb{
     background: #888;
+    border-radius: 16px;
 }
 
 #messages_chat::-webkit-scrollbar-thumb:hover{

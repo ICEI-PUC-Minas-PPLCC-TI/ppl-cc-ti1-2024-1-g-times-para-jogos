@@ -9,10 +9,6 @@
     --error-color: #ff4d4d;
 }
 
-*{
-    font-family: "Lato", sans-serif;
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -39,14 +35,14 @@ nav.navbar {
     color: #fff;
     padding: 10px 0;
     top: 0;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3 ease-in-out;
 }
 
 div.container-nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3 ease-in-out;
     justify-content: space-between;
     height: 10vh;
 }
@@ -67,12 +63,12 @@ div.container-nav {
     font-size: larger;
     text-decoration: none;
     opacity: 0.6;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease;
 }
 
 .nav-links li a:hover {
     text-decoration: underline;
-    transform: scale(1.5);
+    transform: scale(1.3);
     text-underline-offset: 10px;
     opacity: 1;
 }
@@ -82,11 +78,7 @@ div.container-nav {
 }
 
 .nav-links i:hover{
-    transform:scale(1.5);
-}
-
-#foto_de_perfil {
-    border-radius: 50%;
+    transform:scale(1.3);
 }
 
 /* Fim da barra de navegação */
@@ -136,8 +128,9 @@ div.editarperfil{
 }
 
 input, select{
-    padding: 4px;
-    border-radius: 8px;
+    padding: 6px;
+    margin-top: 2px;
+    border-radius: 4px;
     outline: none;
     border: 0;
 }
