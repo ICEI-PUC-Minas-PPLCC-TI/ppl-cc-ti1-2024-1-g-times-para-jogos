@@ -155,17 +155,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const jogo = jogoSelect.value;
         const modo = modoSelect.value;
         const nivel = nivelSelect.value;
-
-        try {
-            const salaDisponivel = await procurarSalaDisponivel(jogo, modo, nivel);
-            if (salaDisponivel) {
-                console.log('Sala encontrada:', salaDisponivel.id);
-                entrarNaSala(salaDisponivel.id);
-            } else {
-                console.log('Nenhuma sala encontrada. Continuando a busca...');
+    
+        while (true) {
+            try {
+                const salaDisponivel = await procurarSalaDisponivel(jogo, modo, nivel);
+                if (salaDisponivel) {
+                    console.log('Sala encontrada:', salaDisponivel.id);
+                    entrarNaSala(salaDisponivel.id);
+                    break;
+                } else {
+                    console.log('Nenhuma sala encontrada. Continuando a busca...');
+                    await new Promise(resolve => setTimeout(resolve, 5000));
+                }
+            } catch (error) {
+                console.error('Erro ao buscar partida:', error);
+                await new Promise(resolve => setTimeout(resolve, 5000));
             }
-        } catch (error) {
-            console.error('Erro ao buscar partida:', error);
         }
     }
 

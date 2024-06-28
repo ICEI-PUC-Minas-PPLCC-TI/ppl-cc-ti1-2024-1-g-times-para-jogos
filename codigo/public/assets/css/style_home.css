@@ -112,10 +112,14 @@ form#statusForm {
 }
 
 textarea#statusContent {
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     font-family: 'Lato', sans-serif;
     width: 100vh;
-    opacity: 0.3;
+    color: white;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    opacity: 0.5;
     resize: none;
     outline: none;
     border-radius: 10px;
@@ -123,12 +127,9 @@ textarea#statusContent {
 
 textarea#statusContent:focus{
     transform: scale(1.1);
-    padding: 20px; 
+    padding: 20px;
+    outline: none; 
     opacity: 1;
-}
-
-textarea#statusContent::placeholder{
-    text-align: center;
 }
 
 #atividade_amigos{
@@ -233,6 +234,8 @@ div.friend-request-buttons{
     height: 20px;
     padding: 5px;
     width: 50%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 4px;
 }
 
