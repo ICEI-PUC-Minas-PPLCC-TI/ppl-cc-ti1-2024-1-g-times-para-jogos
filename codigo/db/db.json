@@ -54,7 +54,7 @@
         "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
         "fa32c412-0699-497f-82c0-5943d57f5ba5"
       ],
-      "status": "online"
+      "status": "offline"
     },
     {
       "id": "e8c1b3bd-d0fd-4875-af2b-04619320dcd8",
@@ -86,7 +86,7 @@
       "cidade": "Asd",
       "telefone": "(92) 87412-3311",
       "amigos": [],
-      "status": "offline"
+      "status": "online"
     },
     {
       "id": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
@@ -105,7 +105,7 @@
         "9b4ec643-323d-4011-b39a-3aaf34beced1",
         "fa32c412-0699-497f-82c0-5943d57f5ba5"
       ],
-      "status": "offline"
+      "status": "online"
     },
     {
       "id": "3b43c765-5e60-4dc6-bf64-0e448fc138c3",
@@ -151,12 +151,21 @@
       "nivel": "grey",
       "dono": "rian",
       "jogadores": [
-        "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
+        "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+        "850ff9f1-43ef-4fde-bf3f-405f9948d30a"
       ],
       "capacidade": 5,
       "sala": "publica",
       "senha": "",
-      "mensagens": []
+      "mensagens": [
+        {
+          "autor": "rian",
+          "autorId": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+          "horario": "2024-06-28T16:41:46.896Z",
+          "mensagem": "mensagem"
+        }
+      ]
     }
   ],
   "status": [
@@ -245,5 +254,17 @@
       "id": 14
     }
   ],
-  "solicitacoesAmizade": []
+  "solicitacoesAmizade": [
+  ],  
+  "reports": [
+    {
+      "whoReported": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+      "userId": "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+      "reportType": 3,
+      "timestamp": "2024-06-28T16:48:52.092Z",
+      "salaId": "_dj0p3q82v",
+      "offensivePhotoURL": "https://robohash.org/5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1.png",
+      "id": 1
+    }
+  ]
 }

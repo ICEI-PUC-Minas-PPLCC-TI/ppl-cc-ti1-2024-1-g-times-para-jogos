@@ -26,6 +26,19 @@
     <div id="sala">
       <div id="sala-detalhes">
       </div>
+      <div id="reportModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Reportar o Jogador</h2>
+          <span class="reportingPlayerName"></span>
+          <p>Selecione o motivo:</p>
+          <button class="report-button" onclick="submitReport(1)">Nick ofensivo</button>
+          <button class="report-button" onclick="submitReport(2)">Abuso verbal</button>
+          <button class="report-button" onclick="submitReport(3)">Foto ofensiva</button>
+          <button class="report-button" onclick="submitReport(4)">Hack</button>
+          <button class="report-button" onclick="submitReport(5)">Smurfing</button>
+        </div>
+      </div>
       <div id="chat_box">
         <div id="messages_chat">
         </div>
