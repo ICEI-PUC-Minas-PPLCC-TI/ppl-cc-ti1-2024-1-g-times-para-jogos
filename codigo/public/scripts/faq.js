@@ -21,7 +21,10 @@ fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
     .catch(error => {
         console.error('Houve um problema com a operacao fetch:', error);
     });
-
+if (currentUserObj.login && currentUserObj.userRole === 'admin') {
+        const adminPanelLink = document.getElementById('admin-panel-link');
+        adminPanelLink.removeAttribute('hidden');
+    }
 var acc = document.getElementsByClassName("accordion");
 for (var i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {

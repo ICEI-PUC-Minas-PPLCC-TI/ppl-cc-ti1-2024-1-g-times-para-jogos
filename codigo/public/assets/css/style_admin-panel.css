@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+:root {
+    --primary-color: rgb(22, 24, 29);
+    --secondary-color: rgb(28, 31, 38);
+    --tertiary-color: rgb(0, 136, 255);
+    --success-color: rgb(3, 197, 3);
+    --neutral-color: rgb(106, 106, 106);
+    --error-color: #ff4d4d;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+}
+
+/* Ajustando a barra de navegação */
+
+img.logo {
+    margin-left: 20px;
+}
+
+nav.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px var(--secondary-color);
+    color: #fff;
+    padding: 10px 0;
+    top: 0;
+    transition: all 0.3 ease-in-out;
+}
+
+div.container-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.3 ease-in-out;
+    justify-content: space-between;
+    height: 10vh;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 40px;
+}
+
+.nav-links li a {
+    display: inline-block;
+    color: #fff;
+    font-size: larger;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+    transform: scale(1.5);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+#foto_de_perfil {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+/* Fim da Barra de Navegacao */
+
+.adminpanel{
+    background-color: var(--secondary-color);
+    margin: 20px;
+    border-radius: 8px;
+    padding: 20px;
+    gap: 2.5rem;
+    box-shadow: 0 0 4px var(--secondary-color);
+}
+
+#user-cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+  
+.user-card {
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-card .profile-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-card h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+div.user-actions{
+    display: flex;
+    margin-top: 5px;
+    gap: 0.3rem;
+}
+
+.reports-button, .ban-button{
+    background-color: #ff4d4d;
+    outline: 0;
+    border: 0;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.reports-button:hover, .ban-button:hover{
+    background-color: #fb3131;
+    cursor: pointer;
+}
+
+.promote-button{
+    background-color: #00cf78;
+    outline: 0;
+    border: 0;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.promote-button:hover{
+    background-color: #00ff6a;
+    cursor: pointer;
+}
+
+.demote-button{
+    background-color: #0098cf;
+    outline: 0;
+    border: 0;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.demote-button:hover{
+    background-color: #00bbff;
+    cursor: pointer;
+}
+
+.unban-button{
+    background-color: #0098cf;
+    outline: 0;
+    border: 0;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;  
+}
+
+.unban-button:hover{
+    background-color: #00bbff;
+    cursor: pointer;
+}
+
+/* Estilo para o modal */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: var(--primary-color);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 600px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+div.modal-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-item{
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    align-items: center;
+    margin-top: 5px;
+    padding: 10px;
+    height: 64px;
+}
+
+.report-item img{
+    width: 64px;
+    height: 64px;
+}

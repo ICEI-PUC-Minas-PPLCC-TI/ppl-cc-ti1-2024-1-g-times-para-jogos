@@ -24,31 +24,16 @@
             </ul>
         </div>
     </nav>
-    <div class="container" id='filtro'>
-        <h1>Buscar Partida Rápida</h1>
-        <div class="filtro">
-            <label for="jogo">Jogo:</label>
-            <select id="jogo">
-                <option value="" disabled selected hidden>Selecione um Jogo</option>
-                <option value="CS2">CS2</option>
-                <option value="League of Legends">League of Legends</option>
-                <option value="Valorant">Valorant</option>
-                <option value="Rainbow Six Siege">Rainbow Six Siege</option>
-                <option value="Apex Legends">Apex Legends</option>
-                <option value="Dota 2">Dota 2</option>
-            </select>
-            <label for="modo">Modo de Jogo:</label>
-            <select id="modo">
-                <option value="" disabled selected hidden>Selecione um Modo</option>
-            </select>
-            <label for="nivel">Nivel:</label>
-            <select id="nivel">
-                <option value="" disabled selected hidden>Selecione um Nível</option>
-            </select>
-            <button id="buscar-partida-btn">Buscar</button>
-        </div>
-        <div class="loader" style="display: none"></div>
+    <div class="adminpanel">
+        <div id="user-cards"></div>
     </div>
+    <div id="reportsModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Reports do Usuário</h2>
+          <div id="reportsContainer"></div>
+        </div>
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/imask"></script>
     <script src="scripts/admin-panel.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

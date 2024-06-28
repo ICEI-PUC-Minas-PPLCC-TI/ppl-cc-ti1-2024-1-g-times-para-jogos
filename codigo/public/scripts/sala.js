@@ -2,7 +2,6 @@ var usuarioLogado = true;
 if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usuarioCorrente') == null) {
   window.location.href = 'login.html';
 } 
-
 async function fetchSalaMessages(salaId) {
   try{
     const response = await fetch(`/salas/${salaId}`);
@@ -386,3 +385,7 @@ function sendReport(reportDetails) {
           }
           loadMessages();
       });
+if (currentUserObj.login && currentUserObj.userRole === 'admin') {
+  const adminPanelLink = document.getElementById('admin-panel-link');
+  adminPanelLink.removeAttribute('hidden');
+}

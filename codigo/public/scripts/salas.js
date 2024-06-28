@@ -73,10 +73,13 @@ const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCor
         { value: 'high', text: '5000+' }
       ]
   }
-  var modal = document.getElementById("create-room-modal");
-  var btn = document.getElementById("create-room-btn");
-  var span = document.getElementsByClassName("close")[0];
-
+var modal = document.getElementById("create-room-modal");
+var btn = document.getElementById("create-room-btn");
+var span = document.getElementsByClassName("close")[0];
+if (currentUserObj.login && currentUserObj.userRole === 'admin') {
+  const adminPanelLink = document.getElementById('admin-panel-link');
+  adminPanelLink.removeAttribute('hidden');
+}
   btn.onclick = function() {
     modal.style.display = "block";
   }

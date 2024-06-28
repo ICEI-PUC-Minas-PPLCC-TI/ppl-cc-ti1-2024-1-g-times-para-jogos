@@ -91,7 +91,7 @@
       "cidade": "Asd",
       "telefone": "(92) 87412-3311",
       "amigos": [],
-      "status": "offline"
+      "status": "online"
     },
     {
       "id": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
@@ -111,7 +111,7 @@
         "9b4ec643-323d-4011-b39a-3aaf34beced1",
         "fa32c412-0699-497f-82c0-5943d57f5ba5"
       ],
-      "status": "offline"
+      "status": "online"
     },
     {
       "id": "3b43c765-5e60-4dc6-bf64-0e448fc138c3",
@@ -160,7 +160,6 @@
       "dono": "rian",
       "jogadores": [
         "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
-        "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
         "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
         "fa32c412-0699-497f-82c0-5943d57f5ba5"
       ],
@@ -274,5 +273,6 @@
       "offensivePhotoURL": "https://robohash.org/5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1.png",
       "id": 1
     }
-  ]
+  ],
+  "banidos": []
 }

@@ -70,6 +70,10 @@ const niveisPorJogo = {
     { value: 'high', text: '5000+' }
     ]
 }
+if (currentUserObj.login && currentUserObj.userRole === 'admin') {
+    const adminPanelLink = document.getElementById('admin-panel-link');
+    adminPanelLink.removeAttribute('hidden');
+}
 fetch('http://localhost:3000/usuarios/' + currentUserObj.id)
     .then(response => {
         if (!response.ok) {
