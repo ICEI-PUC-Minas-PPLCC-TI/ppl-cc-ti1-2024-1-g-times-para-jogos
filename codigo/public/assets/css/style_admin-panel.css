@@ -87,7 +87,7 @@ div.container-nav {
     border-radius: 8px;
     padding: 20px;
     gap: 2.5rem;
-    box-shadow: 0 0 4px var(--secondary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #user-cards{
