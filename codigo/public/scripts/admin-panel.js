@@ -80,7 +80,6 @@ async function openReportsModal(userId) {
   reports.forEach(report => {
     const reportElement = document.createElement('div');
     reportElement.classList.add('report-item');
-
     switch (report.reportType) {
       case 1:
         reportElement.textContent = `Nick ofensivo: ${report.offensiveNick}`;
@@ -98,18 +97,32 @@ async function openReportsModal(userId) {
         reportElement.textContent = `Smurfing reportado`;
         break;
       default:
+        console.log("achei nada kkkk");
         reportElement.textContent = `Report não identificado`;
     }
     reportsContainer.appendChild(reportElement);
+    reportsContainer.style.display = ""
   });
   reportsModal.style.display = 'block';
+  reportsModal.classList.remove("fade-out");
+  reportsModal.classList.add("fade-in");
   const closeButton = modalContent.querySelector('.close');
   closeButton.addEventListener('click', () => {
-    reportsModal.style.display = 'none';
+    reportsModal.classList.remove("fade-in");
+    reportsModal.classList.add("fade-out");
+    setTimeout(function() {
+        reportsContainer.style.display = "none"
+        reportsModal.style.display = "none";
+    }, 300);
   });
   window.addEventListener('click', (event) => {
     if (event.target === reportsModal) {
-      reportsModal.style.display = 'none';
+      reportsModal.classList.remove("fade-in");
+      reportsModal.classList.add("fade-out");
+      setTimeout(function() {
+          reportsContainer.style.display = "none"
+          reportsModal.style.display = "none";
+      }, 300);
     }
   });
 }

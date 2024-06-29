@@ -101,7 +101,7 @@ div.container-nav {
     background-color: var(--primary-color);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
 
 .user-card .profile-image {
@@ -126,7 +126,7 @@ div.user-actions{
     background-color: #ff4d4d;
     outline: 0;
     border: 0;
-    border-radius: 8px;
+    border-radius: 4px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -139,7 +139,7 @@ div.user-actions{
     background-color: #00cf78;
     outline: 0;
     border: 0;
-    border-radius: 8px;
+    border-radius: 4px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -152,7 +152,7 @@ div.user-actions{
     background-color: #0098cf;
     outline: 0;
     border: 0;
-    border-radius: 8px;
+    border-radius: 4px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -165,7 +165,7 @@ div.user-actions{
     background-color: #0098cf;
     outline: 0;
     border: 0;
-    border-radius: 8px;
+    border-radius: 4px;
     transition: all 0.3s ease-in-out;  
 }
 
@@ -177,25 +177,43 @@ div.user-actions{
 /* Estilo para o modal */
 
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000;
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
     overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
 }
 
 .modal-content {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
-    max-width: 600px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    font-size: large;
+    padding: 10px;
+    width: 40vh;
+    box-shadow: 0 0 10px var(--secondary-color);
+    transform: scale(0);
+    opacity: 0;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.modal.fade-in .modal-content {
+    animation-name: fade-in;
+}
+
+.modal.fade-out .modal-content {
+    animation-name: fade-out;
 }
 
 .close {
@@ -235,4 +253,32 @@ div.modal-content{
 .report-item img{
     width: 64px;
     height: 64px;
+}
+
+#reportsContainer{
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
 }
