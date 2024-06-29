@@ -16,6 +16,10 @@ async function fetchSalaMessages(salaId) {
   }
 } //Vou usar isso para pegar as mensagens do usuario no report
 
+var spanCloseButton = document.getElementsByClassName('close');
+var reportModal = document.getElementById('reportModal');
+var reportButton = document.getElementsByClassName('report-icon');
+
 async function getUserMessages(salaId, userId) {
   const mensagens = await fetchSalaMessages(salaId);
   console.log('Mensagens da sala:', mensagens); 
@@ -28,17 +32,26 @@ async function getUserMessages(salaId, userId) {
 }
 
 function openModal() {
-  document.getElementById('reportModal').style.display = 'block';
+  reportModal.style.display = "block";
+  reportModal.classList.remove("fade-out");
+  reportModal.classList.add("fade-in");
 }
 
 function closeModal() {
-  document.getElementById('reportModal').style.display = 'none';
+  reportModal.classList.remove("fade-in");
+  reportModal.classList.add("fade-out");
+  setTimeout(function() {
+      reportModal.style.display = "none";
+  }, 300);
 }
 
 window.onclick = function(event) {
-  const modal = document.getElementById('reportModal');
-  if (event.target == modal) {
-    modal.style.display = 'none';
+  if (event.target == reportModal) {
+    reportModal.classList.remove("fade-in");
+    reportModal.classList.add("fade-out");
+    setTimeout(function() {
+        reportModal.style.display = "none";
+    }, 300);
   }
 }
 
