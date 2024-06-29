@@ -2,6 +2,129 @@ var usuarioLogado = true;
 if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usuarioCorrente') == null) {
   window.location.href = 'login.html';
 } 
+async function fetchSalaMessages(salaId) {
+  try{
+    const response = await fetch(`/salas/${salaId}`);
+    if(!response.ok){
+      throw new Error('Erro ao buscar as mensagens');
+    }
+    const sala = await response.json();
+    return sala.mensagens;
+  } catch (error) {
+    console.error('Erro ao buscar as mensagens da sala ', error);
+    return [];
+  }
+} //Vou usar isso para pegar as mensagens do usuario no report
+
+var spanCloseButton = document.getElementsByClassName('close');
+var reportModal = document.getElementById('reportModal');
+var reportButton = document.getElementsByClassName('report-icon');
+
+async function getUserMessages(salaId, userId) {
+  const mensagens = await fetchSalaMessages(salaId);
+  console.log('Mensagens da sala:', mensagens); 
+  const userMensagens = mensagens
+    .filter(mensagem => {
+      return mensagem.autorId === userId;
+    })
+    .map(mensagem => mensagem.mensagem);
+  return userMensagens;
+}
+
+function openModal() {
+  reportModal.style.display = "block";
+  reportModal.classList.remove("fade-out");
+  reportModal.classList.add("fade-in");
+}
+
+function closeModal() {
+  reportModal.classList.remove("fade-in");
+  reportModal.classList.add("fade-out");
+  setTimeout(function() {
+      reportModal.style.display = "none";
+  }, 300);
+}
+
+window.onclick = function(event) {
+  if (event.target == reportModal) {
+    reportModal.classList.remove("fade-in");
+    reportModal.classList.add("fade-out");
+    setTimeout(function() {
+        reportModal.style.display = "none";
+    }, 300);
+  }
+}
+
+document.querySelector('.close').onclick = closeModal;
+
+let currentReportUserId = null;
+let currentReportUserName = null;
+let currentReportUserProfilePhoto = null;
+let currentSalaId = null;
+
+function reportPlayer(userId, userName, userProfilePhoto, salaId) {
+  currentReportUserId = userId;
+  currentReportUserName = userName;
+  currentReportUserProfilePhoto = userProfilePhoto;
+  currentSalaId = salaId;
+  document.querySelector('.reportingPlayerName').textContent = `${userName}`;
+  openModal();
+}
+
+async function submitReport(reportType) {
+  const reportDetails = {
+    userId: currentReportUserId,
+    reportType: reportType,
+    timestamp: new Date().toISOString(),
+    salaId: currentSalaId
+  };
+
+  switch(reportType) {
+    case 1:
+      reportDetails.offensiveNick = currentReportUserName;
+      break;
+    case 2:
+      reportDetails.verbalAbuseMessages = await getUserMessages(currentSalaId, currentReportUserId);
+      break;
+    case 3:
+      reportDetails.offensivePhotoURL = currentReportUserProfilePhoto;
+      break;
+    case 4:
+      reportDetails.hackReport = true;
+      break;
+    case 5:
+      reportDetails.smurfingReport = true;
+      break;
+    default:
+      alert('Tipo de reporte inválido.');
+      return;
+  }
+  sendReport(reportDetails);
+  closeModal();
+}
+
+function sendReport(reportDetails) {
+  fetch(`/reports`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(reportDetails)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (!data.success) {
+      alert('Report enviado com sucesso!');
+    } else {
+      alert('Falha ao enviar reporte. Tente novamente mais tarde.');
+    }
+  })
+  .catch(error => {
+    console.error('Erro ao enviar report:', error);
+    alert('Ocorreu um erro. Tente novamente mais tarde.');
+  });
+}
+
   const urlParams = new URLSearchParams(window.location.search);
   const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
   const currentUserObj = JSON.parse(userId);
@@ -61,7 +184,8 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
             if (user) {
               const listItem = document.createElement('li');
               listItem.innerHTML = `<img src="${user.profilePhoto}" alt="Foto de ${user.nome}" style="width: 30px; height: 30px;"><span class="user-name-text">${user.login}</span>
-              ${(currentUserObj.login === sala.dono && user.login !== sala.dono) ? `<span class="kick-icon" onclick="kickPlayer('${salaId}', '${userId}')">✖</span>` : ''}`;
+              ${(currentUserObj.login === sala.dono && user.login !== sala.dono) ? `<span class="kick-icon" onclick="kickPlayer('${salaId}', '${userId}')">✖</span>` : ''}
+              ${(currentUserObj.login !== user.login) ? `<span class="report-icon" onclick="reportPlayer('${userId}', '${user.login}', '${user.profilePhoto}', '${salaId}')">!</span>` : ''}`;
               jogadoresList.appendChild(listItem);
             }
             if (currentUserObj.login === sala.dono) {
@@ -174,7 +298,12 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
       
           function formatarHorario(data) {
             const date = new Date(data);
-            return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+            const dia = date.getDate();
+            const mes = date.getMonth() + 1;
+            const ano = date.getFullYear();
+            const horas = date.getHours();
+            const minutos = ('0' + date.getMinutes()).slice(-2);
+            return `${dia}/${mes}/${ano} ${horas}:${minutos}`;
         }
 
             function sendMessage() {
@@ -233,15 +362,18 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
                     profileImg.classList.add('profile-img');
                     profileImg.src = user.profilePhoto;
                     profileImg.alt = `${msg.autor} profile picture`;
+                    const messageContainer = document.createElement('div');
+                    messageContainer.classList.add('message-container-ac');
                     const authorSpan = document.createElement('span');
                     authorSpan.classList.add('author');
-                    authorSpan.textContent = `${msg.autor}: `;
+                    authorSpan.textContent = `${msg.autor}:`;
                     const contentSpan = document.createElement('span');
                     contentSpan.classList.add('content');
                     contentSpan.textContent = msg.mensagem;
                     messageContent.appendChild(profileImg);
-                    messageContent.appendChild(authorSpan);
-                    messageContent.appendChild(contentSpan);
+                    messageContainer.appendChild(authorSpan);
+                    messageContainer.appendChild(contentSpan);
+                    messageContent.appendChild(messageContainer);
                     messageDiv.appendChild(messageHeader);
                     messageDiv.appendChild(messageContent);
                     messagesChat.appendChild(messageDiv);
@@ -267,8 +399,9 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
                   })
                   .catch(error => console.error('Erro ao carregar as mensagens:', error));
           }
-      
-      
           loadMessages();
-          setInterval(loadMessages, 3000);
       });
+if (currentUserObj.login && currentUserObj.userRole === 'admin') {
+  const adminPanelLink = document.getElementById('admin-panel-link');
+  adminPanelLink.removeAttribute('hidden');
+}

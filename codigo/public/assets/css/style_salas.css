@@ -9,10 +9,6 @@
     --error-color: #ff4d4d;
 }
 
-* {
-    font-family: "Lato", sans-serif;
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -27,7 +23,63 @@ body {
     background-color: var(--primary-color);
 }
 
-/* Ajustando a barra de navegacao */
+/* Ajustando a barra de navegação */
+
+img.logo {
+    margin-left: 20px;
+}
+
+nav.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px var(--secondary-color);
+    color: #fff;
+    padding: 10px 0;
+    top: 0;
+    transition: all 0.3 ease-in-out;
+}
+
+div.container-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.3 ease-in-out;
+    justify-content: space-between;
+    height: 10vh;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 40px;
+}
+
+.nav-links li a {
+    display: inline-block;
+    color: #fff;
+    font-size: larger;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+    transform: scale(1.3);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+#foto_de_perfil {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+/* Fim da barra de navegação */
 
 img.logo {
     margin-left: 20px;
@@ -91,7 +143,7 @@ div.salas{
     display: flex;
     margin-top: 20px;
     padding: 20px;
-    gap: 5rem;
+    gap: 2.5rem;
 }
 
 h1{
@@ -116,7 +168,27 @@ div.browser{
     background-color: var(--secondary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     flex: 6;
+    overflow-y: auto;
     padding: 15px;
+    height: 600px;
+}
+
+div.browser::-webkit-scrollbar{
+    width: 5px;
+}
+
+div.browser::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    border-radius: 16px;
+}
+
+div.browser::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 16px;
+}
+
+div.browser::-webkit-scrollbar-thumb:hover{
+    background: #555;
 }
 
 div.sala{
@@ -171,7 +243,6 @@ div.sala button:hover{
 
 .modal {
     display: none;
-    opacity: 1;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -180,10 +251,9 @@ div.sala button:hover{
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.6);
-    padding-top: 60px;
-    box-sizing:border-box;
-    transition: all 300ms ease-in-out;
-  }
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
 
 #nome, #jogo_select, #modo_select, #nivel_select, #visibilidade, #senha, .modal-content button{
     margin-bottom: 5px;
@@ -202,12 +272,25 @@ div.sala button:hover{
 
 .modal-content {
     background-color: var(--secondary-color);
-    margin: 0 auto;
-    font-size: large;
-    width: 40vh;
-    padding: 10px;
+    margin: 15% auto;
+    padding: 20px;
     border-radius: 8px;
+    font-size: large;
+    padding: 10px;
+    width: 40vh;
     box-shadow: 0 0 10px var(--secondary-color);
+    transform: scale(0);
+    opacity: 0;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.modal.fade-in .modal-content {
+    animation-name: fade-in;
+}
+
+.modal.fade-out .modal-content {
+    animation-name: fade-out;
 }
 
 .close {
@@ -223,4 +306,26 @@ div.sala button:hover{
     text-shadow: 0 0 10px black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
 }

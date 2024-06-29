@@ -5,6 +5,10 @@ if (localStorage.getItem('usuarioCorrente') == "{}" || localStorage.getItem('usu
 const userId = usuarioLogado === false ? '-1' : localStorage.getItem('usuarioCorrente');
 const currentUserObj = JSON.parse(userId);
 const id = currentUserObj.id;
+if (currentUserObj.login && currentUserObj.userRole === 'admin') {
+    const adminPanelLink = document.getElementById('admin-panel-link');
+    adminPanelLink.removeAttribute('hidden');
+}
     //Pegando o usuario atual logado
     async function updateLocalStorageFromServer(userId) {
         try {

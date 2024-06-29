@@ -3,6 +3,7 @@
     {
       "id": "-1",
       "login": "",
+      "userRole": "",
       "senha": "",
       "nome": "",
       "email": "",
@@ -19,6 +20,7 @@
     {
       "id": "fa32c412-0699-497f-82c0-5943d57f5ba5",
       "login": "admin",
+      "userRole": "admin",
       "senha": "123",
       "nome": "admin",
       "email": "admin@abc.com",
@@ -35,11 +37,12 @@
         "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
         "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
       ],
-      "status": "online"
+      "status": "offline"
     },
     {
       "id": "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
       "login": "lucas",
+      "userRole": "",
       "senha": "123",
       "nome": "Lucas",
       "email": "lucas@abc.com",
@@ -54,11 +57,12 @@
         "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
         "fa32c412-0699-497f-82c0-5943d57f5ba5"
       ],
-      "status": "online"
+      "status": "offline"
     },
     {
       "id": "e8c1b3bd-d0fd-4875-af2b-04619320dcd8",
       "login": "breno",
+      "userRole": "",
       "senha": "123",
       "nome": "Breno",
       "email": "breno@abc.com",
@@ -70,11 +74,12 @@
       "cidade": "",
       "telefone": "",
       "amigos": [],
-      "status": "online"
+      "status": "offline"
     },
     {
       "id": "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
       "login": "gerson",
+      "userRole": "",
       "senha": "123",
       "nome": "Gerson",
       "email": "gerson@abc.com",
@@ -91,6 +96,7 @@
     {
       "id": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
       "login": "rian",
+      "userRole": "",
       "senha": "123",
       "nome": "Rian Eduardo",
       "email": "rian@abc.com",
@@ -105,11 +111,12 @@
         "9b4ec643-323d-4011-b39a-3aaf34beced1",
         "fa32c412-0699-497f-82c0-5943d57f5ba5"
       ],
-      "status": "offline"
+      "status": "online"
     },
     {
       "id": "3b43c765-5e60-4dc6-bf64-0e448fc138c3",
       "login": "testeUsuario",
+      "userRole": "",
       "senha": "123",
       "nome": "teste",
       "email": "teste@abc.com",
@@ -126,6 +133,7 @@
     {
       "id": "9b4ec643-323d-4011-b39a-3aaf34beced1",
       "login": "jogadorTeste",
+      "userRole": "",
       "senha": "123",
       "nome": "jogador",
       "email": "jogadorteste@abc.com",
@@ -151,12 +159,21 @@
       "nivel": "grey",
       "dono": "rian",
       "jogadores": [
-        "6e2930e8-24c8-48f8-93c6-9493c255a7c9"
+        "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+        "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
+        "fa32c412-0699-497f-82c0-5943d57f5ba5"
       ],
       "capacidade": 5,
       "sala": "publica",
       "senha": "",
-      "mensagens": []
+      "mensagens": [
+        {
+          "autor": "rian",
+          "autorId": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+          "horario": "2024-06-28T16:41:46.896Z",
+          "mensagem": "mensagem"
+        }
+      ]
     }
   ],
   "status": [
@@ -245,5 +262,26 @@
       "id": 14
     }
   ],
-  "solicitacoesAmizade": []
+  "solicitacoesAmizade": [],
+  "reports": [
+    {
+      "whoReported": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+      "userId": "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
+      "reportType": 3,
+      "timestamp": "2024-06-28T16:48:52.092Z",
+      "salaId": "_dj0p3q82v",
+      "offensivePhotoURL": "https://robohash.org/5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1.png",
+      "id": 1
+    }
+  ],
+  "banidos": [
+    {
+      "id": "9b4ec643-323d-4011-b39a-3aaf34beced1",
+      "login": "jogadorTeste",
+      "email": "jogadorteste@abc.com",
+      "profilePhoto": "https://robohash.org/9b4ec643-323d-4011-b39a-3aaf34beced1.png",
+      "userRole": "",
+      "reason": "Hack"
+    }
+  ]
 }

@@ -47,9 +47,23 @@ function generateUUID() { // Public Domain/MIT
 // Dados de usuários para serem utilizados como carga inicial
 const dadosIniciais = {
     usuarios: [
-        { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "steamID": "", "profilePhoto": "", "nascimento": "", "genero": "", "estado": "", "cidade": "", "telefone": "", "amigos": [], "status": ""},
+        { "id": generateUUID (), "login": "admin", "userRole": "", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "steamID": "", "profilePhoto": "", "nascimento": "", "genero": "", "estado": "", "cidade": "", "telefone": "", "amigos": [], "status": ""},
     ]
 };
+
+async function checkIfUserIsBanned(userId) {
+    try {
+        const response = await fetch(`http://localhost:3000/banidos/${userId}`);
+        if (!response.ok) {
+            return null;
+        }
+        const bannedUser = await response.json();
+        return bannedUser;
+    } catch (error) {
+        console.error('Erro ao verificar banimento:', error);
+        throw error;
+    }
+}
 
 // Inicializa o usuarioCorrente e banco de dados de usuários da aplicação de Login
 function initLoginApp () {
@@ -71,19 +85,24 @@ function initLoginApp () {
         });
 };
 
-
 // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
-function loginUser (login, senha) {
-
-    // Verifica todos os itens do banco de dados de usuarios 
-    // para localizar o usuário informado no formulario de login
+async function loginUser(login, senha) {
+    // Verifica todos os itens do banco de dados de usuários 
+    // para localizar o usuário informado no formulário de login
     for (var i = 0; i < db_usuarios.length; i++) {
         var usuario = db_usuarios[i];
-
-        // Se encontrou login, carrega usuário corrente e salva no Session Storage
+        // Se encontrou login, verifica senha e se o usuário não está banido
         if ((login == usuario.email || login == usuario.login) && senha == usuario.senha) {
+            // Verifica se o usuário está banido
+            const banned = await checkIfUserIsBanned(usuario.id);
+            if (banned) {
+                alert(`Você está banido!\nMotivo: ${banned.reason}`);
+                return 3; // Retorna 3 indicando que o usuário está banido
+            }
+            // Se não estiver banido, procede com o login normal
             usuarioCorrente.id = usuario.id;
             usuarioCorrente.login = usuario.login;
+            usuarioCorrente.userRole = usuario.userRole;
             usuarioCorrente.email = usuario.email;
             usuarioCorrente.nome = usuario.nome;
             usuarioCorrente.steamID = usuario.steamID;
@@ -93,23 +112,14 @@ function loginUser (login, senha) {
             usuarioCorrente.estado = usuario.estado;
             usuarioCorrente.cidade = usuario.cidade;
             usuarioCorrente.telefone = usuario.telefone;
-            fetch(`http://localhost:3000/usuarios/${usuario.id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ status: "online" })
-            });
-            localStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
-            return 1;
-        }
-        if((login == usuario.email || login == usuario.login) && senha != usuario.senha){
-            return 2;
+            localStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+            return 1; // Retorna 1 indicando login bem-sucedido
+        } else if ((login == usuario.email || login == usuario.login) && senha != usuario.senha) {
+            return 2; // Retorna 2 indicando senha incorreta
         }
     }
-
-    // Se chegou até aqui é por que não encontrou o usuário e retorna falso
-    return -1;
+    // Se chegou até aqui é porque não encontrou o usuário
+    return -1; // Retorna -1 indicando usuário não encontrado
 }
 
 // Apaga os dados do usuário corrente no sessionStorage
@@ -124,7 +134,7 @@ function addUser (nome, login, senha, email) {
     // Cria um objeto de usuario para o novo usuario 
     let newId = generateUUID ();
     let PhotoUrl = "https://robohash.org/" + encodeURIComponent(newId) + ".png";
-    let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "steamID": "", "profilePhoto": PhotoUrl, "nascimento": "", "genero": "", "estado": "", "cidade": "", "telefone": "", "amigos": [], "status": "online"};
+    let usuario = { "id": newId, "login": login, "userRole": "", "senha": senha, "nome": nome, "email": email, "steamID": "", "profilePhoto": PhotoUrl, "nascimento": "", "genero": "", "estado": "", "cidade": "", "telefone": "", "amigos": [], "status": "online"};
 
     // Envia dados do novo usuário para ser inserido no JSON Server
     fetch(apiUrl, {

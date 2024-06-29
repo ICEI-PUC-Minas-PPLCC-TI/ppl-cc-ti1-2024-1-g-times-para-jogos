@@ -68,7 +68,7 @@ div.container-nav {
 
 .nav-links li a:hover {
     text-decoration: underline;
-    transform: scale(1.5);
+    transform: scale(1.3);
     text-underline-offset: 10px;
     opacity: 1;
 }
@@ -112,10 +112,14 @@ form#statusForm {
 }
 
 textarea#statusContent {
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     font-family: 'Lato', sans-serif;
     width: 100vh;
-    opacity: 0.3;
+    color: white;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    opacity: 0.5;
     resize: none;
     outline: none;
     border-radius: 10px;
@@ -123,12 +127,33 @@ textarea#statusContent {
 
 textarea#statusContent:focus{
     transform: scale(1.1);
-    padding: 20px; 
+    padding: 20px;
+    outline: none; 
     opacity: 1;
 }
 
-textarea#statusContent::placeholder{
-    text-align: center;
+#atividade_amigos{
+    height: 600px;
+    padding-right: 10px;
+    overflow-y: auto;
+}
+
+#atividade_amigos::-webkit-scrollbar{
+    width: 5px;
+}
+
+#atividade_amigos::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    border-radius: 16px;
+}
+
+#atividade_amigos::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 16px;
+}
+
+#atividade_amigos::-webkit-scrollbar-thumb:hover{
+    background: #555;
 }
 
 div.status-item{
@@ -160,7 +185,7 @@ div.status-item{
 .friend-item, .sent-friend-request-item, .friend-request-item{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 10px;
     padding: 10px;
     gap: 2.5rem;
@@ -175,9 +200,9 @@ div.friend-request-buttons{
 }
 
 .friend-info {
-    gap: 2.5rem;
     display: flex;
     align-items: center;
+    gap: 2.5rem;
     justify-content: space-between;
 }
 
@@ -198,7 +223,6 @@ div.friend-request-buttons{
 
 .friend-item img, .sent-friend-request-item img, .friend-request-item img{
     border-radius: 50px;
-    margin-right: 10px;
     width: 64px;
     height: 64px;
 }
@@ -207,15 +231,12 @@ div.friend-request-buttons{
     border: none;
     outline: none;
     transition: all 0.3s ease-in-out;
+    height: 20px;
+    padding: 5px;
+    width: 50%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 4px;
-}
-
-#friendName:focus{
-    transform: scale(1.1);
-}
-
-#friendName::placeholder{
-    text-align: center;
 }
 
 .add {
@@ -242,11 +263,11 @@ div.friend-request-buttons{
     transition: all 0.3s ease-in-out;
     color: white;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .delete:hover, button.cancel-sol-button:hover, button.decline-sol-button:hover{
-    transform: scale(1.3);
+    transform: scale(1.1);
     box-shadow: 0 0 10px var(--error-color);
 }
 
