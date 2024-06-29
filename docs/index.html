@@ -256,6 +256,16 @@
                         <td>Sistema para encontrar partida rápida</td>
                         <td>ALTA</td>
                       </tr>
+                      <tr>
+                        <th scope="row">RF-008</th>
+                        <td>Sistema para denunciar jogadores</td>
+                        <td>ALTA</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">RF-009</th>
+                        <td>Sistema para banir usuários</td>
+                        <td>ALTA</td>
+                      </tr>
                     </tbody>
                 </table>
 
@@ -271,21 +281,16 @@
                   <tbody>
                       <tr>
                           <th scope="row">RNF-001</th>
-                          <td>O sistema deve ser responsivo para rodar em um dispositivos móvel</td>
-                          <td>ALTA</td>
-                      </tr>
-                      <tr>
-                          <th scope="row">RNF-002</th>
                           <td>Deve processar requisições do usuário em no máximo 3s</td>
                           <td>BAIXA</td>
                       </tr>
                       <tr>
-                          <th scope="row">RNF-003</th>
+                          <th scope="row">RNF-002</th>
                           <td>O aplicativo deve ser projetado para suportar um grande número de usuários</td>
                           <td>ALTA</td>
                       </tr>
                       <tr>
-                          <th scope="row">RNF-004</th>
+                          <th scope="row">RNF-003</th>
                           <td>O aplicativo deve ser extremamente seguro contra qualquer tipo de ataque</td>
                           <td>ALTA</td>
                       </tr>
@@ -387,7 +392,7 @@
             <section id="ti_video">
               <h4>Video do Projeto</h4>
               <p>O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução.</p>
-              <p><iframe width="1280" height="720" src="https://www.youtube.com/embed/cGGGCECEjqk?si=j-g9HlfTSOV27ZU-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+              <p><iframe width="1280" height="720" src="https://www.youtube.com/embed/_yBLZsVC11Y?si=DFNgBWMQDpqG7CN1" title="Apresentação Playershub" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
             </section>
 
             <section id="ti_funcionalidades">
@@ -478,6 +483,33 @@
         </ul>
         <p class="text-center"><img class="img-fluid" src="assets/images/tela_home_listaamigos.png" alt="Tela Home com Feed de Status"></p>
       </section>
+      <section>
+        <h5>Funcionalidade 7 - Sistema de Denuncias</h5>
+        <p>Permite que os jogadores reportem outros usuários que infrinjam as regras.</p>
+        <ul class="list-unstyled">
+          <li><strong>Estrutura de dados: </strong><a href="#ti_estrutura_reports">Denuncias</a></li>
+          <li><strong>Instruções de acesso: </strong><ul>
+            <li>Abra o site e efetue o login</li>
+            <li>Acesse a pagina de salas clicando em "Salas"</li>
+            <li>Em seguida, entre em uma sala qualquer e então clique no botão de exclamação "!" ao lado de algum usuário.</li>
+          </ul></li>
+        </ul>
+        <p class="text-center"><img class="img-fluid" src="assets/images/tela_report.png" alt="Tela de Denuncia"></p>
+      </section>
+      <section>
+        <h5>Funcionalidade 8 - Sistema de Banimento</h5>
+        <p>Permite que os administradores do sistema apliquem banimento a jogadores.</p>
+        <ul class="list-unstyled">
+          <li><strong>Estrutura de dados: </strong><a href="#ti_estrutura_banimentos">Banimentos</a></li>
+          <li><strong>Instruções de acesso: </strong><ul>
+            <li>Abra o site e efetue o login como administrador</li>
+            <li>Acesse o painel do administrador clicando em "Painel"</li>
+            <li>Em seguida, clique no botão "Banir" no card de algum jogador registrado.</li>
+          </ul></li>
+        </ul>
+        <p class="text-center"><img class="img-fluid" src="assets/images/tela_painel_banimento.png" alt="Tela Home com Feed de Status"></p>
+        <p class="text-center"><img class="img-fluid" src="assets/images/tela_banimento_prompt.png" alt="Tela Home com Feed de Status"></p>
+      </section>
     </section>
             <!-- Estruturas de dados =============== -->
             <section id="ti_estruturas_dados">
@@ -556,6 +588,34 @@
                   "de": "fa32c412-0699-497f-82c0-5943d57f5ba5",
                   "para": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
                   "id": 1
+                }
+              </pre>
+            </section>
+            <section id="ti_estrutura_reports">
+              <h5>Estrutura de Dados - Denuncias</h5>
+              <p>Registro de denúncias, para mostrar as denúncias dos usuários.</p>
+              <pre>
+                {
+                  "userId": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
+                  "reportType": 1,
+                  "timestamp": "2024-06-29T02:00:57.385Z",
+                  "salaId": "_dj0p3q82v",
+                  "offensiveNick": "rian",
+                  "id": 1
+                }
+              </pre>
+            </section>
+            <section id="ti_estrutura_banimentos">
+              <h5>Estrutura de Dados - Banimentos</h5>
+              <p>Registro de banimentos de usuários, para evitar o login e criação de novas contas dos usuários punidos.</p>
+              <pre>
+                {
+                  "id": "850ff9f1-43ef-4fde-bf3f-405f9948d30a",
+                  "login": "lucas",
+                  "email": "lucas@abc.com",
+                  "profilePhoto": "https://robohash.org/850ff9f1-43ef-4fde-bf3f-405f9948d30a.png",
+                  "userRole": "",
+                  "reason": "Nick ofensivo"
                 }
               </pre>
             </section>
