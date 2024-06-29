@@ -244,21 +244,31 @@ div.modal-content{
     align-items: center;
     background-color: var(--secondary-color);
     border-radius: 8px;
-    align-items: center;
-    margin-top: 5px;
     padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    align-items: center;
+    margin-top: 10px;
+    gap: 2.5rem;
     height: 64px;
+}
+
+.delete-report-ico{
+    background-color: #ff4d4d;
+    font-size: small;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete-report-ico:hover{
+    background-color: #ff0000;
+    cursor: pointer;
 }
 
 .report-item img{
     width: 64px;
     height: 64px;
-}
-
-#reportsContainer{
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
 }
 
 @keyframes fade-in {

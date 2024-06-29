@@ -263,25 +263,6 @@
     }
   ],
   "solicitacoesAmizade": [],
-  "reports": [
-    {
-      "whoReported": "6e2930e8-24c8-48f8-93c6-9493c255a7c9",
-      "userId": "5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1",
-      "reportType": 3,
-      "timestamp": "2024-06-28T16:48:52.092Z",
-      "salaId": "_dj0p3q82v",
-      "offensivePhotoURL": "https://robohash.org/5d8ade0a-81ce-4a10-87fa-f1d9ae0e89f1.png",
-      "id": 1
-    }
-  ],
-  "banidos": [
-    {
-      "id": "9b4ec643-323d-4011-b39a-3aaf34beced1",
-      "login": "jogadorTeste",
-      "email": "jogadorteste@abc.com",
-      "profilePhoto": "https://robohash.org/9b4ec643-323d-4011-b39a-3aaf34beced1.png",
-      "userRole": "",
-      "reason": "Hack"
-    }
-  ]
+  "reports": [],
+  "banidos": []
 }

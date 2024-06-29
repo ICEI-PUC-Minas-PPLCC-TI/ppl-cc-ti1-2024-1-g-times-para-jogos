@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (!response.ok) {
       throw new Error('Não foi possível obter os dados dos usuários.');
     }
+    const reportsContainer = document.getElementById('reportsContainer');
     const usuarios = await response.json();
     const userCardsContainer = document.getElementById('user-cards');
     const filteredUsers = usuarios.filter(user => user.id !== "-1");
@@ -50,6 +51,32 @@ document.addEventListener('DOMContentLoaded', async function() {
     console.error('Erro ao buscar e renderizar os usuários:', error);
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const reportsContainer = document.getElementById('reportsContainer');
+  reportsContainer.addEventListener('click', async function(event) {
+    if (event.target.closest('.delete-report-ico')) {
+      const reportItem = event.target.closest('.report-item');
+      const reportContentAtual = event.target.closest('.modal-content')
+      const reportId = reportItem.getAttribute('data-report-id');
+      const userId = reportContentAtual.getAttribute('data-user-id');
+      try {
+        await deleteReport(reportId);
+        reportItem.remove();
+        const updatedUser = await fetchUser(userId);
+        const updatedCard = createUserCard(updatedUser);
+        const userCard = document.getElementById(`user-card-${userId}`);
+        userCard.parentNode.replaceChild(updatedCard, userCard);
+        if (!reportsContainer.hasChildNodes()) {
+          reportsContainer.style.display = 'none';
+        }
+      } catch (error) {
+        console.error('Erro ao deletar o relatório:', error);
+      }
+    }
+  });
+});
+
 async function checkIfUserIsBanned(userId) {
   try {
     const response = await fetch(`http://localhost:3000/banidos/${userId}`);
@@ -74,12 +101,14 @@ async function fetchUser(userId) {
 async function openReportsModal(userId) {
   const reportsModal = document.getElementById('reportsModal');
   const modalContent = reportsModal.querySelector('.modal-content');
+  modalContent.setAttribute('data-user-id', userId);
   const reportsContainer = document.getElementById('reportsContainer');
   reportsContainer.innerHTML = '';
   const reports = await fetchUserReports(userId);
   reports.forEach(report => {
     const reportElement = document.createElement('div');
     reportElement.classList.add('report-item');
+    reportElement.setAttribute('data-report-id', report.id);
     switch (report.reportType) {
       case 1:
         reportElement.textContent = `Nick ofensivo: ${report.offensiveNick}`;
@@ -96,10 +125,12 @@ async function openReportsModal(userId) {
       case 5:
         reportElement.textContent = `Smurfing reportado`;
         break;
-      default:
-        console.log("achei nada kkkk");
-        reportElement.textContent = `Report não identificado`;
     }
+    const removeReportIcon = document.createElement('span');
+    removeReportIcon.classList.add('delete-report-ico');
+    removeReportIcon.setAttribute('data-report-id', report.id);
+    removeReportIcon.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+    reportElement.appendChild(removeReportIcon);
     reportsContainer.appendChild(reportElement);
     reportsContainer.style.display = ""
   });
@@ -230,6 +261,14 @@ async function unbanUser(userId) {
     throw error;
   }
 }
+async function deleteReport(reportId) {
+  const response = await fetch(`/reports/${reportId}`, {
+    method: 'DELETE'
+  });
+  if (!response.ok) {
+    throw new Error('Erro ao deletar o relatório');
+  }
+}
 function updateUserCard(updatedUser) {
   const cardElement = document.getElementById(`user-card-${updatedUser.id}`);
   if (cardElement) {
@@ -240,6 +279,7 @@ function updateUserCard(updatedUser) {
 function createUserCard(user) {
   const card = document.createElement('div');
   card.classList.add('user-card');
+  card.setAttribute('id', `user-card-${user.id}`);
   const profileImage = document.createElement('img');
   profileImage.src = user.profilePhoto;
   profileImage.alt = `Foto de ${user.nome}`;
